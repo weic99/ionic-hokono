@@ -24,12 +24,25 @@
   <ion-list>
     <ion-item >
       <ion-label color="primary" fixed>Name</ion-label>
-      <ion-input type="text"clearInput></ion-input>
+      <ion-input type="text" clearInput></ion-input>
     </ion-item>
 
     <ion-item >
       <ion-label color="primary" fixed>Age</ion-label>
-      <ion-input type="number" clearInput></ion-input>
+      <ion-input type="number"
+                 clearInput
+                 placeholder="yr."
+                 name="years"
+                 [(ngModel)]="age.years"
+      >
+      </ion-input>
+      <ion-input type="number"
+                 clearInput
+                 placeholder="mo."
+                 name="months"
+                 [(ngModel)]="age.months"
+      >
+      </ion-input>
     </ion-item>
 
     <div padding>

@@ -10,7 +10,10 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class CameraPage {
   image: string;
   sex: string;
-
+  age: {
+    years: string,
+    months: string
+  }
   options: CameraOptions = {
     quality: 100,
     destinationType: this.camera.DestinationType.DATA_URL,
@@ -22,7 +25,12 @@ export class CameraPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private camera: Camera
-  ) { }
+  ) {
+    this.age = {
+      years: '',
+      months: '',
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CameraPage');
@@ -34,7 +42,8 @@ export class CameraPage {
     } catch (e) {
       console.log('doTakePicture()', e);
     }
-
   }
+
+  
 
 }
