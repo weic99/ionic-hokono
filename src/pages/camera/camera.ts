@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
+import { Pet }    from '../../models/pet';
+
 @IonicPage()
 @Component({
   selector: 'page-camera',
@@ -14,6 +16,9 @@ export class CameraPage {
     years: string,
     months: string
   }
+
+  newPet: Pet;
+
   options: CameraOptions = {
     quality: 100,
     destinationType: this.camera.DestinationType.DATA_URL,
@@ -28,7 +33,7 @@ export class CameraPage {
   ) {
     this.age = {
       years: '',
-      months: '',
+      months: ''
     }
   }
 
@@ -44,6 +49,6 @@ export class CameraPage {
     }
   }
 
-  
+
 
 }
