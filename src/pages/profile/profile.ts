@@ -28,6 +28,7 @@ export class ProfilePage {
     this.petRef$.subscribe(pets => {
       this.pets = pets;
     });
+    this.filter = '';
   }
 
   ionViewDidEnter() {
