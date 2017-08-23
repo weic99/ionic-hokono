@@ -45,14 +45,14 @@
 
 
   <ion-list>
-    <ion-item *ngFor="let pokemon of pokemons">
+    <ion-item *ngFor="let pet of pets">
       <ion-avatar item-start
                   class='avatar'
       >
-        <img [src]="pokemon.imageUrl" />
+        <img [src]="pet.imageUrl" />
       </ion-avatar>
-      <h1>{{pokemon.name}}</h1>
-      <span *ngFor="let type of pokemon.types"> {{type +' '}} </span>
+      <h1>{{pet.name}}</h1>
+      <span *ngFor="let type of pet.types"> {{type +' '}} </span>
     </ion-item>
   </ion-list>
 

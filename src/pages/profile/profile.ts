@@ -9,35 +9,35 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class ProfilePage {
   pics: any;
-  pokemonsRef$: FirebaseListObservable<any[]>;
-  pokemons: any;
-  totalPokemons: number;
+  petRef$: FirebaseListObservable<any[]>;
+  pets: any;
+  totalPets: number;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private firebase: AngularFireDatabase
   ) {
-    this.pokemonsRef$ = this.firebase.list('api/pokemon', {
+    this.petRef$ = this.firebase.list('api/pokemon', {
       query: {
         limitToFirst: 10,
       }
     });
-    this.totalPokemons = 10;
-    this.pokemonsRef$.subscribe(pokemons => {
-      this.pokemons = pokemons;
+    this.totalPets = 10;
+    this.petRef$.subscribe(pets => {
+      this.pets = pets;
     });
   }
 
   ionViewDidEnter() {
-    this.pokemonsRef$ = this.firebase.list('api/pokemon', {
+    this.petRef$ = this.firebase.list('api/pokemon', {
       query: {
         limitToFirst: 15,
       }
     });
-    this.totalPokemons = 15;
-    this.pokemonsRef$.subscribe(pokemons => {
-      this.pokemons = pokemons;
+    this.totalPets = 15;
+    this.petRef$.subscribe(pets => {
+      this.pets = pets;
     });
   }
 
@@ -54,14 +54,14 @@ export class ProfilePage {
     //console.log('Begin async operation');
 
     setTimeout(() => {
-      this.totalPokemons = this.totalPokemons + 10;
-      this.pokemonsRef$ = this.firebase.list('api/pokemon', {
+      this.totalPets = this.totalPets + 10;
+      this.petRef$ = this.firebase.list('api/pokemon', {
         query: {
-          limitToFirst: this.totalPokemons,
+          limitToFirst: this.totalPets,
         }
       });
-      this.pokemonsRef$.subscribe(pokemons => {
-        this.pokemons = pokemons;
+      this.petRef$.subscribe(pets => {
+        this.pets = pets;
       });
       //console.log('Async operation has ended');
       infiniteScroll.complete();

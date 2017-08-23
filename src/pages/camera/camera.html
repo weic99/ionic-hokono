@@ -15,10 +15,28 @@
 
 <ion-content padding>
 
+  <!-- picture of pet -->
   <img [hidden]="!image"
         [src] ="image"
         alt=""
   >
+
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" floating>Name</ion-label>
+      <ion-input type="text"clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" floating>Age</ion-label>
+      <ion-input type="number" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" floating>Notes</ion-label>
+      <ion-textarea type="text"clearInput></ion-textarea>
+    </ion-item>
+  </ion-list>
 
   <button ion-button round
           (click)="doTakePicture()"
