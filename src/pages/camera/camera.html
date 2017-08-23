@@ -14,5 +14,13 @@
 
 
 <ion-content padding>
-  CameraPage Works
+
+  <img [src] ="image" alt="">
+
+  <button ion-button round
+          (click)="doTakePicture()"
+  >
+    Take Picture
+  </button>
+
 </ion-content>

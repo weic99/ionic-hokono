@@ -12,6 +12,8 @@ import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +33,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera
   ]
 })
 export class AppModule {}
