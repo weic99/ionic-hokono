@@ -47,20 +47,28 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 $toolbar-ios-background: white;
+
 $tabbar-ios-background: white;
 $tabs-ios-background: white;
+
 $label-ios-margin-top: 0;
 $label-ios-margin-bottom: 0;
 
+$segment-button-ios-font-size: 1.75rem;
+$segment-button-ios-line-height: 2rem;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 $toolbar-md-background: white;
+
 $tabbar-md-background: white;
 $tabs-md-background: white;
+
 $label-md-margin-top: 0;
 $label-md-margin-bottom: 0;
 
+$segment-button-md-font-size: 1.75rem;
+$segment-button-md-line-height: 3rem;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
