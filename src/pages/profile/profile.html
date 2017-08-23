@@ -43,6 +43,19 @@
 
   </ion-row>
 
+  <div padding>
+    <ion-segment [(ngModel)]="filter">
+      <ion-segment-button value="fire">
+        Fire
+      </ion-segment-button>
+      <ion-segment-button value="water">
+        Water
+      </ion-segment-button>
+      <ion-segment-button value="grass">
+        Grass
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
   <ion-list>
     <ion-item *ngFor="let pet of pets">

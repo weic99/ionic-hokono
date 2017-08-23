@@ -12,7 +12,8 @@ export class ProfilePage {
   petRef$: FirebaseListObservable<any[]>;
   pets: any;
   totalPets: number;
-
+  filter: string;
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
