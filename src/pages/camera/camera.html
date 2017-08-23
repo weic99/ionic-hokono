@@ -16,37 +16,53 @@
 <ion-content padding>
 
   <!-- picture of pet -->
-  <img [hidden]="!image"
-        [src] ="image"
+  <img [hidden]="!newPet.image"
+        [src] ="newPet.image"
         alt=""
   >
 
   <ion-list>
     <ion-item >
-      <ion-label color="primary" fixed>Name</ion-label>
-      <ion-input type="text" clearInput></ion-input>
+      <ion-label color="primary"
+                 fixed
+      >
+        Name
+      </ion-label>
+      <ion-input type="text"
+                 clearInput
+                 [(ngModel)]="newPet.name"
+      >
+      </ion-input>
     </ion-item>
 
     <ion-item >
-      <ion-label color="primary" fixed>Age</ion-label>
+      <ion-label color="primary"
+                 fixed
+      >
+        Age
+      </ion-label>
       <ion-input type="number"
                  clearInput
                  placeholder="yr."
                  name="years"
-                 [(ngModel)]="age.years"
+                 min="0"
+                 [(ngModel)]="newPet.age.years"
       >
       </ion-input>
       <ion-input type="number"
                  clearInput
                  placeholder="mo."
                  name="months"
-                 [(ngModel)]="age.months"
+                 min="0"
+                 [(ngModel)]="newPet.age.months"
       >
       </ion-input>
     </ion-item>
 
     <div padding>
-      <ion-segment [(ngModel)]="sex" color="primary">
+      <ion-segment [(ngModel)]="newPet.sex"
+                   color="primary"
+      >
         <ion-segment-button value="male">
           BOY
           <ion-icon name="ios-male"></ion-icon>
@@ -59,12 +75,21 @@
     </div>
 
     <ion-item padding>
-      <ion-label class="pet-profile-notes" color="primary" fixed>Notes</ion-label>
-      <ion-textarea type="text"clearInput></ion-textarea>
+      <ion-label class="pet-profile-notes"
+                 color="primary"
+                 fixed
+      >
+        Notes
+      </ion-label>
+      <ion-textarea type="text"
+                    clearInput
+      >
+      </ion-textarea>
     </ion-item>
   </ion-list>
 
-  <button ion-button round
+  <button ion-button
+          round
           (click)="doTakePicture()"
   >
     Take Picture

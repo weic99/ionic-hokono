@@ -10,13 +10,6 @@ import { Pet }    from '../../models/pet';
   templateUrl: 'camera.html',
 })
 export class CameraPage {
-  image: string;
-  sex: string;
-  age: {
-    years: string,
-    months: string
-  }
-
   newPet: Pet;
 
   options: CameraOptions = {
@@ -31,10 +24,14 @@ export class CameraPage {
     public navParams: NavParams,
     private camera: Camera
   ) {
-    this.age = {
-      years: '',
-      months: ''
-    }
+    this.newPet = new Pet();
+    this.newPet.name = '';
+    this.newPet.age = {
+      years: undefined,
+      months: undefined
+    };
+    this.newPet.image = '';
+    this.newPet.notes = '';
   }
 
   ionViewDidLoad() {
@@ -43,7 +40,7 @@ export class CameraPage {
 
   async doTakePicture() {
     try {
-      this.image = 'data:image/jpeg;base64,' + await this.camera.getPicture(this.options);
+      this.newPet.image = 'data:image/jpeg;base64,' + await this.camera.getPicture(this.options);
     } catch (e) {
       console.log('doTakePicture()', e);
     }
