@@ -17,7 +17,7 @@
   <ion-list [virtualScroll]="pokemonsRef$ | async" approxItemHeight="50px">
     <ion-item *virtualItem="let pokemon" no-padding>
       <ion-avatar item-start>
-        <ion-img cache src="http://vignette4.wikia.nocookie.net/nintendo/images/4/43/Bulbasaur.png/revision/latest?cb=20141002083518&path-prefix=en"></ion-img>
+        <ion-img cache [src]="pokemon.imageUrl"></ion-img>
       </ion-avatar>
       <h2>{{pokemon.name}}</h2>
       <h6>{{pokemon.imageUrl}}</h6>
