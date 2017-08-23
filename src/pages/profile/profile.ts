@@ -13,7 +13,7 @@ export class ProfilePage {
   pets: any;
   totalPets: number;
   filter: string;
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
