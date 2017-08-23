@@ -9,6 +9,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class CameraPage {
   image: string;
+
   options: CameraOptions = {
     quality: 100,
     destinationType: this.camera.DestinationType.DATA_URL,
@@ -28,10 +29,11 @@ export class CameraPage {
 
   async doTakePicture() {
     try {
-      this.image = await this.camera.getPicture(this.options);
+      this.image = 'data:image/jpeg;base64,' + await this.camera.getPicture(this.options);
     } catch (e) {
       console.log('doTakePicture()', e);
     }
+
   }
 
 }

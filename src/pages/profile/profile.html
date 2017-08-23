@@ -45,10 +45,10 @@
 
 
   <ion-list>
-    <ion-item *ngFor="let pokemon of pokemonsRef$ | async"
-              padding
-    >
-      <ion-avatar item-start>
+    <ion-item *ngFor="let pokemon of pokemons">
+      <ion-avatar item-start
+                  class='avatar'
+      >
         <img [src]="pokemon.imageUrl" />
       </ion-avatar>
       <h1>{{pokemon.name}}</h1>
@@ -56,15 +56,8 @@
     </ion-item>
   </ion-list>
 
-  <!-- virtualScroll is broken atm, use infiniteScroll later -->
-  <!-- <ion-list [virtualScroll]="pokemonsRef$ | async" approxItemHeight="50px">
-    <ion-item *virtualItem="let pokemon" no-padding>
-      <ion-avatar item-start>
-        <ion-img cache [src]="pokemon.imageUrl"></ion-img>
-      </ion-avatar>
-      <h2>{{pokemon.name}}</h2>
-      <h6>{{pokemon.imageUrl}}</h6>
-    </ion-item>
-</ion-list> -->
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

@@ -15,7 +15,10 @@
 
 <ion-content padding>
 
-  <img [src] ="image" alt="">
+  <img [hidden]="!image"
+        [src] ="image"
+        alt=""
+  >
 
   <button ion-button round
           (click)="doTakePicture()"

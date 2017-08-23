@@ -11,6 +11,12 @@ page-profile {
   #profile-slogan {
     font-size:1.5rem;
   }
+  .avatar img {
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    max-width: 75px;
+  }
   .profile-area {
     flex: 0 1 30%;
     height: 100px;
