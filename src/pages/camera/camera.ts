@@ -46,6 +46,8 @@ export class CameraPage {
     }
   }
 
-
+  doSubmit() {
+    console.log('new pet', this.newPet);
+  }
 
 }
