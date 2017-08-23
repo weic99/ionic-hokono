@@ -7,10 +7,46 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-row class="profile-area">
+
+    <ion-col>
+      <ion-item no-padding
+                no-lines
+      >
+        <ion-avatar id="profile-avatar"
+                    item-start
+        >
+          <img class="profile-avatar-pic"
+              src="http://www.planetcreation.co.uk/createpic/avatarold.JPG"
+          />
+        </ion-avatar>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-8>
+      <ion-row class="profile-title">
+        <h1 id="profile-name">Hack Reactor</h1>
+      </ion-row>
+      <ion-row class="profile-title">
+        <h1 id="profile-address">369 Lexington Ave. 11th Fl.</h1>
+      </ion-row>
+      <ion-row class="profile-title">
+        <h1 id="profile-slogan">We Love Them Like You Do</h1>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
+
+
   <ion-list>
     <ion-item *ngFor="let pokemon of pokemonsRef$ | async"
-              no-padding
+              padding
     >
       <ion-avatar item-start>
         <img [src]="pokemon.imageUrl" />
@@ -20,7 +56,7 @@
     </ion-item>
   </ion-list>
 
-  <!-- virtualScroll is broken atm -->
+  <!-- virtualScroll is broken atm, use infiniteScroll later -->
   <!-- <ion-list [virtualScroll]="pokemonsRef$ | async" approxItemHeight="50px">
     <ion-item *virtualItem="let pokemon" no-padding>
       <ion-avatar item-start>
@@ -29,6 +65,6 @@
       <h2>{{pokemon.name}}</h2>
       <h6>{{pokemon.imageUrl}}</h6>
     </ion-item>
-  </ion-list> -->
+</ion-list> -->
 
 </ion-content>
