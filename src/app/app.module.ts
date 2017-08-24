@@ -10,8 +10,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FIREBASE_CREDENTIALS } from './firebase.credentials';
-
 
 import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
@@ -25,7 +25,8 @@ import { UserProvider } from '../providers/user/user';
     BrowserModule,
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
     IonicModule.forRoot(MyApp),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
