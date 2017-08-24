@@ -22,8 +22,8 @@ import { Camera } from '@ionic-native/camera';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
+    IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],

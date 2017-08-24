@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-import { Pet }    from '../../models/pet';
+import { Pet } from '../../models/pet';
 
 @IonicPage()
 @Component({
