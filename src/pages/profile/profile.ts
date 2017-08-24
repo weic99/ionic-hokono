@@ -21,19 +21,6 @@ export class ProfilePage {
   ) {
     this.petRef$ = this.firebase.list('api/pokemon', {
       query: {
-        limitToFirst: 10,
-      }
-    });
-    this.totalPets = 10;
-    this.petRef$.subscribe(pets => {
-      this.pets = pets;
-    });
-    this.filter = '';
-  }
-
-  ionViewDidEnter() {
-    this.petRef$ = this.firebase.list('api/pokemon', {
-      query: {
         limitToFirst: 15,
       }
     });
@@ -41,6 +28,19 @@ export class ProfilePage {
     this.petRef$.subscribe(pets => {
       this.pets = pets;
     });
+    this.filter = '';
+  }
+
+  ionViewDidEnter() {
+    // this.petRef$ = this.firebase.list('api/pokemon', {
+    //   query: {
+    //     limitToFirst: 15,
+    //   }
+    // });
+    // this.totalPets = 15;
+    // this.petRef$.subscribe(pets => {
+    //   this.pets = pets;
+    // });
   }
 
   doRefresh(refresher) {
@@ -63,7 +63,7 @@ export class ProfilePage {
         }
       });
       this.petRef$.subscribe(pets => {
-        this.pets = pets;
+        this.pets.push(...pets.slice(-10));
       });
       //console.log('Async operation has ended');
       infiniteScroll.complete();
