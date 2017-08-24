@@ -27,8 +27,8 @@ export class LoginPage {
   }
 
   doLogin() {
-    console.log(this.account);
-
+    // console.log(this.account);
+    this.navCtrl.setRoot('HomePage');
   }
 
   doSignUp() {
