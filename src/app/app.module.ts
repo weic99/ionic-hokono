@@ -9,8 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
-import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FIREBASE_CREDENTIALS } from './firebase.credentials';
+
 
 import { Camera } from '@ionic-native/camera';
 
