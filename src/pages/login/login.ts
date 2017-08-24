@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -28,7 +29,7 @@ export class LoginPage {
 
   doLogin() {
     // console.log(this.account);
-    this.navCtrl.setRoot('HomePage');
+    this.navCtrl.setRoot(TabsPage);
   }
 
   doSignUp() {
