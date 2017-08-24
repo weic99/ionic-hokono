@@ -14,7 +14,6 @@ import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 
 
 import { Camera } from '@ionic-native/camera';
-import { PhotoLibrary } from '@ionic-native/photo-library';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { PhotoLibrary } from '@ionic-native/photo-library';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera,
-    PhotoLibrary
+    Camera
   ]
 })
 export class AppModule {}
