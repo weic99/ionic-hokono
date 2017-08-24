@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>signup</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,7 +10,7 @@
 
 <ion-content scroll="false">
 
-  <form (submit)="doLogin()">
+  <form (submit)="doSignUp()">
 
     <ion-list>
 
@@ -19,8 +19,8 @@
           Email
         </ion-label>
         <ion-input type="email"
-                   [(ngModel)]="account.email"
-                   name="email"
+                    [(ngModel)]="account.email"
+                    name="email"
         >
         </ion-input>
       </ion-item>
@@ -30,8 +30,8 @@
           Password
         </ion-label>
         <ion-input type="password"
-                   [(ngModel)]="account.password"
-                   name="password"
+                    [(ngModel)]="account.password"
+                    name="password"
         >
         </ion-input>
       </ion-item>
@@ -41,7 +41,7 @@
                 color="primary"
                 block
         >
-          Login
+          Create an account
         </button>
       </div>
 
@@ -49,13 +49,13 @@
 
   </form>
 
-  <div padding-horizontal> Don't have an account? </div>
+  <div padding-horizontal> Already have an account? </div>
   <div padding-horizontal>
       <button ion-button
               color="primary"
               (click)="doSignUp()"
       >
-        Sign Up
+        Sign In
       </button>
   </div>
 

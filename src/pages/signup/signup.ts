@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-signup',
+  templateUrl: 'signup.html',
 })
-export class LoginPage {
+export class SignupPage {
   account: {
     email: string,
     password: string
@@ -23,15 +23,15 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad SignupPage');
   }
 
   doLogin() {
-    console.log(this.account);
-
+    this.navCtrl.setRoot('LoginPage');
   }
 
   doSignUp() {
-    this.navCtrl.setRoot('SignupPage');
+    console.log(this.account);
+
   }
 }
