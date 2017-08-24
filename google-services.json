@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "340279576545",
+    "firebase_url": "https://hokono-90da1.firebaseio.com",
+    "project_id": "hokono-90da1",
+    "storage_bucket": "hokono-90da1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340279576545:android:84e7119983a07501",
+        "android_client_info": {
+          "package_name": "io.ionic.honoko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340279576545-a6a44103erdp6k8re3nkqulch08c1j21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF1zV-J5KwLJEakZ_bVK0Tt0OBeMF-1QE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
