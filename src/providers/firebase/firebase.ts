@@ -12,7 +12,11 @@ export class FirebaseProvider {
     // console.log('Hello FirebaseProvider Provider');
   }
 
-  getPets() {
-
+  getPets(limit: number = 0) {
+    return this.db.list('api/pokemon', {
+      query: {
+        limitToFirst: limit
+      }
+    });
   }
 }

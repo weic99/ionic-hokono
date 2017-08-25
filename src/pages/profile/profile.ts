@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseListObservable } from 'angularfire2/database';
+
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @IonicPage()
 @Component({
@@ -17,13 +19,9 @@ export class ProfilePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private firebase: AngularFireDatabase
+    private firebase: FirebaseProvider
   ) {
-    this.petRef$ = this.firebase.list('api/pokemon', {
-      query: {
-        limitToFirst: 15,
-      }
-    });
+    this.petRef$ = this.firebase.getPets(15);
     this.totalPets = 15;
     this.petRef$.subscribe(pets => {
       this.pets = pets;
@@ -31,17 +29,7 @@ export class ProfilePage {
     this.filter = '';
   }
 
-  ionViewDidEnter() {
-    // this.petRef$ = this.firebase.list('api/pokemon', {
-    //   query: {
-    //     limitToFirst: 15,
-    //   }
-    // });
-    // this.totalPets = 15;
-    // this.petRef$.subscribe(pets => {
-    //   this.pets = pets;
-    // });
-  }
+  ionViewDidEnter() { }
 
   doRefresh(refresher) {
     //console.log('Begin async operation', refresher);
@@ -57,11 +45,7 @@ export class ProfilePage {
 
     setTimeout(() => {
       this.totalPets = this.totalPets + 10;
-      this.petRef$ = this.firebase.list('api/pokemon', {
-        query: {
-          limitToFirst: this.totalPets,
-        }
-      });
+      this.petRef$ = this.firebase.getPets(this.totalPets);
       this.petRef$.subscribe(pets => {
         this.pets.push(...pets.slice(-10));
       });
