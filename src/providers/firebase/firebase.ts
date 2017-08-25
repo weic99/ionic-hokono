@@ -23,4 +23,8 @@ export class FirebaseProvider {
   getAllPets() {
     return this.db.list('api/pets');
   }
+
+  postNewPet() {
+    return this.db.list('api/pets/new');
+  }
 }

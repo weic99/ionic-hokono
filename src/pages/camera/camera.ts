@@ -4,6 +4,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { Pet } from '../../models/pet';
 
+import { FirebaseProvider } from '../../providers/firebase/firebase';
+
 @IonicPage()
 @Component({
   selector: 'page-camera',
@@ -23,7 +25,8 @@ export class CameraPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private camera: Camera
+    private camera: Camera,
+    private firebase: FirebaseProvider
   ) {
     this.newPet = new Pet();
     this.newPet.name = '';
@@ -69,6 +72,7 @@ export class CameraPage {
 
   doSubmit() {
     console.log('new pet', this.newPet);
+    this.firebase.postNewPet().push(this.newPet);
   }
 
 }
