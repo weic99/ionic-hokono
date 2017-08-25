@@ -40,10 +40,11 @@ export class LoginPage {
     console.log(str);
 
     if(str === 'google') {
-      this.User.googleSignIn().subscribe(user => {
-        console.log(user);
+      this.User.googleSignIn().subscribe(success => {
+        // console.log(user);
+        this.navCtrl.setRoot(TabsPage);
       }, (err) => {
-        console.log(err);
+        console.log('google login failed', err);
       });
     }
   }

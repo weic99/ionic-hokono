@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
 import { User } from '../../models/user';
@@ -18,9 +19,10 @@ export class UserProvider {
     public http: Http,
     private afAuth: AngularFireAuth,
     private platform: Platform,
-    private googlePlus: GooglePlus
+    private googlePlus: GooglePlus,
+    private storage: Storage
   ) {
-    console.log('Hello UserProvider Provider');
+    // console.log('Hello UserProvider Provider');
   }
 
   googleSignIn() {
@@ -43,9 +45,10 @@ export class UserProvider {
           });
       } else {
         return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-          .then((success)=>{
-            console.log('success');
-            observer.next(success);
+          .then((res)=>{
+            console.log('login success', res.user.displayName);
+            this.storage.set('user', JSON.stringify(res.user));
+            observer.next(true);
           }).catch(error => {
             //console.log(error);
             observer.error(error);
