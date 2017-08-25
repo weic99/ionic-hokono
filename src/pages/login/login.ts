@@ -6,6 +6,8 @@ import { Platform } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 
+import { UserProvider } from '../../providers/user/user';
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -20,6 +22,7 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private User: UserProvider,
     private afAuth: AngularFireAuth,
     private platform: Platform
   ) {
@@ -37,20 +40,11 @@ export class LoginPage {
     console.log(str);
 
     if(str === 'google') {
-      if (this.platform.is('cordova')) {
-
-      } else {
-        // // web sign in, will not work
-        // return this.afAuth.auth
-        // .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        // .then(res => {
-        //   console.log(res);
-        //   this.navCtrl.setRoot(TabsPage);
-        // })
-        // .catch(err => {
-        //   console.log('login(google)', err);
-        // });
-      }
+      this.User.googleSignIn().subscribe(user => {
+        console.log(user);
+      }, (err) => {
+        console.log(err);
+      });
     }
   }
 
