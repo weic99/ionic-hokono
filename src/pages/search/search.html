@@ -28,7 +28,7 @@
   </div>
 
   <ion-list>
-    <ion-item *ngFor="let pet of pets | filterPetsBySpecies: query">
+    <ion-item *ngFor="let pet of petRef$ | async | filterPetsBySpecies: query">
       <ion-avatar item-start
                   class='avatar'
       >
