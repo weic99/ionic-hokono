@@ -9,7 +9,7 @@ export class FilterPetsBySpeciesPipe implements PipeTransform {
     if (!species) return pets;
     species = species.toLowerCase();
     return pets.filter( (pet) => {
-      return pet.types.some( (t) => t.toLowerCase() === species);
+      return pet.types && pet.types.some( (t) => t.toLowerCase() === species);
     });
   }
 }

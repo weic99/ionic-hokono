@@ -13,7 +13,6 @@ export class SearchPage {
   query: string = ''; /** search query */
   pets: any = []; /** pets to display */
   petRef$: FirebaseListObservable<any[]>; /** pet observable */
-  filter: string; /** filter string for pets */
 
   constructor(
     public navCtrl: NavController,
@@ -21,7 +20,7 @@ export class SearchPage {
     private firebase: FirebaseProvider
   ) {
     this.petRef$ = this.firebase.getAllPets();
-    this.filter = '';
+    this.query = '';
   }
 
   ionViewDidLoad() {
