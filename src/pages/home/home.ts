@@ -18,8 +18,10 @@ export class HomePage {
     private storage: Storage
   ) {
     storage.get('user').then((user) => {
-      console.log('user is', typeof JSON.parse(user),  JSON.parse(user));
-      this.user = JSON.parse(user);
+      console.log('user is', typeof JSON.parse(user),  (user));
+      if(!!user) {
+        this.user = JSON.parse(user);
+      }
     });
   }
 

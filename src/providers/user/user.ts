@@ -28,20 +28,27 @@ export class UserProvider {
   googleSignIn() {
     return Observable.create(observer => {
       if (this.platform.is('cordova')) {
+        console.log('android');
         return this.googlePlus.login({
-          'webClientId':'340279576545-avnl68776h3fqu7s2ma90f9ugf1in9p1.apps.googleusercontent.com'
+          'webClientId':'340279576545-a6a44103erdp6k8re3nkqulch08c1j21.apps.googleusercontent.com'
           })
           .then(userData => {
-            let token = userData.idToken;
-            const googleCredential = auth.GoogleAuthProvider.credential(token, null);
-            this.afAuth.auth.signInWithCredential(googleCredential)
-            .then((success)=>{
-              observer.next(success);
-            })
-            .catch(err => {
-            });
+            console.log('googlePlus.login', userData);
+            this.storage.set('user', JSON.stringify(userData));
+          //   let token = userData.idToken;
+          //   const googleCredential = auth.GoogleAuthProvider.credential(token);
+          //   return this.afAuth.auth.signInWithCredential(googleCredential)
+          //     .then((success)=>{
+          //       console.log('login success', success.user.displayName);
+          //       observer.next(success);
+          //     })
+          //     .catch(err => {
+          //       console.log('android signInWithCredential failed', err);
+          //     });
+            observer.next(true);
           })
           .catch(err => {
+            console.log('android googlePlus.login failed', err);
           });
       } else {
         return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
