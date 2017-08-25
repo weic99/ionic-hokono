@@ -53,4 +53,8 @@ export class ProfilePage {
     }, 0);
   }
 
+  doEditPet(pet) {
+    this.navCtrl.push('PetprofilePage', {pet});
+  }
+
 }

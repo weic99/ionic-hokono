@@ -68,8 +68,19 @@
       >
         <img [src]="pet.imageUrl" />
       </ion-avatar>
+
+      <button ion-button
+              small
+              icon-only
+              item-end
+              (click)="doEditPet(pet)"
+      >
+      <ion-icon name="md-arrow-round-forward"></ion-icon>
+      </button>
+
       <h1>{{pet.name}}</h1>
       <span *ngFor="let type of pet.types"> {{type +' '}} </span>
+
     </ion-item>
   </ion-list>
 

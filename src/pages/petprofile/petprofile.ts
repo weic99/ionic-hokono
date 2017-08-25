@@ -9,11 +9,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PetprofilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pet: any;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) { }
+
+  ionViewWillLoad() {
+    this.pet = this.navParams.get('pet');
+
+    /** Guarantee data is sent */
+    if (!this.pet) {
+      this.navCtrl.pop();
+    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PetprofilePage');
+    //console.log('ionViewDidLoad PetprofilePage');
   }
 
 }
