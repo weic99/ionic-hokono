@@ -49,7 +49,7 @@ export class ProfilePage {
     setTimeout(() => {
       //console.log('Async operation has ended');
       refresher.complete();
-    }, 2000);
+    }, 1500);
   }
 
   doInfinite(infiniteScroll) {
@@ -67,7 +67,7 @@ export class ProfilePage {
       });
       //console.log('Async operation has ended');
       infiniteScroll.complete();
-    }, 500);
+    }, 0);
   }
 
 }
