@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 
 import { Platform } from 'ionic-angular';
@@ -22,6 +22,7 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public appCtrl: App,
     private User: UserProvider,
     private afAuth: AngularFireAuth,
     private platform: Platform
@@ -42,7 +43,7 @@ export class LoginPage {
     if(str === 'google') {
       this.User.googleSignIn().subscribe(success => {
         // console.log(user);
-        this.navCtrl.setRoot(TabsPage);
+        this.appCtrl.getRootNav().setRoot(TabsPage);
       }, (err) => {
         console.log('google login failed', err);
       });
