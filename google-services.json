@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "340279576545-avnl68776h3fqu7s2ma90f9ugf1in9p1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.honoko",
+            "certificate_hash": "13e43d88fc19be52e9409b934715dbc33ba2b322"
+          }
+        },
+        {
           "client_id": "340279576545-a6a44103erdp6k8re3nkqulch08c1j21.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -22,6 +30,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyBF1zV-J5KwLJEakZ_bVK0Tt0OBeMF-1QE"
+        },
+        {
+          "current_key": "AIzaSyBmfnBGU5w-AdvW1BL5r8bNKGx9KA8kXKc"
         }
       ],
       "services": {
@@ -29,8 +40,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340279576545-a6a44103erdp6k8re3nkqulch08c1j21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

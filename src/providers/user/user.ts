@@ -5,6 +5,10 @@ import 'rxjs/add/operator/map';
 
 import { User } from '../../models/user';
 
+import { Platform } from 'ionic-angular';
+import { GooglePlus } from 'ionic-native';
+import { auth } from 'firebase';
+
 @Injectable()
 export class UserProvider {
   user: User;

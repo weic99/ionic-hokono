@@ -40,16 +40,16 @@ export class LoginPage {
       if (this.platform.is('cordova')) {
 
       } else {
-        // web sign in, will not work
-        return this.afAuth.auth
-        .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        .then(res => {
-          console.log(res);
-          this.navCtrl.setRoot(TabsPage);
-        })
-        .catch(err => {
-          console.log('login(google)', err);
-        });
+        // // web sign in, will not work
+        // return this.afAuth.auth
+        // .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        // .then(res => {
+        //   console.log(res);
+        //   this.navCtrl.setRoot(TabsPage);
+        // })
+        // .catch(err => {
+        //   console.log('login(google)', err);
+        // });
       }
     }
   }
