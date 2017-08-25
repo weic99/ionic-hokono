@@ -12,7 +12,7 @@ export class SearchPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+    // console.log('ionViewDidLoad SearchPage');
   }
 
 }

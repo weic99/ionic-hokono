@@ -26,7 +26,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage', this.user);
+    // console.log('ionViewDidLoad HomePage', this.user);
   }
 
 }
