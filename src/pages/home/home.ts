@@ -18,7 +18,7 @@ export class HomePage {
     private storage: Storage
   ) {
     storage.get('user').then((user) => {
-      console.log('user is', typeof JSON.parse(user),  (user));
+      //console.log('user is', typeof JSON.parse(user),  (user));
       if(!!user) {
         this.user = JSON.parse(user);
       }

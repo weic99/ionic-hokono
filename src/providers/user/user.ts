@@ -33,7 +33,7 @@ export class UserProvider {
           'webClientId':'340279576545-a6a44103erdp6k8re3nkqulch08c1j21.apps.googleusercontent.com'
           })
           .then(userData => {
-            console.log('googlePlus.login', userData);
+            console.log('googlePlus.login', userData.displayName);
             this.storage.set('user', JSON.stringify(userData));
           //   let token = userData.idToken;
           //   const googleCredential = auth.GoogleAuthProvider.credential(token);
