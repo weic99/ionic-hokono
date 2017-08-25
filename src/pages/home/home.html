@@ -10,44 +10,37 @@
 
 <ion-content padding>
 
-  <ion-grid>
+  <ion-card *ngFor="let item of cardItems">
+
+    <ion-item item-width="100">
+      <img class="card-pic" [src]="item.user.avatar">
+    </ion-item>
+
+    <img [src]="item.image">
+
+    <ion-card-content>
+      <p>{{item.content}}</p>
+    </ion-card-content>
 
     <ion-row>
-
       <ion-col>
-        1 of 3
+        <button ion-button color="primary" clear small icon-start>
+            <ion-icon name='thumbs-up'></ion-icon>
+            12 Likes
+          </button>
       </ion-col>
-
-      <ion-col col-auto>
-        {{user.displayName}}
-      </ion-col>
-
       <ion-col>
-        3 of 3
+        <button ion-button color="primary" clear small icon-start>
+            <ion-icon name='text'></ion-icon>
+            4 Comments
+          </button>
       </ion-col>
-
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
     </ion-row>
-
-    <ion-row>
-
-      <ion-col>
-        1 of 4
-      </ion-col>
-
-      <ion-col>
-        2 of 4
-      </ion-col>
-
-      <ion-col col-auto>
-        <ion-input placeholder="Variable width input"></ion-input>
-      </ion-col>
-
-      <ion-col>
-        4 of 4
-      </ion-col>
-
-    </ion-row>
-
-  </ion-grid>
+  </ion-card>
 
 </ion-content>

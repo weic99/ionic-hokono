@@ -10,14 +10,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PetprofilePage {
 
   pet: any;
-
+  cardItems: any[];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
-  ) { }
+  ) {
+  }
 
   ionViewWillLoad() {
-    this.pet = this.navParams.get('pet');
+    this.pet = this.navParams.get('pet') || undefined;
 
     /** Guarantee data is sent */
     if (!this.pet) {
