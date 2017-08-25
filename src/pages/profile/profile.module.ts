@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ProfilePage } from './profile';
-import { FilterPetsBySpeciesPipe } from '../../pipes/filter-pets-by-species/filter-pets-by-species';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
     ProfilePage,
-    FilterPetsBySpeciesPipe
   ],
   imports: [
     IonicPageModule.forChild(ProfilePage),
+    PipesModule
   ],
-  providers: [FilterPetsBySpeciesPipe]
+  providers: []
 })
 export class ProfilePageModule {}

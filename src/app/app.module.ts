@@ -18,6 +18,7 @@ import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 
 import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserProvider } from '../providers/user/user';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
     UserProvider,
-    GooglePlus
+    GooglePlus,
+    FirebaseProvider
   ]
 })
 export class AppModule {}

@@ -8,11 +8,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
+  query: string = ''; /** search query */
+  pets: any = []; /** pets to display */
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad SearchPage');
+  }
+
+  doSearch() {
+
   }
 
 }

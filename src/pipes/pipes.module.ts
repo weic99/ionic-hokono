@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
-//import { FilterPetsBySpeciesPipe } from './filter-pets-by-species/filter-pets-by-species';
+import { FilterPetsBySpeciesPipe } from './filter-pets-by-species/filter-pets-by-species';
+
 @NgModule({
-	declarations: [],
+	declarations: [
+		FilterPetsBySpeciesPipe
+	],
 	imports: [],
-	exports: []
+	exports: [
+		FilterPetsBySpeciesPipe
+	]
 })
 export class PipesModule {}
