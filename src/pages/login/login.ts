@@ -8,6 +8,8 @@ import * as firebase from 'firebase';
 
 import { UserProvider } from '../../providers/user/user';
 
+import { Storage } from '@ionic/storage';
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -25,7 +27,8 @@ export class LoginPage {
     public appCtrl: App,
     private User: UserProvider,
     private afAuth: AngularFireAuth,
-    private platform: Platform
+    private platform: Platform,
+    private storage: Storage
   ) {
     this.account = {
       email: '',
@@ -42,8 +45,11 @@ export class LoginPage {
 
     if (str === 'google') {
       this.User.googleSignIn()
-        .then(() => this.appCtrl.getRootNav().setRoot(TabsPage))
-        .catch(() => console.log('failed to log in'));
+        .then((res) => {
+          this.storage.set('user', JSON.stringify(res.user));
+          this.appCtrl.getRootNav().setRoot(TabsPage)
+        })
+        .catch((err) => console.log('failed to log in', err));
     }
   }
 
