@@ -31,33 +31,33 @@ export class HomePage {
     this.posts = [
       {
         user: {
-          avatar: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg',
-          name: 'Marty McFly'
+          avatar: 'http://cdn.pcwallart.com/images/corgi-puppy-sleeping-wallpaper-3.jpg',
+          name: 'Dr. Ian Malcolm'
         },
         date: 'November 5, 2024',
-        image: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg',
-        content: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
+        image: 'http://cdn.pcwallart.com/images/corgi-puppy-sleeping-wallpaper-3.jpg',
+        content: 'Your scientists were so preoccupied with whether or not they could, that they didn\'t stop to think if they should.',
         likes: 2202
       },
       {
         user: {
           avatar: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
-          name: 'Sarah Connor'
+          name: 'Marty McFly'
         },
-        date: 'May 12, 2024',
+        date: 'June 28, 2024',
         image: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
-        content: 'I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life, maybe we can too.',
+        content: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
         likes: 1337
       },
       {
         user: {
-          avatar: 'http://cdn.pcwallart.com/images/corgi-puppy-sleeping-wallpaper-3.jpg',
-          name: 'Dr. Ian Malcolm'
+          avatar: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg',
+          name: 'Sarah Connor'
         },
-        date: 'June 28, 2024',
-        image: 'http://cdn.pcwallart.com/images/corgi-puppy-sleeping-wallpaper-3.jpg',
-        content: 'Your scientists were so preoccupied with whether or not they could, that they didn\'t stop to think if they should.',
-        likes: 1039
+        date: 'May 12, 2024',
+        image: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg',
+        content: 'I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life, maybe we can too.',
+        likes: 1109
       }
     ];
   }

@@ -11,20 +11,35 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 export class SearchPage {
 
   query: string = ''; /** search query */
-  pets: any = []; /** pets to display */
+  pets: any[] = []; /** pets to display */
   petRef$: FirebaseListObservable<any[]>; /** pet observable */
+  totalPets: number;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private firebase: FirebaseProvider
   ) {
-    this.petRef$ = this.firebase.getAllPets();
+    this.petRef$ = this.firebase.getAllPets(10);
+    this.totalPets = 10;
+    this.petRef$.subscribe(pets => {
+      this.pets = pets;
+    });
     this.query = '';
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad SearchPage');
+  }
+
+  ionViewDidEnter() {
+    /** get the rest */
+    setTimeout(() => {
+      this.totalPets = 200;
+      this.petRef$ = this.firebase.getPets(this.totalPets);
+      this.petRef$.subscribe(pets => {
+      });
+    }, 0);
   }
 
   doSearch() {

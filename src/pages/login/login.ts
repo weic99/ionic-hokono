@@ -46,7 +46,7 @@ export class LoginPage {
     if (str === 'google') {
       this.User.googleSignIn()
         .then((res) => {
-          this.storage.set('user', JSON.stringify(res.user));
+          this.storage.set('user', JSON.stringify(res));
           this.appCtrl.getRootNavs()[0].setRoot(TabsPage)
         })
         .catch((err) => console.log('failed to log in', err));

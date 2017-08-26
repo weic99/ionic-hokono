@@ -2,13 +2,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>search</ion-title>
+    <ion-title>Search</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
+<ion-content overflow-scroll="true">
   <ion-searchbar [(ngModel)]="query"></ion-searchbar>
 
   <div padding>
@@ -29,7 +29,7 @@
   </div>
 
   <ion-list>
-    <ion-item *ngFor="let pet of petRef$ | async | filterPetsBySpecies: query">
+    <ion-item *ngFor="let pet of pets | filterPetsBySpecies: query">
       <ion-avatar item-start
                   class='avatar'
       >

@@ -20,8 +20,12 @@ export class FirebaseProvider {
     });
   }
 
-  getAllPets() {
-    return this.db.list('api/pets');
+  getAllPets(limit: number = 10) {
+    return this.db.list('api/pets', {
+      query: {
+        limitToFirst: limit
+      }
+    });
   }
 
   postNewPet() {

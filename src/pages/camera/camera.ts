@@ -39,10 +39,6 @@ export class CameraPage {
     this.newPet.notes = '';
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CameraPage');
-  }
-
   async doTakePicture() {
     try {
       this.newPet.image = 'data:image/jpeg;base64,' + await this.camera.getPicture(this.options);
