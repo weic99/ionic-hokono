@@ -38,6 +38,7 @@ export class SearchPage {
       this.totalPets = 200;
       this.petRef$ = this.firebase.getPets(this.totalPets);
       this.petRef$.subscribe(pets => {
+        this.pets.push(...pets.slice(10));
       });
     }, 0);
   }
