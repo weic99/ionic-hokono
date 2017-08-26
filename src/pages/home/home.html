@@ -12,8 +12,12 @@
 
   <ion-card *ngFor="let item of posts">
 
-    <ion-item item-width="100">
-      <img class="card-pic" [src]="item.user.avatar">
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="item.user.avatar">
+      </ion-avatar>
+      <h3>{{item.user.name}}</h3>
+      <!-- <small>{{item.date}}</small> -->
     </ion-item>
 
     <img [src]="item.image">
@@ -26,13 +30,13 @@
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start>
           <ion-icon name='thumbs-up'></ion-icon>
-          12 Likes
+          {{item.likes}}
         </button>
       </ion-col>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start>
           <ion-icon name='text'></ion-icon>
-          4 Comments
+          {{item.content.length * item.likes % 2000 }} Comments
         </button>
       </ion-col>
       <ion-col center text-center align-self-center>

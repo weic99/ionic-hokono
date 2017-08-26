@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +16,25 @@ export class ProfilePage {
   totalPets: number;
   filter: string;
 
+  user: any = {
+    displayName: ''
+  };
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private firebase: FirebaseProvider
+    private firebase: FirebaseProvider,
+    private storage: Storage
   ) {
+    storage.get('user').then((user) => {
+      //console.log('user is', typeof JSON.parse(user),  (user));
+      if(!!user) {
+        this.user = JSON.parse(user);
+      } else {
+        this.navCtrl.setRoot('LoginPage');
+      }
+    });
+
     this.petRef$ = this.firebase.getPets(15);
     this.totalPets = 15;
     this.petRef$.subscribe(pets => {
