@@ -38,15 +38,12 @@ export class LoginPage {
   }
 
   doLogin(str?: string) {
-    console.log(str);
+    //console.log(str);
 
-    if(str === 'google') {
-      this.User.googleSignIn().subscribe(success => {
-        // console.log(user);
-        this.appCtrl.getRootNav().setRoot(TabsPage);
-      }, (err) => {
-        console.log('google login failed', err);
-      });
+    if (str === 'google') {
+      this.User.googleSignIn()
+        .then(() => this.appCtrl.getRootNav().setRoot(TabsPage))
+        .catch(() => console.log('failed to log in'));
     }
   }
 
