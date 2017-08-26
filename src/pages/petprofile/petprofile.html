@@ -19,11 +19,11 @@
   </ion-card>
 
   <ion-card text-center>
-    <!-- <ion-label color="primary" fixed center>Name</ion-label> -->
+    <h1>Name:</h1>
     <h1>{{pet.name}}</h1>
-
-    <!-- <ion-label color="primary" fixed center>Name</ion-label> -->
-    <span *ngFor="let type of pet.types"> {{type +' '}} </span>
   </ion-card>
 
+  <ion-card text-center>
+    <h1 *ngFor="let type of pet.types"> {{type +' '}} </h1>
+  </ion-card>
 </ion-content>

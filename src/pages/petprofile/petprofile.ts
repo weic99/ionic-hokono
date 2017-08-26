@@ -15,19 +15,13 @@ export class PetprofilePage {
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
+    this.pet = this.navParams.get('pet') || {};
   }
 
-  ionViewWillLoad() {
-    this.pet = this.navParams.get('pet') || undefined;
-
-    /** Guarantee data is sent */
-    if (!this.pet) {
-      this.navCtrl.pop();
+  ionViewWillEnter() {
+     /** Guarantee data is sent */
+    if (!Object.keys(this.pet).length) {
+      this.navCtrl.setRoot('ProfilePage');
     }
   }
-
-  ionViewDidLoad() {
-    //console.log('ionViewDidLoad PetprofilePage');
-  }
-
 }

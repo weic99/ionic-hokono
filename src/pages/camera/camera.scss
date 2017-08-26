@@ -1,6 +1,6 @@
 page-camera {
   ion-textarea {
-    min-height: 100px;
+    min-height: 8rem;
   }
   ion-label {
     min-width: 50px !important;
@@ -15,5 +15,10 @@ page-camera {
 
   .list > .item-block:first-child {
     border-top: none;
+  }
+  .button ion-icon {
+    font-size: 3rem;
+    padding: 0;
+    margin: 0;
   }
 }

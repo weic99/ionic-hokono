@@ -85,21 +85,27 @@
 
   <button ion-button
           round
+          center
           (click)="doTakePicture()"
   >
-    TAKE PICTURE
+    <ion-icon name="md-camera"></ion-icon>
+    <!-- Use Camera -->
   </button>
   <button ion-button
           round
+          center
           (click)="doGetPictures()"
   >
-    Album
+    <ion-icon name="md-images"></ion-icon>
+    <!-- Album -->
   </button>
   <button ion-button
           round
+          block
           (click)="doSubmit()"
   >
-    CREATE
+    <ion-icon name="md-send" item-right></ion-icon>
+    <!-- Submit -->
   </button>
 
 </ion-content>
