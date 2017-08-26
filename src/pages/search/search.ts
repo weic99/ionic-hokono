@@ -34,6 +34,7 @@ export class SearchPage {
 
   ionViewDidEnter() {
     /** get the rest */
+    if (this.totalPets === 200) return;
     setTimeout(() => {
       this.totalPets = 200;
       this.petRef$ = this.firebase.getPets(this.totalPets);
