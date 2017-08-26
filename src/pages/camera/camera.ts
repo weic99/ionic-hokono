@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { Pet } from '../../models/pet';
@@ -26,13 +26,14 @@ export class CameraPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private camera: Camera,
-    private firebase: FirebaseProvider
+    private firebase: FirebaseProvider,
+    public toastCtrl: ToastController
   ) {
     this.newPet = new Pet();
     this.newPet.name = '';
     this.newPet.age = {
-      years: undefined,
-      months: undefined
+      years: null,
+      months: null
     };
     this.newPet.image = '';
     this.newPet.notes = '';
@@ -72,7 +73,21 @@ export class CameraPage {
 
   doSubmit() {
     console.log('new pet', this.newPet);
-    this.firebase.postNewPet().push(this.newPet);
+    this.firebase.postNewPet().push(this.newPet)
+      .then(() => {
+        this.toastCtrl.create({
+          message: `${this.newPet.name} profile submitted`,
+          duration: 20000,
+          cssClass: 'toast-success'
+        }).present();
+      })
+      .catch(() => {
+        this.toastCtrl.create({
+          message: `Failed to submit profile`,
+          duration: 2000,
+          cssClass: 'toast-fail'
+        }).present();
+      });
   }
 
 }
