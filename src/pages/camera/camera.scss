@@ -12,4 +12,8 @@ page-camera {
     width: 100%;
     height: 30vh;
   }
+
+  .list > .item-block:first-child {
+    border-top: none;
+  }
 }

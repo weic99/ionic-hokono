@@ -58,6 +58,11 @@ $label-ios-margin-bottom: 0;
 
 $segment-button-ios-font-size: 1.75rem;
 $segment-button-ios-line-height: 3rem;
+$toast-ios-background: color($colors, light);
+$toast-ios-title-color: color($colors, dark);
+$toast-ios-title-font-size: 2rem;
+$toast-ios-title-padding: 0.5rem;
+
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
@@ -72,12 +77,28 @@ $label-md-margin-bottom: 0;
 $segment-button-md-font-size: 1.75rem;
 $segment-button-md-line-height: 3rem;
 $button-md-text-transform: none;
+
+$toast-md-background: color($colors, light);
+$toast-md-title-color: color($colors, dark);
+$toast-md-title-font-size: 2rem;
+$toast-md-title-padding: 0.5rem;
+
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
+$toolbar-wp-background: white;
 
+$tabs-wp-background: white;
 
+$segment-button-wp-font-size: 1.75rem;
+$segment-button-wp-line-height: 3rem;
+
+$toast-wp-background: color($colors, light);
+$toast-wp-title-color: color($colors, dark);
+$toast-wp-title-font-size: 2rem;
+$toast-wp-title-padding: 0.5rem;
+$toast-wp-border-radius: .65rem;
 
 // App Theme
 // --------------------------------------------------
