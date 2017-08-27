@@ -41,21 +41,21 @@ export class HomePage {
       },
       {
         user: {
-          avatar: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
+          avatar: 'https://www.skinnerspetfoods.co.uk/wp-content/uploads/2017/04/puppypacks-lifestyle-700x649.jpg',
           name: 'Marty McFly'
         },
         date: 'June 28, 2024',
-        image: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
+        image: 'https://www.skinnerspetfoods.co.uk/wp-content/uploads/2017/04/puppypacks-lifestyle-700x649.jpg',
         content: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
         likes: 1337
       },
       {
         user: {
-          avatar: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg',
+          avatar: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
           name: 'Sarah Connor'
         },
         date: 'May 12, 2024',
-        image: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg',
+        image: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
         content: 'I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life, maybe we can too.',
         likes: 1109
       }
