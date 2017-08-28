@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase';
 
 @Injectable()
 export class UserProvider {
 
+  user: Observable<firebase.User>;
+
   constructor(
     private platform: Platform,
     private googlePlus: GooglePlus,
+    private afAuth: AngularFireAuth
   ) {
-    // console.log('Hello UserProvider Provider');
+    this.user = afAuth.authState;
   }
 
   googleSignIn(): Promise<any> {
@@ -31,4 +35,7 @@ export class UserProvider {
     }
   }
 
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }

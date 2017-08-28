@@ -1,4 +1,4 @@
-export class Pet {
+export interface Pet {
   name: string;
   age: {
     years: number,
@@ -6,6 +6,4 @@ export class Pet {
   };
   image: string;
   notes: string;
-
-  constructor() { }
 }

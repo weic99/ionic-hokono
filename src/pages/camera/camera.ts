@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 import { Pet } from '../../models/pet';
-
-import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @IonicPage()
 @Component({
@@ -30,9 +30,18 @@ export class CameraPage {
     public navParams: NavParams,
     private camera: Camera,
     private firebase: FirebaseProvider,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private afAuth: AngularFireAuth
   ) {
-    //this.newPet = new Pet();
+
+    afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.navCtrl.push('LoginPage');
+      }
+      // this.user.displayName = user.displayName;
+    });
+
+
     this.newPet.name = '';
     this.newPet.age = {
       years: null,
@@ -89,5 +98,6 @@ export class CameraPage {
         }).present();
       });
   }
+
 
 }

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import { User } from '../../models/user';
+import { Post } from '../../models/post';
+
 
 @IonicPage()
 @Component({
@@ -8,31 +13,30 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  user: any = {
-    displayName: 'Trending'
-  };
+  user = {} as User;
 
-  posts: any;
+  posts = [] as Post[];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private afAuth: AngularFireAuth,
     private storage: Storage
   ) {
-    storage.get('user').then((user) => {
-      //console.log('user is', typeof JSON.parse(user),  (user));
-      if(!!user) {
-        this.user = JSON.parse(user);
-      } else {
-        this.navCtrl.setRoot('LoginPage');
+
+    afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.user.displayName = null;
+        return;
       }
+      this.user.displayName = user.displayName;
     });
 
     this.posts = [
       {
         user: {
           avatar: 'http://cdn.pcwallart.com/images/corgi-puppy-sleeping-wallpaper-3.jpg',
-          name: 'Dr. Ian Malcolm'
+          username: 'Dr. Ian Malcolm'
         },
         date: 'November 5, 2024',
         image: 'http://cdn.pcwallart.com/images/corgi-puppy-sleeping-wallpaper-3.jpg',
@@ -42,7 +46,7 @@ export class HomePage {
       {
         user: {
           avatar: 'https://www.skinnerspetfoods.co.uk/wp-content/uploads/2017/04/puppypacks-lifestyle-700x649.jpg',
-          name: 'Marty McFly'
+          username: 'Marty McFly'
         },
         date: 'June 28, 2024',
         image: 'https://www.skinnerspetfoods.co.uk/wp-content/uploads/2017/04/puppypacks-lifestyle-700x649.jpg',
@@ -52,7 +56,7 @@ export class HomePage {
       {
         user: {
           avatar: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
-          name: 'Sarah Connor'
+          username: 'Sarah Connor'
         },
         date: 'May 12, 2024',
         image: 'https://i.ytimg.com/vi/VRiWE1l8KqI/maxresdefault.jpg',
@@ -61,9 +65,4 @@ export class HomePage {
       }
     ];
   }
-
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad HomePage', this.user);
-  }
-
 }
