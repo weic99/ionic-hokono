@@ -34,9 +34,10 @@ export class CameraPage {
     private afAuth: AngularFireAuth
   ) {
 
-    afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
       if (!user) {
-        this.navCtrl.push('LoginPage');
+
+        console.log('Not logged in');
       }
       // this.user.displayName = user.displayName;
     });

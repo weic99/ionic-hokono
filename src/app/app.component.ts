@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoadingController } from 'ionic-angular';
-
+import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
@@ -17,15 +17,26 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private afAuth: AngularFireAuth
   ) {
     this.presentLoading();
 
-    if (platform.is('cordova')) {
-      this.rootPage = 'LoginPage';
-    } else if (platform.is('mobileweb')) {
-      this.rootPage = TabsPage;
-    }
+    this.afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.rootPage = 'LoginPage';
+        // console.log('Not logged in');
+      } else {
+        this.rootPage = TabsPage
+      }
+      // this.user.displayName = user.displayName;
+    });
+
+    // if (platform.is('cordova')) {
+    //   this.rootPage = 'LoginPage';
+    // } else if (platform.is('mobileweb')) {
+    //   this.rootPage = TabsPage;
+    // }
 
     // platform.ready().then(() => {
     //   // Okay, so the platform is ready and our plugins are available.
