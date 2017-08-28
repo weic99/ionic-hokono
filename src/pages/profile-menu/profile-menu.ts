@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, ViewController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -9,8 +9,7 @@ import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 export class ProfileMenuPage {
 
   constructor(
-    public viewCtrl: ViewController,
-    private navParams: NavParams
+    public viewCtrl: ViewController
   ) {
   }
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { User } from '../../models/user';
@@ -20,11 +19,10 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private afAuth: AngularFireAuth,
-    private storage: Storage
+    private afAuth: AngularFireAuth
   ) {
 
-    afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
       if (!user) {
         this.user.displayName = null;
         return;

@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 
-import { Platform } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
-
 import { UserProvider } from '../../providers/user/user';
 
-import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -25,10 +20,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public appCtrl: App,
-    private User: UserProvider,
-    private afAuth: AngularFireAuth,
-    private platform: Platform,
-    private storage: Storage
+    private User: UserProvider
   ) {
     this.account = {
       email: '',
