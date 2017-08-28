@@ -73,7 +73,7 @@ export class ProfilePage {
     this.navCtrl.push('PetprofilePage', {pet});
   }
 
-  doOpenMenu(e) {
+  presentPopover(e) {
     //this.navCtrl.push('ProfileMenuPage');
     let popover = this.popoverCtrl.create('ProfileMenuPage', {ev: e});
     popover.present({
