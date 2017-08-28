@@ -24,17 +24,15 @@
   <ion-row class="profile-area">
 
     <ion-col>
-      <!-- <ion-item no-padding
-                no-lines
-      > -->
-        <ion-avatar id="profile-avatar"
-                    item-start
-        >
-          <img class="profile-avatar-pic"
-              src="http://www.planetcreation.co.uk/createpic/avatarold.JPG"
-          />
-        </ion-avatar>
-      <!-- </ion-item> -->
+      <ion-avatar id="profile-avatar"
+                  item-start
+      >
+        <img class="profile-avatar-pic"
+            src="http://www.planetcreation.co.uk/createpic/avatarold.JPG"
+        />
+      </ion-avatar>
+
+
     </ion-col>
 
     <ion-col col-8>
@@ -46,6 +44,12 @@
       </ion-row>
       <ion-row class="profile-title">
         <h1 id="profile-slogan">We Love Them Like You Do</h1>
+        <button id="profile-edit"
+                ion-button round outline
+                (click)="doEditProfile()"
+        >
+          Edit your profile
+        </button>
       </ion-row>
     </ion-col>
 

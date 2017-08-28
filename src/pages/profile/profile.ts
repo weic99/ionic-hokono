@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, ModalController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -25,7 +25,8 @@ export class ProfilePage {
     public navParams: NavParams,
     private firebase: FirebaseProvider,
     private afAuth: AngularFireAuth,
-    public popoverCtrl: PopoverController
+    public popoverCtrl: PopoverController,
+    public modalCtrl: ModalController
   ) {
     /** check if user is logged in */
     this.afAuth.authState.subscribe(user => {
@@ -79,5 +80,10 @@ export class ProfilePage {
     // let popover = this.popoverCtrl.create('ProfileMenuPage');
     // console.log('ok', e);
     // popover.present({ ev: e });
+  }
+
+  doEditProfile() {
+    let edit = this.modalCtrl.create('ProfileEditPage');
+    edit.present();
   }
 }
