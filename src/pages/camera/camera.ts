@@ -12,13 +12,16 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
   templateUrl: 'camera.html',
 })
 export class CameraPage {
-  newPet: Pet;
+  newPet = {} as Pet;
 
   options: CameraOptions = {
     quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
+    targetWidth: 500,
+    targetHeight: 500,
+    destinationType: this.camera.DestinationType.DATA_URL, // use file_uri in prod
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
+    correctOrientation: true,
     // saveToPhotoAlbum: true,
   };
 
@@ -54,6 +57,7 @@ export class CameraPage {
       targetWidth: 500,
       targetHeight: 500,
       allowEdit: true,
+      correctOrientation: true,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     };
 

@@ -17,7 +17,7 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    public loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController
   ) {
     this.presentLoading();
 
@@ -37,7 +37,7 @@ export class MyApp {
 
   presentLoading() {
     this.loader = this.loadingCtrl.create({
-      content: "Logging in...",
+      content: "Authenticating...",
       duration: 2000
     });
     this.loader.present();
