@@ -32,7 +32,7 @@ export class CameraPage {
     private firebase: FirebaseProvider,
     public toastCtrl: ToastController
   ) {
-    this.newPet = new Pet();
+    //this.newPet = new Pet();
     this.newPet.name = '';
     this.newPet.age = {
       years: null,
