@@ -26,19 +26,32 @@
 
   <div class="profile-avatar"
        text-center
-       [style.background-image]="'url(' + profile.avatar + ')'">
+       [style.background-image]="'url(' + profile.avatar + ')'"
+  >
+  </div>
+
+  <ion-row>
+    <ion-col width-100 style="text-align: center">
+      <button id="profile-edit-pic"
+              ion-button
+              round
+              outline
+      >
+        Change Photo
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <div class="profile-detail" padding>
+    <h5>{{profile.name}}</h5>
   </div>
 
   <div class="profile-detail" padding>
-    <h4>{{profile.name}}</h4>
+    <h5>{{profile.address}}</h5>
   </div>
 
   <div class="profile-detail" padding>
-    <h4>{{profile.address}}</h4>
-  </div>
-
-  <div class="profile-detail" padding>
-    <h4>{{profile.slogan}}</h4>
+    <h5>{{profile.slogan}}</h5>
   </div>
 
 </ion-content>
