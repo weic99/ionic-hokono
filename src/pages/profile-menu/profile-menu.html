@@ -1,5 +1,5 @@
 
-<!-- <ion-header>
+<ion-header>
 
   <ion-navbar>
 
@@ -13,22 +13,15 @@
 
   </ion-navbar>
 
-</ion-header> -->
+</ion-header>
 
 
-<!-- <ion-content padding> -->
-  <ion-list inset>
-      <ion-item>
-          <a (click)="close()">
-              <ion-icon name="settings"></ion-icon>
-              Settings
-          </a>
-      </ion-item>
-      <ion-item>
-          <a (click)="close()">
-              <ion-icon name="icon-clear"></ion-icon>
-              Logout
-          </a>
-      </ion-item>
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>Ionic</ion-list-header>
+    <button ion-item (click)="close()">Learn Ionic</button>
+    <button ion-item (click)="close()">Documentation</button>
+    <button ion-item (click)="close()">Showcase</button>
+    <button ion-item (click)="close()">GitHub Repo</button>
   </ion-list>
-<!-- </ion-content> -->
+</ion-content>
