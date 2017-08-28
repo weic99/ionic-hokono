@@ -12,10 +12,11 @@ export class ProfileMenuPage {
     public viewCtrl: ViewController,
     private navParams: NavParams
   ) {
-    console.log(this.navParams.get('ev'));
   }
 
   close() {
     this.viewCtrl.dismiss();
   }
+
+
 }
