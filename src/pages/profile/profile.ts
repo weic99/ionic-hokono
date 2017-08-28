@@ -74,8 +74,10 @@ export class ProfilePage {
   }
 
   doOpenMenu(e: Event) {
-    let popover = this.popoverCtrl.create('ProfileMenuPage');
-    console.log('ok', e);
-    popover.present({ ev: e });
+    this.afAuth.auth.signOut();
+    /** not working */
+    // let popover = this.popoverCtrl.create('ProfileMenuPage');
+    // console.log('ok', e);
+    // popover.present({ ev: e });
   }
 }
