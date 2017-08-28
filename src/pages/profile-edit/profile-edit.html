@@ -42,16 +42,25 @@
     </ion-col>
   </ion-row>
 
-  <div class="profile-detail" padding>
-    <h5>{{profile.name}}</h5>
-  </div>
+  <ion-item>
+    <ion-label>
+      <ion-icon color="dark" name="md-person"></ion-icon>
+    </ion-label>
+    <ion-input value="{{profile.name}}" ></ion-input>
+  </ion-item>
 
-  <div class="profile-detail" padding>
-    <h5>{{profile.address}}</h5>
-  </div>
+  <ion-item>
+    <ion-label>
+      <ion-icon color="dark" name="md-home"></ion-icon>
+    </ion-label>
+    <ion-input value="{{profile.address}}" ></ion-input>
+  </ion-item>
 
-  <div class="profile-detail" padding>
-    <h5>{{profile.slogan}}</h5>
-  </div>
+  <ion-item>
+    <ion-label>
+      <ion-icon color="dark" name="md-quote"></ion-icon>
+    </ion-label>
+    <ion-input value="{{profile.slogan}}" ></ion-input>
+  </ion-item>
 
 </ion-content>
