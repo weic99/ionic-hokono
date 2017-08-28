@@ -19,8 +19,12 @@ export class ProfileEditPage {
     this.profile = this.navParams.get('profile');
   }
 
-  close() {
+  cancel() {
     this.viewCtrl.dismiss();
+  }
+
+  confirm() {
+    this.viewCtrl.dismiss(this.profile);
   }
 
 }

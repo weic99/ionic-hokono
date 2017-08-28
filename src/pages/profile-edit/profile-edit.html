@@ -5,14 +5,14 @@
 
     <ion-title>Edit Profile</ion-title>
 
-    <ion-buttons start>
-      <button ion-button icon-only (click)="close()">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="cancel()">
         <ion-icon name="md-close"  color="dark"></ion-icon>
       </button>
     </ion-buttons>
 
-    <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="confirm()">
         <ion-icon name="md-checkmark" color="primary"></ion-icon>
       </button>
     </ion-buttons>
@@ -46,21 +46,21 @@
     <ion-label>
       <ion-icon color="dark" name="md-person"></ion-icon>
     </ion-label>
-    <ion-input value="{{profile.name}}" ></ion-input>
+    <ion-input value="{{profile.name}}" [(ngModel)]="profile.name"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>
       <ion-icon color="dark" name="md-home"></ion-icon>
     </ion-label>
-    <ion-input value="{{profile.address}}" ></ion-input>
+    <ion-input value="{{profile.address}}" [(ngModel)]="profile.address"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>
       <ion-icon color="dark" name="md-quote"></ion-icon>
     </ion-label>
-    <ion-input value="{{profile.slogan}}" ></ion-input>
+    <ion-input value="{{profile.slogan}}" [(ngModel)]="profile.slogan"></ion-input>
   </ion-item>
 
 </ion-content>

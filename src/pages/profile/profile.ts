@@ -92,8 +92,15 @@ export class ProfilePage {
 
   doEditProfile() {
     let edit = this.modalCtrl.create('ProfileEditPage', {
-      profile: this.user.profile
+      profile: {...this.user.profile}
     });
+
+    edit.onDidDismiss(newProfile => {
+      if (newProfile) {
+        this.user.profile = newProfile;
+      }
+    });
+
     edit.present();
   }
 }
