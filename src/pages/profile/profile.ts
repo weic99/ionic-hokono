@@ -25,7 +25,7 @@ export class ProfilePage {
     public navParams: NavParams,
     private firebase: FirebaseProvider,
     private afAuth: AngularFireAuth,
-    public popoverCtrl: PopoverController
+    private popoverCtrl: PopoverController
   ) {
     /** check if user is logged in */
     afAuth.authState.subscribe(user => {
@@ -73,9 +73,11 @@ export class ProfilePage {
     this.navCtrl.push('PetprofilePage', {pet});
   }
 
-  doOpenMenu(e: Event) {
-    let popover = this.popoverCtrl.create('ProfileMenuPage');
-    console.log('ok', e);
-    popover.present({ev: e});
+  doOpenMenu(e) {
+    //this.navCtrl.push('ProfileMenuPage');
+    let popover = this.popoverCtrl.create('ProfileMenuPage', {ev: e});
+    popover.present({
+      ev: e
+    });
   }
 }
