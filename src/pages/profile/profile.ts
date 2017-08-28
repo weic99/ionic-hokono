@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
-import { Storage } from '@ionic/storage';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { User } from '../../models/user';
@@ -25,9 +24,8 @@ export class ProfilePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private firebase: FirebaseProvider,
-    private storage: Storage,
-    private afAuth: AngularFireAuth
-
+    private afAuth: AngularFireAuth,
+    public popoverCtrl: PopoverController
   ) {
     /** check if user is logged in */
     afAuth.authState.subscribe(user => {
@@ -75,4 +73,9 @@ export class ProfilePage {
     this.navCtrl.push('PetprofilePage', {pet});
   }
 
+  doOpenMenu(e: Event) {
+    let popover = this.popoverCtrl.create('ProfileMenuPage');
+    console.log('ok', e);
+    popover.present({ ev: e });
+  }
 }

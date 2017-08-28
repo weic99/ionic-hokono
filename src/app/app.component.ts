@@ -38,7 +38,7 @@ export class MyApp {
   presentLoading() {
     this.loader = this.loadingCtrl.create({
       content: "Authenticating...",
-      duration: 1000
+      duration: 250
     });
     this.loader.present();
   }

@@ -4,9 +4,11 @@
   <ion-navbar>
     <ion-title>Profile - {{user.displayName}}</ion-title>
 
-    <button ion-button icon-only end>
-      <ion-icon name="md-menu"></ion-icon>
-    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="doOpenMenu($event)">
+        <ion-icon name="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
 
   </ion-navbar>
 
