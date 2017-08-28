@@ -4,8 +4,6 @@ import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { ProfilePopoverComponent as Menu } from '../../components/profile-popover/profile-popover';
-
 import { User } from '../../models/user';
 
 @IonicPage()
@@ -75,11 +73,11 @@ export class ProfilePage {
     this.navCtrl.push('PetprofilePage', {pet});
   }
 
-  presentPopover(ev) {
-    let popover = this.popoverCtrl.create(Menu, {
-    });
+  presentPopover(e) {
+    //this.navCtrl.push('ProfileMenuPage');
+    let popover = this.popoverCtrl.create('ProfileMenuPage', {ev: e});
     popover.present({
-      ev: ev
+      ev: e
     });
   }
 }

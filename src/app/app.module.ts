@@ -20,13 +20,10 @@ import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
-import { ProfilePopoverComponent } from '../components/profile-popover/profile-popover';
-
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage,
-    ProfilePopoverComponent
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -40,8 +37,7 @@ import { ProfilePopoverComponent } from '../components/profile-popover/profile-p
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage,
-    ProfilePopoverComponent
+    TabsPage
   ],
   providers: [
     StatusBar,
