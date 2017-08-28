@@ -76,6 +76,6 @@ export class ProfilePage {
   doOpenMenu(e: Event) {
     let popover = this.popoverCtrl.create('ProfileMenuPage');
     console.log('ok', e);
-    popover.present({ev: e});
+    popover.present({ ev: e });
   }
 }

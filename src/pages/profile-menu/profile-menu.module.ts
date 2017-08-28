@@ -11,9 +11,6 @@ import { ProfileMenuPage } from './profile-menu';
   ],
   entryComponents: [
 		ProfileMenuPage
-  ],
-  exports: [
-    ProfileMenuPage
-  ]
+	]
 })
 export class ProfileMenuPageModule {}
