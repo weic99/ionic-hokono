@@ -28,7 +28,7 @@ export class ProfilePage {
     public popoverCtrl: PopoverController
   ) {
     /** check if user is logged in */
-    afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
       if (!user) {
         this.user.displayName = null;
         return;
