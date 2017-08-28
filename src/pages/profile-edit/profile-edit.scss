@@ -1,3 +1,14 @@
 page-profile-edit {
+  .profile-avatar {
+    width: 100%;
+    height: 300px;
+    background-position: center center;
+    background-repeat:no-repeat;
+  }
 
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
 }

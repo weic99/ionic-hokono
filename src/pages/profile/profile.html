@@ -6,7 +6,7 @@
 
     <ion-buttons end>
       <button ion-button icon-only (click)="doOpenMenu($event)">
-        <ion-icon name="md-power"></ion-icon>
+        <ion-icon color="dark" name="md-power"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -28,7 +28,7 @@
                   item-start
       >
         <img class="profile-avatar-pic"
-            src="http://www.planetcreation.co.uk/createpic/avatarold.JPG"
+            [src]="user.profile.avatar"
         />
       </ion-avatar>
 
@@ -37,13 +37,13 @@
 
     <ion-col col-8>
       <ion-row class="profile-title">
-        <h1 id="profile-name">Hack Reactor</h1>
+        <h1 id="profile-name">{{user.profile.name}}</h1>
       </ion-row>
       <ion-row class="profile-title">
-        <h1 id="profile-address">369 Lexington Ave. 11th Fl.</h1>
+        <h1 id="profile-address">{{user.profile.address}}</h1>
       </ion-row>
       <ion-row class="profile-title">
-        <h1 id="profile-slogan">We Love Them Like You Do</h1>
+        <h1 id="profile-slogan">{{user.profile.slogan}}</h1>
         <button id="profile-edit"
                 ion-button round outline
                 (click)="doEditProfile()"

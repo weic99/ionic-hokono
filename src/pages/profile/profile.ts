@@ -37,6 +37,14 @@ export class ProfilePage {
       this.user.displayName = user.displayName;
     });
 
+    /** hard coded profile data */
+    this.user.profile = {
+      avatar: 'http://www.planetcreation.co.uk/createpic/avatarold.JPG',
+      name: 'Hack Reactor',
+      address: '369 Lexington Ave. 11th Fl.',
+      slogan: 'We Love Them Like You Do'
+    }
+
     this.petRef$ = this.firebase.getPets(15);
     this.totalPets = 15;
     this.petRef$.subscribe(pets => {
@@ -83,7 +91,9 @@ export class ProfilePage {
   }
 
   doEditProfile() {
-    let edit = this.modalCtrl.create('ProfileEditPage');
+    let edit = this.modalCtrl.create('ProfileEditPage', {
+      profile: this.user.profile
+    });
     edit.present();
   }
 }

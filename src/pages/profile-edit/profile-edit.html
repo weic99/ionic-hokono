@@ -7,13 +7,13 @@
 
     <ion-buttons start>
       <button ion-button icon-only (click)="close()">
-        <ion-icon name="md-close"></ion-icon>
+        <ion-icon name="md-close"  color="dark"></ion-icon>
       </button>
     </ion-buttons>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="close()">
-        <ion-icon name="md-checkmark"></ion-icon>
+        <ion-icon name="md-checkmark" color="primary"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -23,5 +23,22 @@
 
 
 <ion-content>
+
+  <div class="profile-avatar"
+       text-center
+       [style.background-image]="'url(' + profile.avatar + ')'">
+  </div>
+
+  <div class="profile-detail" padding>
+    <h4>{{profile.name}}</h4>
+  </div>
+
+  <div class="profile-detail" padding>
+    <h4>{{profile.name}}</h4>
+  </div>
+
+  <div class="profile-detail" padding>
+    <h4>{{profile.name}}</h4>
+  </div>
 
 </ion-content>
