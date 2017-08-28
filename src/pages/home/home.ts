@@ -12,8 +12,8 @@ import { Post } from '../../models/post';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  user = {} as User;
 
+  user = {} as User;
   posts = [] as Post[];
 
   constructor(

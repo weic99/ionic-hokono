@@ -8,6 +8,42 @@
 </ion-header>
 
 
-<ion-content padding>
-  FollowingPage Works
+<ion-content>
+  <ion-card *ngFor="let item of posts">
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="item.user.avatar">
+      </ion-avatar>
+      <h3>{{item.user.username}}</h3>
+      <!-- <small>{{item.date}}</small> -->
+    </ion-item>
+
+    <img [src]="item.image">
+
+    <ion-card-content>
+      <p>{{item.content}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col align-self-center>
+        <button ion-button color="primary" clear small icon-start>
+          <ion-icon name='thumbs-up'></ion-icon>
+          {{item.likes}}
+        </button>
+      </ion-col>
+      <ion-col align-self-center>
+        <button ion-button color="primary" clear small icon-start>
+          <ion-icon name='text'></ion-icon>
+          {{item.content.length * item.likes % 2000 }} Comments
+        </button>
+      </ion-col>
+      <ion-col center text-center align-self-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
 </ion-content>
