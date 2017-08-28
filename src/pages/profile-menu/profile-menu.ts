@@ -18,4 +18,5 @@ export class ProfileMenuPage {
     this.viewCtrl.dismiss();
   }
 
+
 }
