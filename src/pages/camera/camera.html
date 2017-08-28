@@ -1,10 +1,16 @@
 
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Create a Pet Profile</ion-title>
-  </ion-navbar>
 
+    <ion-title>Create a Pet Profile</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="doSubmit()">
+        <ion-icon name="md-send" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
 </ion-header>
 
 
@@ -100,13 +106,4 @@
     <ion-icon name="md-images"></ion-icon>
     <!-- Album -->
   </button>
-  <button ion-button
-          round
-          block
-          (click)="doSubmit()"
-  >
-    <ion-icon name="md-send" item-right></ion-icon>
-    <!-- Submit -->
-  </button>
-
 </ion-content>
