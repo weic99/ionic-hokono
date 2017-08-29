@@ -85,7 +85,7 @@ export class ProfilePage {
 
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
-        pet = newProfile;
+        this.pets[pet.number - 1] = newProfile;
       }
     });
 
