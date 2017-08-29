@@ -4,10 +4,10 @@ import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-petprofile',
-  templateUrl: 'petprofile.html',
+  selector: 'page-pet-profile-edit',
+  templateUrl: 'pet-profile-edit.html',
 })
-export class PetprofilePage {
+export class PetProfileEditPage {
 
   pet: any /** switch to pet model later */
 

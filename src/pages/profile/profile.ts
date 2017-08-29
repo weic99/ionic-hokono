@@ -79,7 +79,7 @@ export class ProfilePage {
   }
 
   doEditPet(pet) {
-    let edit = this.modalCtrl.create('PetprofilePage', {
+    let edit = this.modalCtrl.create('PetProfileEditPage', {
       pet: {...pet}
     });
 
