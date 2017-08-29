@@ -1,0 +1,20 @@
+page-select-modal {
+  .toolbar {
+    max-height: 35px !important;
+    min-height: 35px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  button {
+    margin: 0 !important;
+    background-color: white !important;
+  }
+
+  button > span {
+    color: color($colors, primary);
+  }
+
+  height: 144px !important;
+  border-radius: 80px !important;
+}

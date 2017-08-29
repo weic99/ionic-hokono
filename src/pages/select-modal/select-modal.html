@@ -1,0 +1,22 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content tappable (click)="cancel()">
+
+  <button ion-button
+          full
+          no-padding
+          *ngFor="let select of selections"
+          (click)="confirm(select)"
+  >
+    {{select}}
+  </button>
+
+</ion-content>

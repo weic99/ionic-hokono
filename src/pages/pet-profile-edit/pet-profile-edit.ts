@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams } from 'ionic-angular';
-
+import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,7 +12,8 @@ export class PetProfileEditPage {
 
   constructor(
     public viewCtrl: ViewController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public modalCtrl: ModalController
   ) { }
 
   ionViewWillLoad() {
@@ -21,7 +21,22 @@ export class PetProfileEditPage {
   }
 
   doOpenPhotoMenu() {
+    let select = this.modalCtrl.create('SelectModalPage', {
+      title: 'Set Profile Photo',
+      selections: [
+        'New Profile Photo',
+        'Import from Facebook',
+        'Import from Google+'
+      ]
+    }, {cssClass: 'selections'});
 
+    select.onDidDismiss(choice => {
+      // if (newProfile) {
+      //   this.pets[pet.number - 1] = newProfile;
+      // }
+    });
+
+    select.present();
   }
 
   cancel() {
