@@ -20,6 +20,10 @@ export class PetProfileEditPage {
     this.pet = this.navParams.get('pet');
   }
 
+  doOpenPhotoMenu() {
+
+  }
+
   cancel() {
     this.viewCtrl.dismiss();
   }

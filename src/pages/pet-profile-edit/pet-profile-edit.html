@@ -34,6 +34,7 @@
               ion-button
               round
               outline
+              (click)="doOpenPhotoMenu()"
       >
         Change Photo
       </button>
@@ -42,7 +43,7 @@
 
   <ion-item>
     <ion-label>
-      <ion-icon color="dark" name="md-person"></ion-icon>
+      <ion-icon color="dark" name="md-paw"></ion-icon>
     </ion-label>
     <ion-input type="text" value="{{pet.name}}" maxlength="16" [(ngModel)]="pet.name"></ion-input>
   </ion-item>
