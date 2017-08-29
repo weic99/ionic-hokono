@@ -13,6 +13,11 @@ page-select-modal {
     background-color: white !important;
   }
 
+  .button-inner {
+    justify-content: left;
+    padding-left: 12px;
+  }
+
   button > span {
     color: color($colors, primary);
   }
