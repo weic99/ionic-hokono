@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 
 
 @IonicPage()
@@ -9,19 +9,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PetprofilePage {
 
-  pet: any;
-  cardItems: any[];
+  pet: any /** switch to pet model later */
+
   constructor(
-    public navCtrl: NavController,
+    public viewCtrl: ViewController,
     public navParams: NavParams
-  ) {
-    this.pet = this.navParams.get('pet') || {};
+  ) { }
+
+  ionViewWillLoad() {
+    this.pet = this.navParams.get('pet');
   }
 
-  ionViewWillEnter() {
-     /** Guarantee data is sent */
-    if (!Object.keys(this.pet).length) {
-      this.navCtrl.setRoot('ProfilePage');
-    }
+  cancel() {
+    this.viewCtrl.dismiss();
+  }
+
+  confirm() {
+    this.viewCtrl.dismiss(this.pet);
   }
 }

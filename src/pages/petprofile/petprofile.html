@@ -2,28 +2,63 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>petprofile</ion-title>
-  </ion-navbar>
+    <ion-title>Edit {{pet.name}} Profile</ion-title>
 
+    <ion-buttons left>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="md-close"  color="dark"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="confirm()">
+        <ion-icon name="md-checkmark" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content >
 
-  <ion-card >
-    <ion-avatar item-start
-                class='avatar'
-    >
-      <img [src]="pet.imageUrl" />
-    </ion-avatar>
-  </ion-card>
+  <div class="profile-avatar"
+       text-center
+       [style.background-image]="'url(' + pet.imageUrl + ')'"
+  >
+  </div>
 
-  <ion-card text-center>
-    <h1 float-left margin-left>Name:</h1>
-    <h1 float-right margin-right>{{pet.name}}</h1>
-  </ion-card>
+  <ion-row>
+    <ion-col width-100 style="text-align: center">
+      <button id="profile-edit-pic"
+              ion-button
+              round
+              outline
+      >
+        Change Photo
+      </button>
+    </ion-col>
+  </ion-row>
 
-  <ion-card text-center>
-    <h1 *ngFor="let type of pet.types"> {{type +' '}} </h1>
-  </ion-card>
+  <ion-item>
+    <ion-label>
+      <ion-icon color="dark" name="md-person"></ion-icon>
+    </ion-label>
+    <ion-input type="text" value="{{pet.name}}" maxlength="16" [(ngModel)]="pet.name"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label>
+      <ion-icon color="dark" name="md-home"></ion-icon>
+    </ion-label>
+    <ion-input value="{{profile.address}}" [(ngModel)]="profile.address"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon color="dark" name="md-quote"></ion-icon>
+    </ion-label>
+    <ion-input value="{{profile.slogan}}" [(ngModel)]="profile.slogan"></ion-input>
+  </ion-item> -->
+
 </ion-content>

@@ -7,13 +7,13 @@ import { IonicPage, ViewController, NavParams } from 'ionic-angular';
   templateUrl: 'profile-edit.html',
 })
 export class ProfileEditPage {
+
   profile: any;
 
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams
-  ) {
-  }
+  ) { }
 
   ionViewWillLoad() {
     this.profile = this.navParams.get('profile');

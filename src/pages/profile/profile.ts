@@ -79,7 +79,17 @@ export class ProfilePage {
   }
 
   doEditPet(pet) {
-    this.navCtrl.push('PetprofilePage', {pet});
+    let edit = this.modalCtrl.create('PetprofilePage', {
+      pet: {...pet}
+    });
+
+    edit.onDidDismiss(newProfile => {
+      if (newProfile) {
+        pet = newProfile;
+      }
+    });
+
+    edit.present();
   }
 
   doOpenMenu(e: Event) {
