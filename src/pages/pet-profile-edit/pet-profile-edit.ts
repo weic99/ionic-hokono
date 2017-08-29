@@ -31,9 +31,6 @@ export class PetProfileEditPage {
     }, {cssClass: 'selections', enableBackdropDismiss: true});
 
     photoSelection.onDidDismiss(choice => {
-      // if (newProfile) {
-      //   this.pets[pet.number - 1] = newProfile;
-      // }
       console.log('choice', choice);
     });
 

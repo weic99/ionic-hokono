@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,11 +12,29 @@ export class ProfileEditPage {
 
   constructor(
     public viewCtrl: ViewController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public modalCtrl: ModalController
   ) { }
 
   ionViewWillLoad() {
     this.profile = this.navParams.get('profile');
+  }
+
+  doOpenPhotoMenu() {
+    let photoSelection = this.modalCtrl.create('SelectModalPage', {
+      title: 'Set Profile Photo',
+      selections: [
+        'New Profile Photo',
+        'Import from Facebook',
+        'Import from Google+'
+      ]
+    }, {cssClass: 'selections', enableBackdropDismiss: true});
+
+    photoSelection.onDidDismiss(choice => {
+      console.log('choice', choice);
+    });
+
+    photoSelection.present();
   }
 
   cancel() {
