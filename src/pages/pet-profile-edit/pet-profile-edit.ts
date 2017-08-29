@@ -28,7 +28,7 @@ export class PetProfileEditPage {
         'Import from Facebook',
         'Import from Google+'
       ]
-    }, {cssClass: 'selections', enableBackdropDismiss: true});
+    }, {cssClass: 'selections', showBackdrop: true, enableBackdropDismiss: true});
 
     photoSelection.onDidDismiss(choice => {
       console.log('choice', choice);
