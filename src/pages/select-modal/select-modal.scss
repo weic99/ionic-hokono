@@ -4,6 +4,8 @@ page-select-modal {
     min-height: 35px !important;
     margin: 0 !important;
     padding: 0 !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
   }
 
   button {
@@ -15,6 +17,10 @@ page-select-modal {
     color: color($colors, primary);
   }
 
-  height: 144px !important;
-  border-radius: 80px !important;
+  // height: 144px !important;
+
+  button:last-child {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+  }
 }
