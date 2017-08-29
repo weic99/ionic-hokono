@@ -21,23 +21,23 @@ export class PetProfileEditPage {
   }
 
   doOpenPhotoMenu() {
-    let select = this.modalCtrl.create('SelectModalPage', {
+    let photoSelection = this.modalCtrl.create('SelectModalPage', {
       title: 'Set Profile Photo',
       selections: [
         'New Profile Photo',
         'Import from Facebook',
         'Import from Google+'
       ]
-    }, {cssClass: 'selections'});
+    }, {cssClass: 'selections', enableBackdropDismiss: true});
 
-    select.onDidDismiss(choice => {
+    photoSelection.onDidDismiss(choice => {
       // if (newProfile) {
       //   this.pets[pet.number - 1] = newProfile;
       // }
       console.log('choice', choice);
     });
 
-    select.present();
+    photoSelection.present();
   }
 
   cancel() {
