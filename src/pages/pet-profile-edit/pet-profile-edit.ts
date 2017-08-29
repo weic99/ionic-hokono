@@ -34,6 +34,7 @@ export class PetProfileEditPage {
       // if (newProfile) {
       //   this.pets[pet.number - 1] = newProfile;
       // }
+      console.log('choice', choice);
     });
 
     select.present();

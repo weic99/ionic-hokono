@@ -25,7 +25,7 @@ export class SelectModalPage {
     this.viewCtrl.dismiss();
   }
 
-  confirm(select: string) {
+  confirm(select) {
     this.viewCtrl.dismiss(select);
   }
 
