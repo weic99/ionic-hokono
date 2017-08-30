@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { User } from '../../models/user';
+import { Message } from '../../models/message'
 
 
 @IonicPage()
@@ -30,6 +31,7 @@ export class ChatPage {
   sendMessage(e) {
     console.log('message', this.newMessage.body, e);
 
+    this.newMessage = {} as Message;
     e.target.reset();
   }
 
