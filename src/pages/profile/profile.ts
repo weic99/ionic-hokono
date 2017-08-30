@@ -79,17 +79,24 @@ export class ProfilePage {
   }
 
   doEditPet(pet) {
-    let edit = this.modalCtrl.create('PetProfileEditPage', {
-      pet: {...pet}
+    // let edit = this.modalCtrl.create('PetProfileEditPage', {
+    //   pet: {...pet}
+    // });
+
+    // edit.onDidDismiss(newProfile => {
+    //   if (newProfile) {
+    //     this.pets[pet.number - 1] = newProfile;
+    //   }
+    // });
+
+    // edit.present();
+
+    new Promise((resolve, reject) => {
+      this.navCtrl.push('PetProfileEditPage', { resolve, pet });
+    }).then(newProfile => {
+      this.pets[pet.number - 1] = newProfile;
     });
 
-    edit.onDidDismiss(newProfile => {
-      if (newProfile) {
-        this.pets[pet.number - 1] = newProfile;
-      }
-    });
-
-    edit.present();
   }
 
   doOpenMenu(e: Event) {

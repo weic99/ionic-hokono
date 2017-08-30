@@ -6,4 +6,5 @@ export interface Pet {
   };
   image: string;
   notes: string;
+  imageUrl: string;
 }

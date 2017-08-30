@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams, ModalController } from 'ionic-angular';
+
+import { Pet } from '../../models/pet';
 
 @IonicPage()
 @Component({
@@ -8,16 +10,24 @@ import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-ang
 })
 export class PetProfileEditPage {
 
-  pet: any /** switch to pet model later */
+  pet = {} as Pet /** switch to pet model later */
 
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
+    public navCtrl: NavController,
     public modalCtrl: ModalController
   ) { }
 
   ionViewWillLoad() {
-    this.pet = this.navParams.get('pet');
+    let petProfile = this.navParams.get('pet');
+
+    if (petProfile === undefined) {
+      this.navCtrl.setRoot('ProfilePage');
+    } else {
+      this.pet = { ...this.pet, ...petProfile }
+    }
+
   }
 
   doOpenPhotoMenu() {
@@ -42,6 +52,7 @@ export class PetProfileEditPage {
   }
 
   confirm() {
-    this.viewCtrl.dismiss(this.pet);
+    // this.viewCtrl.dismiss(this.pet);
+    this.navCtrl.pop().then(() => this.navParams.get('resolve')(this.pet));
   }
 }
