@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { User } from '../../models/user';
 
+
 @IonicPage()
 @Component({
   selector: 'page-chat',
@@ -12,7 +13,8 @@ export class ChatPage {
 
   friend = {} as User;
   user = {} as User;
-  message: string;
+  newMessage = {} as Message;
+  messages = [] as Message[];
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +28,8 @@ export class ChatPage {
   }
 
   sendMessage(e) {
-    console.log('message', this.message, e);
+    console.log('message', this.newMessage.body, e);
+
     e.target.reset();
   }
 
