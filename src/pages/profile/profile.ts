@@ -122,14 +122,6 @@ export class ProfilePage {
   }
 
   doOpenChat() {
-    let chat = this.modalCtrl.create('ChatPage', {
-
-    });
-
-    chat.onDidDismiss(newProfile => {
-      console.log('chat ended');
-    });
-
-    chat.present();
+    this.navCtrl.push('ChatPage');
   }
 }
