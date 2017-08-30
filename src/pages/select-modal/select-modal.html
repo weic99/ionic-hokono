@@ -1,15 +1,18 @@
+<ion-content tappable (click)="confirm()">
 
-<ion-navbar>
-  <ion-title>{{title}}</ion-title>
-</ion-navbar>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
 
 
-<button ion-button
-        full
-        no-padding
-        *ngFor="let select of selections"
-        (click)="confirm(select)"
-        text
->
-  {{select}}
-</button>
+  <button ion-button
+          full
+          no-padding
+          *ngFor="let select of selections"
+          (click)="confirm(select)"
+          text
+  >
+    {{select}}
+  </button>
+
+</ion-content>

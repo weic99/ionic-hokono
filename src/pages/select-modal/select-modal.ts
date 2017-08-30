@@ -25,8 +25,17 @@ export class SelectModalPage {
     this.viewCtrl.dismiss();
   }
 
-  confirm(select) {
-    this.viewCtrl.dismiss(select);
-  }
+  // confirm(select) {
+  //   this.viewCtrl.dismiss(select);
+  // }
 
+  confirm = (() => {
+    let executed = false;
+    return (select) => {
+        if (!executed) {
+          executed = true;
+          this.viewCtrl.dismiss(select);
+        }
+      };
+  })();
 }

@@ -24,6 +24,9 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
+// $modal-inset-height-small: 100px;
+// $modal-inset-height-large: 100px;
+$modal-inset-box-shadow: none;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -61,6 +64,9 @@ $toast-ios-title-color: color($colors, dark);
 $toast-ios-title-font-size: 2rem;
 $toast-ios-title-padding: 0.5rem;
 
+$modal-ios-background-color: transparent;
+$modal-ios-border-radius: 0;
+
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
@@ -81,6 +87,7 @@ $toast-md-title-color: color($colors, dark);
 $toast-md-title-font-size: 2rem;
 $toast-md-title-padding: 0.5rem;
 
+$modal-md-background-color: transparent;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
@@ -97,6 +104,8 @@ $toast-wp-title-color: color($colors, dark);
 $toast-wp-title-font-size: 2rem;
 $toast-wp-title-padding: 0.5rem;
 $toast-wp-border-radius: .65rem;
+
+$modal-wp-background-color: transparent;
 
 // App Theme
 // --------------------------------------------------
