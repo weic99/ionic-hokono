@@ -20,13 +20,14 @@ export class PetProfileEditPage {
   ) { }
 
   ionViewWillLoad() {
-    let petProfile = this.navParams.get('pet');
+    this.pet = this.navParams.get('pet');
+    // let petProfile = this.navParams.get('pet');
 
-    if (petProfile === undefined) {
-      this.navCtrl.setRoot('ProfilePage');
-    } else {
-      this.pet = { ...this.pet, ...petProfile }
-    }
+    // if (petProfile === undefined) {
+    //   this.navCtrl.setRoot('ProfilePage');
+    // } else {
+    //   this.pet = { ...this.pet, ...petProfile }
+    // }
 
   }
 
@@ -52,7 +53,7 @@ export class PetProfileEditPage {
   }
 
   confirm() {
-    // this.viewCtrl.dismiss(this.pet);
-    this.navCtrl.pop().then(() => this.navParams.get('resolve')(this.pet));
+    this.viewCtrl.dismiss(this.pet);
+    // this.navCtrl.pop().then(() => this.navParams.get('resolve')(this.pet));
   }
 }
