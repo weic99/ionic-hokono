@@ -19,14 +19,18 @@
   text-align: center;
 }
 
-//  * {
-//   -webkit-transform: translateZ(0);
-//   -webkit-transform: translate3d(0, 0, 0);
-// }
-
-// .toolbar-ios ion-title {
-//   top: -40px !important;
-// }
+.toolbar-badge {
+  background-color: color($colors, danger);
+  color: color($colors, whiter);
+  position: absolute;
+  height: auto;
+  width: auto;
+  font-size: 15px;
+  padding: 2px 3px;
+  top: -3px;
+  right: -3px;
+  // border-radius: 100%;
+}
 
 .modal-wrapper {
   min-width: 100% !important;
