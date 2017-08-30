@@ -27,3 +27,20 @@
 // .toolbar-ios ion-title {
 //   top: -40px !important;
 // }
+
+.modal-wrapper {
+  min-width: 100% !important;
+  min-height: 100% !important;
+  top: 0;
+  left: 0;
+}
+
+page-select-modal > ion-content > div.scroll-content {
+  top: 25%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
