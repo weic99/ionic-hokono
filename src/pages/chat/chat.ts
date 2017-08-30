@@ -25,8 +25,9 @@ export class ChatPage {
 
   }
 
-  sendMessage() {
-    console.log('message', this.message);
+  sendMessage(e) {
+    console.log('message', this.message, e);
+    e.target.reset();
   }
 
 }

@@ -58,23 +58,29 @@
 </ion-content>
 
 <ion-footer>
-  <ion-row>
-    <ion-input
-      type="text"
-      clearInput
-      placeholder="..."
-      [(ngModel)]="message"
-    >
-    </ion-input>
-    <ion-buttons end>
-      <button
-        ion-button
-        item-end
-        center
-      (click)="sendMessage()"
+  <form (submit)="sendMessage($event)">
+    <ion-row>
+
+      <ion-input
+        type="text"
+        clearInput
+        placeholder="..."
+        [(ngModel)]="message"
+        name="message"
       >
-        Send
-      </button>
-    </ion-buttons>
-  </ion-row>
+      </ion-input>
+
+      <ion-buttons end>
+        <button
+          ion-button
+          item-end
+          center
+          type="submit"
+        >
+          Send
+        </button>
+      </ion-buttons>
+
+    </ion-row>
+  </form>
 </ion-footer>
