@@ -12,6 +12,7 @@ export class ChatPage {
 
   friend = {} as User;
   user = {} as User;
+  message: string;
 
   constructor(
     public navCtrl: NavController,
@@ -22,6 +23,10 @@ export class ChatPage {
 
   ionViewDidLoad() {
 
+  }
+
+  sendMessage() {
+    console.log('message', this.message);
   }
 
 }

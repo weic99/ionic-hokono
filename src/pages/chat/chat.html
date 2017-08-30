@@ -56,3 +56,25 @@
   </div>
 
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-input
+      type="text"
+      clearInput
+      placeholder="..."
+      [(ngModel)]="message"
+    >
+    </ion-input>
+    <ion-buttons end>
+      <button
+        ion-button
+        item-end
+        center
+      (click)="sendMessage()"
+      >
+        Send
+      </button>
+    </ion-buttons>
+  </ion-row>
+</ion-footer>
