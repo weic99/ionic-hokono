@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-angular';
 
 import { Pet } from '../../models/pet';
 
@@ -15,7 +15,6 @@ export class PetProfileEditPage {
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
-    public navCtrl: NavController,
     public modalCtrl: ModalController
   ) { }
 
