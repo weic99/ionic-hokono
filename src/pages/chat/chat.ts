@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 
 import { User } from '../../models/user';
 import { Message } from '../../models/message'
@@ -12,6 +12,8 @@ import { Message } from '../../models/message'
 })
 export class ChatPage {
 
+  @ViewChild(Content) content: Content;
+
   friend = {} as User;
   user = {} as User;
   newMessage = {} as Message;
@@ -22,6 +24,34 @@ export class ChatPage {
     public navParams: NavParams
   ) {
     this.friend.displayName = 'Mario';
+
+    this.messages = [
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'Hi'
+      },
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'Hi'
+      },
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'heyyyyyyyyyyyyyyyyy'
+      },
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo'
+      },
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo'
+      },
+    ];
   }
 
   ionViewDidLoad() {
@@ -35,4 +65,8 @@ export class ChatPage {
     e.target.reset();
   }
 
+  scrollToBottom() {
+    console.log('focus');
+    this.content.scrollToBottom();
+  }
 }

@@ -10,7 +10,7 @@
 
 <ion-content padding>
 
-  <div class="chat">
+  <div class="chat" *ngFor="let message of messages">
     <ion-chip color="whiter">
       <ion-avatar>
         <img src="assets/Mario_icon_bubble.png">
@@ -20,37 +20,7 @@
 
     <div class="chat-block">
       <div class="chat-text">
-        hi
-      </div>
-    </div>
-  </div>
-
-  <div class="chat">
-    <ion-chip color="whiter">
-      <ion-avatar>
-        <img src="assets/Mario_icon_bubble.png">
-      </ion-avatar>
-      <ion-label color="dark">{{friend.displayName}}</ion-label>
-    </ion-chip>
-
-    <div class="chat-block">
-      <div class="chat-text">
-        heyyyyyyyyyyyyyyyyy
-      </div>
-    </div>
-  </div>
-
-  <div class="chat">
-    <ion-chip color="whiter">
-      <ion-avatar>
-        <img src="assets/Mario_icon_bubble.png">
-      </ion-avatar>
-      <ion-label color="dark">{{friend.displayName}}</ion-label>
-    </ion-chip>
-
-    <div class="chat-block">
-      <div class="chat-text">
-        heeeeeeelllllloooooooooooooooooooooooooooooooooo
+        {{message.body}}
       </div>
     </div>
   </div>
@@ -65,8 +35,9 @@
         type="text"
         clearInput
         placeholder="..."
-        [(ngModel)]="newMessage.body"
         name="message"
+        [(ngModel)]="newMessage.body"
+        (focus)="scrollToBottom()"
       >
       </ion-input>
 
