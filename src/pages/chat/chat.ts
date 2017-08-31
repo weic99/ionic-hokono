@@ -31,43 +31,43 @@ export class ChatPage {
         sender: 'Mario',
         receiver: '',
         body: 'Hi',
-        date: Date.now()
+        date: Date.now() - 6000000
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'Hi',
-        date: Date.now()
+        date: Date.now() - 500000
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'heyyyyyyyyyyyyyyyyy',
-        date: Date.now()
+        date: Date.now() - 400000
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'heyyyyyyyyyyyyyyyyy',
-        date: Date.now()
+        date: Date.now() - 300000
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo',
-        date: Date.now()
+        date: Date.now() - 200000
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-        date: Date.now()
+        date: Date.now() - 100000
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-        date: Date.now()
+        date: Date.now() - 90000
       },
       {
         sender: 'Me',
