@@ -11,6 +11,5 @@ import { PipesModule } from '../../pipes/pipes.module';
     IonicPageModule.forChild(ProfilePage),
     PipesModule
   ],
-  providers: []
 })
 export class ProfilePageModule {}

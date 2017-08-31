@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { User } from '../../models/user';
 import { Message } from '../../models/message'
 
+import { TimeToDatePipe } from '../../pipes/time-to-date/time-to-date';
 
 @IonicPage()
 @Component({

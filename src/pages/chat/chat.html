@@ -17,7 +17,7 @@
         <ion-avatar>
           <img src="assets/Mario_icon_bubble.png">
         </ion-avatar>
-        <ion-label color="dark">{{message.date}}</ion-label>
+        <ion-label color="dark">{{message.date | timeToDate}}</ion-label>
       </ion-chip>
 
       <div class="chat-block">
@@ -29,7 +29,7 @@
 
     <div *ngIf="message.sender !== friend.displayName" class="me">
       <ion-chip color="whiter">
-        <ion-label color="dark">{{message.date}}</ion-label>
+        <ion-label color="dark">{{message.date | timeToDate}}</ion-label>
         <ion-avatar>
           <img src="assets/Me.JPG">
         </ion-avatar>
