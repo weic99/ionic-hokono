@@ -44,29 +44,41 @@ export class ChatPage {
       {
         sender: 'Mario',
         receiver: '',
-        body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo'
+        body: 'heyyyyyyyyyyyyyyyyy'
       },
       {
         sender: 'Mario',
         receiver: '',
         body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo'
       },
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'yooooooooooooooooooooooooooooooooooooooooooo'
+      },
+      {
+        sender: 'Mario',
+        receiver: '',
+        body: 'yooooooooooooooooooooooooooooooooooooooooooo'
+      },
     ];
   }
 
-  ionViewDidLoad() {
-
-  }
-
   sendMessage(e) {
-    console.log('message', this.newMessage.body, e);
+    //console.log('message', this.newMessage.body, e);
+    this.messages.push({
+      ...this.newMessage,
+      sender: 'You',
+      receiver: 'Mario'
+    })
 
     this.newMessage = {} as Message;
     e.target.reset();
+    this.scrollToBottom();
   }
 
-  scrollToBottom() {
-    console.log('focus');
-    this.content.scrollToBottom();
+  scrollToBottom(delay = 0) {
+    // console.log('focus');
+    this.content.scrollToBottom(delay);
   }
 }
