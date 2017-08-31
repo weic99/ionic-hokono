@@ -12,16 +12,33 @@
 
   <div class="chat" *ngFor="let message of messages">
 
-    <ion-chip color="whiter">
-      <ion-avatar>
-        <img src="assets/Mario_icon_bubble.png">
-      </ion-avatar>
-      <ion-label color="dark">{{friend.displayName}}</ion-label>
-    </ion-chip>
+    <div *ngIf="message.sender === friend.displayName" >
+      <ion-chip color="whiter">
+        <ion-avatar>
+          <img src="assets/Mario_icon_bubble.png">
+        </ion-avatar>
+        <ion-label color="dark">{{message.date}}</ion-label>
+      </ion-chip>
 
-    <div class="chat-block">
-      <div class="chat-text">
-        {{message.body}}
+      <div class="chat-block">
+        <div class="chat-text">
+          {{message.body}}
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="message.sender !== friend.displayName" class="me">
+      <ion-chip color="whiter">
+        <ion-label color="dark">{{message.date}}</ion-label>
+        <ion-avatar>
+          <img src="assets/Me.JPG">
+        </ion-avatar>
+      </ion-chip>
+
+      <div class="chat-block">
+        <div class="chat-text">
+          {{message.body}}
+        </div>
       </div>
     </div>
 

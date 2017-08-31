@@ -29,37 +29,50 @@ export class ChatPage {
       {
         sender: 'Mario',
         receiver: '',
-        body: 'Hi'
+        body: 'Hi',
+        date: Date.now()
       },
       {
         sender: 'Mario',
         receiver: '',
-        body: 'Hi'
+        body: 'Hi',
+        date: Date.now()
       },
       {
         sender: 'Mario',
         receiver: '',
-        body: 'heyyyyyyyyyyyyyyyyy'
+        body: 'heyyyyyyyyyyyyyyyyy',
+        date: Date.now()
       },
       {
         sender: 'Mario',
         receiver: '',
-        body: 'heyyyyyyyyyyyyyyyyy'
+        body: 'heyyyyyyyyyyyyyyyyy',
+        date: Date.now()
       },
       {
         sender: 'Mario',
         receiver: '',
-        body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo'
+        body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo',
+        date: Date.now()
       },
       {
         sender: 'Mario',
         receiver: '',
-        body: 'yooooooooooooooooooooooooooooooooooooooooooo'
+        body: 'yooooooooooooooooooooooooooooooooooooooooooo',
+        date: Date.now()
       },
       {
         sender: 'Mario',
         receiver: '',
-        body: 'yooooooooooooooooooooooooooooooooooooooooooo'
+        body: 'yooooooooooooooooooooooooooooooooooooooooooo',
+        date: Date.now()
+      },
+      {
+        sender: 'Me',
+        receiver: 'Mario',
+        body: 'k',
+        date: Date.now()
       },
     ];
   }
@@ -69,7 +82,8 @@ export class ChatPage {
     this.messages.push({
       ...this.newMessage,
       sender: 'You',
-      receiver: 'Mario'
+      receiver: 'Mario',
+      date: Date.now()
     })
 
     this.newMessage = {} as Message;

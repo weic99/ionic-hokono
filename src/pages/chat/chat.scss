@@ -1,6 +1,7 @@
 page-chat {
   .chat {
     margin-bottom: 15px;
+    display: block;
   }
 
   .friend-name {
@@ -26,5 +27,9 @@ page-chat {
     padding: 10px;
 
     display:inline-block;
+
+  }
+  .me {
+    text-align: right;
   }
 }

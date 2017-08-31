@@ -39,7 +39,7 @@ export class ProfilePage {
 
     /** hard coded profile data */
     this.user.profile = {
-      avatar: 'http://www.planetcreation.co.uk/createpic/avatarold.JPG',
+      avatar: 'assets/Me.JPG',
       name: 'Hack Reactor',
       address: '369 Lexington Ave. 11th Fl.',
       slogan: 'We Love Them Like You Do'
