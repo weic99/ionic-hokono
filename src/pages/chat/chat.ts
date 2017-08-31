@@ -74,11 +74,14 @@ export class ChatPage {
 
     this.newMessage = {} as Message;
     e.target.reset();
-    this.scrollToBottom();
+
+    /** Make sure the newMessage is rendered */
+    setTimeout(() => {
+      this.content.scrollToBottom();
+    });
   }
 
-  scrollToBottom(delay = 0) {
-    // console.log('focus');
+  scrollToBottom(delay = 300) {
     this.content.scrollToBottom(delay);
   }
 }
