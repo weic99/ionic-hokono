@@ -66,6 +66,7 @@
           item-end
           center
           type="submit"
+          [disabled]="!newMessage.body"
         >
           Send
         </button>

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { User } from '../../models/user';
 import { Message } from '../../models/message'
@@ -22,9 +23,21 @@ export class ChatPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private afAuth: AngularFireAuth
   ) {
+
+    this.afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.user.displayName = null;
+        return;
+      }
+      this.user.displayName = user.displayName;
+    });
+
     this.friend.displayName = 'Mario';
+    this.newMessage.sender = this.user.displayName //set to displayName;
+    this.newMessage.receiver = this.friend.displayName
 
     this.messages = [
       {
@@ -79,7 +92,10 @@ export class ChatPage {
   }
 
   sendMessage(e) {
-    //console.log('message', this.newMessage.body, e);
+    if(!this.newMessage.body) {
+      return;
+    }
+
     this.messages.push({
       ...this.newMessage,
       sender: 'You',
@@ -87,7 +103,7 @@ export class ChatPage {
       date: Date.now()
     })
 
-    this.newMessage = {} as Message;
+    this.newMessage.body = undefined;
     e.target.reset();
 
     /** Make sure the newMessage is rendered */
