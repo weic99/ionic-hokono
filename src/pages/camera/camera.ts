@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 import { Pet } from '../../models/pet';
+import { DOG_BREEDS } from '../../assets/dogs/breeds';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,9 @@ import { Pet } from '../../models/pet';
 })
 export class CameraPage {
   newPet = {} as Pet;
+  searchBreed: string = '';
+  showAutoComplete: boolean = false;
+  breeds: string[];
 
   options: CameraOptions = {
     quality: 100,
@@ -53,6 +57,8 @@ export class CameraPage {
     this.newPet.species = {
       breed: ''
     };
+
+    this.breeds = DOG_BREEDS.breeds;
   }
 
   async doTakePicture() {
@@ -103,5 +109,13 @@ export class CameraPage {
       });
   }
 
+  selectBreed(breed: string) {
+    this.searchBreed = breed;
+    this.newPet.species.breed = breed;
+    console.log('breed is now', this.newPet.species.breed);
+  }
 
+  toggleShowAutoComplete() {
+    this.showAutoComplete = !this.showAutoComplete;console.log('this.showAutoComplete', this.showAutoComplete);
+  }
 }

@@ -1,5 +1,5 @@
 page-camera {
-  ion-label {
+  .input-label {
     min-width: 50px !important;
     max-width: 50px !important;
     padding-bottom: 0;
@@ -11,5 +11,26 @@ page-camera {
     font-size: 3rem;
     padding: 0;
     margin: 0;
+  }
+
+  .search {
+    max-height: 100px;
+    ion-list {
+      position: absolute;
+      overflow-y: scroll;
+      max-height: 300px;
+      z-index: 1000;
+      left: 25px;
+      width: calc(100% - 20px);
+      max-width: calc(100vw - 48px);
+      margin: -7px -1px 0;
+      border: 1px solid #999;
+      border-top: none;
+    }
+
+    ion-item:hover {
+      cursor: pointer;
+      background: #f1f1f1
+    }
   }
 }

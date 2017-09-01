@@ -26,6 +26,7 @@
     <ion-item >
       <ion-label color="primary"
                  fixed
+                 class="input-label"
       >
         Name
       </ion-label>
@@ -36,18 +37,26 @@
       </ion-input>
     </ion-item>
 
-    <ion-searchbar
-                debounce=500
-                placeholder="Breed"
-
-    >
-    </ion-searchbar>
-
-
+    <div class="search">
+      <ion-searchbar
+                  debounce=500
+                  placeholder="Breed"
+                  [(ngModel)]="searchBreed"
+                  (ionFocus)="toggleShowAutoComplete()"
+                  (ionBlur)="toggleShowAutoComplete()"
+      >
+      </ion-searchbar>
+      <ion-list *ngIf="showAutoComplete">
+        <ion-item *ngFor="let breed of breeds | filterString: searchBreed" (click)="selectBreed(breed)">
+          {{breed}}
+        </ion-item>
+      </ion-list>
+    </div>
 
     <ion-item >
       <ion-label color="primary"
                  fixed
+                 class="input-label"
       >
         Age
       </ion-label>
@@ -85,9 +94,10 @@
     </div>
 
     <ion-item padding>
-      <ion-label class="pet-profile-notes"
+      <ion-label class="pet-profile-notes input-label"
                  color="primary"
                  fixed
+
       >
         Notes
       </ion-label>
