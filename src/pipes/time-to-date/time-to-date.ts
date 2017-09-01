@@ -19,9 +19,9 @@ export class TimeToDatePipe implements PipeTransform {
         relativeTime : {
           future: "in %s",
           past:   "%s ago",
-          s  : 'just now',
-          ss : '%ds',
-          m:  "a minute",
+          s  : "<1m",
+          ss : "%ds",
+          m:  "1m",
           mm: "%dm",
           // h:  "an hour",
           // hh: "%d hours",

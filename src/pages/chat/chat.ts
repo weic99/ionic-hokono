@@ -83,6 +83,12 @@ export class ChatPage {
         date: Date.now() - 90000
       },
       {
+        sender: 'Mario',
+        receiver: '',
+        body: 'yooooooooooooooooooooooooooooooooooooooooooo',
+        date: Date.now() - 60000
+      },
+      {
         sender: 'Me',
         receiver: 'Mario',
         body: 'k',
