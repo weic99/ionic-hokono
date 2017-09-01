@@ -97,6 +97,11 @@ export class PostPage {
     ];
   }
 
+  doUpVote(comment) {
+    console.log('doUpVote()', comment);
+    comment.likes++;
+  }
+
   doRefresh(refresher) {
     //refresh the page
 
@@ -118,7 +123,7 @@ export class PostPage {
       // });
       //console.log('Async operation has ended');
       infiniteScroll.complete();
-    }, 200);
+    }, 1000);
   }
 
 }

@@ -17,26 +17,29 @@
 
   <div class="chat" *ngFor="let item of comments">
 
-    <div>
-      <ion-row>
+    <ion-row>
 
-        <ion-avatar>
-          <img src="assets/Mario_icon_bubble.png">
-        </ion-avatar>
-        <ion-col col-auto>
-          <ion-label color="greyscale">{{item.likes + ' likes'}}</ion-label>
-        </ion-col>
-        <ion-col col-auto>
-          <ion-label color="greyscale">{{item.date | timeToDate}}</ion-label>
-        </ion-col>
+      <ion-avatar>
+        <img src="assets/Mario_icon_bubble.png">
+      </ion-avatar>
+      <ion-col col-auto>
+        <ion-label color="greyscale">
+          <ion-icon name='thumbs-up' (click)="doUpVote(item)"></ion-icon>
+          {{item.likes + ' likes'}}
+        </ion-label>
+      </ion-col>
+      <ion-col col-auto>
+        <ion-label color="greyscale">
+          <ion-icon name='remove'></ion-icon>
+          {{item.date | timeToDate}}
+        </ion-label>
+      </ion-col>
 
+    </ion-row>
 
-      </ion-row>
-
-      <div class="chat-block">
-        <div class="chat-text">
-          {{item.body}}
-        </div>
+    <div class="chat-block">
+      <div class="chat-text">
+        {{item.body}}
       </div>
     </div>
 
