@@ -70,4 +70,8 @@ export class HomePage {
   goToPost(post) {
     this.navCtrl.push('PostPage', {post});
   }
+
+  doUpVote(comment) {
+    comment.likes++;
+  }
 }

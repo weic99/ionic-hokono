@@ -98,7 +98,6 @@ export class PostPage {
   }
 
   doUpVote(comment) {
-    console.log('doUpVote()', comment);
     comment.likes++;
   }
 

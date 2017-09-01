@@ -28,7 +28,7 @@
 
     <ion-row>
       <ion-col align-self-center>
-        <button ion-button color="primary" clear small icon-start>
+        <button ion-button color="primary" clear small icon-start (click)="doUpVote(item)">
           <ion-icon name='thumbs-up'></ion-icon>
           {{item.likes}}
         </button>
