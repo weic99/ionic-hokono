@@ -57,4 +57,7 @@ export class FollowingPage {
     ];
   }
 
+  doUpVote(comment) {
+    comment.likes++;
+  }
 }
