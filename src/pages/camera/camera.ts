@@ -110,11 +110,15 @@ export class CameraPage {
   }
 
   selectBreed(breed: string) {
-    this.searchBreed = breed;
     this.newPet.species.breed = breed;
+    this.searchBreed = breed;
+    console.log('searchBreed', this.searchBreed);
+    console.log('this.newPet.species.breed', this.newPet.species.breed);
   }
 
   toggleShowAutoComplete() {
-    this.showAutoComplete = !this.showAutoComplete;
+    setTimeout(() => {
+      this.showAutoComplete = !this.showAutoComplete;
+    }, 300);
   }
 }
