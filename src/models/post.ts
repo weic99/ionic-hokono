@@ -3,6 +3,7 @@ export interface Post {
     username: string,
     avatar: string,
   },
+  title: string,
   date: string,
   image: string,
   content: string,

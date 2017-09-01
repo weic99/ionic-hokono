@@ -16,8 +16,8 @@
       <ion-avatar item-start>
         <img [src]="item.user.avatar">
       </ion-avatar>
-      <h3>{{item.user.username}}</h3>
-      <!-- <small>{{item.date}}</small> -->
+      <h2>{{item.title}}</h2>
+      <small>{{item.user.username}}</small>
     </ion-item>
 
     <img [src]="item.image">
@@ -34,7 +34,7 @@
         </button>
       </ion-col>
       <ion-col align-self-center>
-        <button ion-button color="primary" clear small icon-start>
+        <button ion-button color="primary" clear small icon-start (click)="goToPost(item)">
           <ion-icon name='text'></ion-icon>
           {{item.content.length * item.likes % 2000 }} Comments
         </button>
