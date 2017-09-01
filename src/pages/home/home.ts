@@ -74,4 +74,8 @@ export class HomePage {
   doUpVote(comment) {
     comment.likes++;
   }
+
+  createPost() {
+    this.navCtrl.push('CreatePostPage');
+  }
 }

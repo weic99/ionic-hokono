@@ -42,6 +42,13 @@ export class LoginPage {
           this.appCtrl.getRootNavs()[0].setRoot(TabsPage);
         })
         .catch((err) => console.log('failed to log in', err));
+    } else if (str === 'facebook') {
+      this.User.facebookSignIn()
+      .then((res) => {
+        // this.storage.set('user', JSON.stringify(res));
+        this.appCtrl.getRootNavs()[0].setRoot(TabsPage);
+      })
+      .catch((err) => console.log('failed to log in', err));
     }
   }
 

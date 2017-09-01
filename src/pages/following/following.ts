@@ -57,6 +57,10 @@ export class FollowingPage {
     ];
   }
 
+  goToPost(post) {
+    this.navCtrl.push('PostPage', {post});
+  }
+
   doUpVote(comment) {
     comment.likes++;
   }
