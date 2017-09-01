@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook';
 import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 
 import { Camera } from '@ionic-native/camera';
@@ -46,6 +47,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     Camera,
     UserProvider,
     GooglePlus,
+    Facebook,
     FirebaseProvider
   ]
 })

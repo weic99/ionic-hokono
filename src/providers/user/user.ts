@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+
+
 
 @Injectable()
 export class UserProvider {
@@ -13,6 +16,7 @@ export class UserProvider {
   constructor(
     private platform: Platform,
     private googlePlus: GooglePlus,
+    private fb: Facebook,
     private afAuth: AngularFireAuth
   ) {
     this.user = afAuth.authState;
@@ -37,15 +41,12 @@ export class UserProvider {
 
   facebookSignIn(): Promise<any> {
     if (this.platform.is('cordova')) {
-      return this.googlePlus.login({
-        'webClientId':'340279576545-a6a44103erdp6k8re3nkqulch08c1j21.apps.googleusercontent.com',
-        'offline': true
-        })
+      return this.fb.login(['public_profile', 'user_friends', 'email'])
         .then(res => {
-          return firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
+          return firebase.auth().signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken))
         })
         .catch(err => {
-          console.log('err in google-plus', err);
+          console.log('err in facebook', err);
         })
     } else if (this.platform.is('mobileweb')) {
       return <Promise<any>>firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
