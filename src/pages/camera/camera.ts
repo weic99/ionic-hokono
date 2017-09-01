@@ -50,6 +50,9 @@ export class CameraPage {
     };
     this.newPet.image = '';
     this.newPet.notes = '';
+    this.newPet.species = {
+      breed: ''
+    };
   }
 
   async doTakePicture() {

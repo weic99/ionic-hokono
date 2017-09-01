@@ -9,7 +9,7 @@
 
 
 <ion-content overflow-scroll="true">
-  <ion-searchbar [(ngModel)]="query"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="query" debounce=500></ion-searchbar>
 
   <div padding>
     <ion-segment [(ngModel)]="query">
