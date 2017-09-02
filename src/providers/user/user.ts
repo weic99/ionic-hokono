@@ -33,6 +33,7 @@ export class UserProvider {
         })
         .catch(err => {
           console.log('err in google-plus', err);
+          throw err;
         })
     } else if (this.platform.is('mobileweb')) {
       return <Promise<any>>firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -40,13 +41,19 @@ export class UserProvider {
   }
 
   facebookSignIn(): Promise<any> {
+    console.log('called');
     if (this.platform.is('cordova')) {
+      this.fb.getLoginStatus().then(res => console.log('logged', res));
+      this.fb.logout().then(() => { }).catch(() => { });
+
       return this.fb.login(['public_profile', 'user_friends', 'email'])
         .then(res => {
+          console.log('face res', res);
           return firebase.auth().signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken))
         })
         .catch(err => {
           console.log('err in facebook', err);
+          throw err;
         })
     } else if (this.platform.is('mobileweb')) {
       return <Promise<any>>firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
