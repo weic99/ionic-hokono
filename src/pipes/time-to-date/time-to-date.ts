@@ -11,9 +11,9 @@ export class TimeToDatePipe implements PipeTransform {
    * If not return formatted date, ex. Jan 20th 2017 4:00 PM
    */
 
-  transform(value: number, format: string = 'MMM Do YYYY, h:mm a'): string {
-    /** Less than an hour ago */
+  transform(value: number, format: string = 'M/D/YY h:mm a'): string {
 
+    /** Less than an hour ago */
     if (Date.now() - value < 3600000) {
       moment.updateLocale('en', {
         relativeTime : {

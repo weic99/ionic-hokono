@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 import { User } from '../../models/user';
 import { Post } from '../../models/post';
@@ -19,7 +20,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private firebase: FirebaseProvider
   ) {
 
     this.afAuth.authState.subscribe(user => {
@@ -28,6 +30,11 @@ export class HomePage {
         return;
       }
       this.user.displayName = user.displayName;
+
+      this.firebase.getAllPosts().subscribe(posts => {
+        this.posts = posts;
+      });
+
     });
 
 

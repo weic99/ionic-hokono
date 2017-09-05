@@ -21,12 +21,24 @@ export class FirebaseProvider {
     return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`);
   }
 
-  updateProfile(profile) {
-    return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`).update(profile);
-  }
-
   getPets(limit: number = 1) {
     return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`, {
+      query: {
+        limitToFirst: limit
+      }
+    });
+  }
+
+  getAllPets(limit: number = 10) {
+    return this.db.list('pets', {
+      query: {
+        limitToFirst: limit
+      }
+    });
+  }
+
+  getAllPosts(limit: number = 10) {
+    return this.db.list('posts', {
       query: {
         limitToFirst: limit
       }
@@ -37,12 +49,8 @@ export class FirebaseProvider {
     return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).update(key, profile);
   }
 
-  getAllPets(limit: number = 10) {
-    return this.db.list('pets', {
-      query: {
-        limitToFirst: limit
-      }
-    });
+  updateProfile(profile) {
+    return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`).update(profile);
   }
 
   postNewPet() {

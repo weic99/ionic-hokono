@@ -19,10 +19,10 @@
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="item.user.avatar">
+        <img [src]="(item.user)?.avatar">
       </ion-avatar>
       <h2>{{item.title}}</h2>
-      <small>{{item.user.username}}</small>
+      <small>{{(item.user)?.username}}</small>
     </ion-item>
 
     <img [src]="item.image">
@@ -35,18 +35,18 @@
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start (click)="doUpVote(item)">
           <ion-icon name='thumbs-up'></ion-icon>
-          {{item.likes}}
+          <span class="button-text">{{item.likes}}</span>
         </button>
       </ion-col>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start (click)="goToPost(item)">
           <ion-icon name='text'></ion-icon>
-          {{item.content.length * item.likes % 2000}} Comments
+          {{item.comments}} {{item.comments === 1 ? comments : comment}}
         </button>
       </ion-col>
       <ion-col center text-center align-self-center>
         <ion-note>
-          11h ago
+          {{item.timeStamp | timeToDate}}
         </ion-note>
       </ion-col>
     </ion-row>

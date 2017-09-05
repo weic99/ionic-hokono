@@ -30,11 +30,11 @@
 
   <ion-list>
     <ion-item *ngFor="let pet of pets | filterPetsBySpecies: query">
-      <ion-avatar item-start
+      <div item-start
                   class='avatar'
       >
         <img [src]="pet.filePath" />
-      </ion-avatar>
+      </div>
       <h1>{{pet.name}}</h1>
       <span> {{pet.description}} </span>
     </ion-item>
