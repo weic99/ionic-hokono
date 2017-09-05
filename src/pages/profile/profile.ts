@@ -18,6 +18,7 @@ export class ProfilePage {
   filter: string;
 
   user = {} as User;
+  profilePic: string;
 
   constructor(
     public navCtrl: NavController,
@@ -47,6 +48,7 @@ export class ProfilePage {
       this.firebase.getProfile(user.uid)
         .subscribe(profile => {
           this.user.profile = profile;
+          this.profilePic = this.user.profile.profPic || "../../assets/defaultProfilePic.png";
         });
 
       /** get the user pets */
