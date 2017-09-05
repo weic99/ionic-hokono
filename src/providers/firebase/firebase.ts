@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { UserProvider } from '../user/user';
 
 @Injectable()
 export class FirebaseProvider {
@@ -10,29 +11,30 @@ export class FirebaseProvider {
   getMyPetsUrl: string = 'pets';
 
   constructor(
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private auth: UserProvider
   ) {
     // console.log('Hello FirebaseProvider Provider');
   }
 
-  getProfile(uid): FirebaseObjectObservable<any> {
-    return this.db.object(`${this.profileUrl}/${uid}`);
+  getProfile(): FirebaseObjectObservable<any> {
+    return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`);
   }
 
-  updateProfile(uid, profile) {
-    return this.db.object(`${this.profileUrl}/${uid}`).update(profile);
+  updateProfile(profile) {
+    return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`).update(profile);
   }
 
-  getPets(uid, limit: number = 1) {
-    return this.db.list(`${this.profileUrl}/${uid}/${this.getMyPetsUrl}`, {
+  getPets(limit: number = 1) {
+    return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`, {
       query: {
         limitToFirst: limit
       }
     });
   }
 
-  updatePetProfile(uid, key, profile) {
-    return this.db.list(`${this.profileUrl}/${uid}/${this.getMyPetsUrl}`).update(key, profile);
+  updatePetProfile(key, profile) {
+    return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).update(key, profile);
   }
 
   getAllPets(limit: number = 10) {

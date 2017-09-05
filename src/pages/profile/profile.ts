@@ -45,14 +45,14 @@ export class ProfilePage {
       this.user.displayName = user.displayName;
       this.user.uid = user.uid;
 
-      this.firebase.getProfile(user.uid)
+      this.firebase.getProfile()
         .subscribe(profile => {
           this.user.profile = profile;
           this.profilePic = this.user.profile.profPic || "../../assets/defaultProfilePic.png";
         });
 
       /** get the user pets */
-      this.petRef$ = this.firebase.getPets(this.user.uid, 15);
+      this.petRef$ = this.firebase.getPets(15);
       this.petRef$.subscribe(pets => {
         this.pets = pets;
       });
@@ -75,7 +75,7 @@ export class ProfilePage {
     //console.log('Begin async operation');
 
     setTimeout(() => {
-      this.petRef$ = this.firebase.getPets(this.user.uid, this.pets.length + 10);
+      this.petRef$ = this.firebase.getPets(this.pets.length + 10);
       this.petRef$.subscribe(pets => {
         this.pets.push(...pets.slice(this.pets.length));
       });
@@ -93,7 +93,7 @@ export class ProfilePage {
       if (newProfile) {
         console.log('', newProfile);
         console.log('pet', pet);
-        this.firebase.updatePetProfile(this.user.uid, pet.$key, newProfile);
+        this.firebase.updatePetProfile(pet.$key, newProfile);
       }
     });
 
@@ -123,7 +123,7 @@ export class ProfilePage {
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
         this.user.profile = newProfile;
-        this.firebase.updateProfile(this.user.uid, this.user.profile);
+        this.firebase.updateProfile(this.user.profile);
       }
     });
 

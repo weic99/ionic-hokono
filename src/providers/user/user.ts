@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class UserProvider {
 
-  authState: Observable<firebase.User>;
+  user: any;
 
   constructor(
     private platform: Platform,
@@ -17,7 +17,11 @@ export class UserProvider {
     private fb: Facebook,
     private afAuth: AngularFireAuth
   ) {
-    this.authState = afAuth.authState;
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.user = user
+      }
+    });
   }
 
   googleSignIn(): Promise<any> {
