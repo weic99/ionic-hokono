@@ -73,6 +73,7 @@
                  placeholder="mo."
                  name="months"
                  min="0"
+                 max="11"
                  [(ngModel)]="newPet.age.months"
       >
       </ion-input>
@@ -104,6 +105,7 @@
       <ion-textarea type="text"
                     clearInput
                     auto-resize-text-area
+                    [(ngModel)]="newPet.description"
       >
       </ion-textarea>
     </ion-item>

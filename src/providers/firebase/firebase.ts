@@ -53,7 +53,8 @@ export class FirebaseProvider {
     return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`).update(profile);
   }
 
-  postNewPet() {
-    return this.db.list('api/pets/new');
+  postNewPet(newPet) {
+    this.db.list('pets').push(newPet);
+    return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).push(newPet);
   }
 }

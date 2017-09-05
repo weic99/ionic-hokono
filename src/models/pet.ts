@@ -5,9 +5,10 @@ export interface Pet {
     months: number
   };
   image: string;
-  notes: string;
+  description: string;
   imageUrl: string;
   species: {
     breed: string;
-  }
+  },
+  ownerUid: string;
 }

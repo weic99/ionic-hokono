@@ -40,10 +40,9 @@ export class CameraPage {
 
     this.afAuth.authState.subscribe(user => {
       if (!user) {
-
         console.log('Not logged in');
       }
-      // this.user.displayName = user.displayName;
+      this.newPet.ownerUid = user.uid;
     });
 
 
@@ -53,7 +52,7 @@ export class CameraPage {
       months: null
     };
     this.newPet.image = '';
-    this.newPet.notes = '';
+    this.newPet.description = '';
     this.newPet.species = {
       breed: ''
     };
@@ -82,7 +81,7 @@ export class CameraPage {
 
     this.camera.getPicture(picOptions)
       .then((url) => {
-        console.log(url);
+        //console.log(url);
         this.newPet.image = 'data:image/jpeg;base64,' + url;
       })
       .catch((err) => {
@@ -91,8 +90,8 @@ export class CameraPage {
   }
 
   doSubmit() {
-    console.log('new pet', this.newPet);
-    this.firebase.postNewPet().push(this.newPet)
+    //console.log('new pet', this.newPet);
+    this.firebase.postNewPet(this.newPet)
       .then(() => {
         this.toastCtrl.create({
           message: `${this.newPet.name} profile submitted`,
