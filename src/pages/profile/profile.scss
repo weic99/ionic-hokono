@@ -9,7 +9,8 @@ page-profile {
     font-size:2vmax;
   }
   #profile-slogan {
-    font-size:3vmax;
+    margin-top: 0.5vmax;
+    font-size: 3vmax;
   }
   .avatar img {
     margin: 0 auto;
@@ -36,6 +37,7 @@ page-profile {
     width: 100% !important;
   }
   .profile-title {
+    overflow-x: hidden !important;
     font-size: auto;
     height: 25%;
     justify-content: center;
