@@ -21,8 +21,8 @@
       <ion-avatar item-start>
         <img [src]="(item.user)?.avatar || '../../assets/defaultProfilePic.png'">
       </ion-avatar>
-      <h2>{{item.title}}</h2>
-      <small>{{(item.user)?.username}}</small>
+      <h2>{{item.description}}</h2>
+      <small>{{(item.user)?.displayName}}</small>
     </ion-item>
 
     <img [src]="item.image">
