@@ -38,7 +38,7 @@ export class FirebaseProvider {
   }
 
   getAllPets(limit: number = 10) {
-    return this.db.list('api/pets', {
+    return this.db.list('pets', {
       query: {
         limitToFirst: limit
       }
