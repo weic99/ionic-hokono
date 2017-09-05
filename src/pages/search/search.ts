@@ -21,7 +21,6 @@ export class SearchPage {
     private firebase: FirebaseProvider
   ) {
     this.petRef$ = this.firebase.getAllPets(10);
-    this.totalPets = 10;
     this.petRef$.subscribe(pets => {
       this.pets = pets;
     });
@@ -39,7 +38,7 @@ export class SearchPage {
       this.totalPets = 200;
       this.petRef$ = this.firebase.getPets(this.totalPets);
       this.petRef$.subscribe(pets => {
-        this.pets.push(...pets.slice(10));
+        this.pets.push(...pets.slice(this.pets.length));
       });
     }, 0);
   }

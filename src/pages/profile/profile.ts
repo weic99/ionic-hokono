@@ -15,7 +15,6 @@ export class ProfilePage {
   pics: any;
   petRef$: FirebaseListObservable<any[]>;
   pets: any;
-  totalPets: number;
   filter: string;
 
   user = {} as User;
@@ -52,7 +51,6 @@ export class ProfilePage {
 
       /** get the user pets */
       this.petRef$ = this.firebase.getPets(this.user.uid, 15);
-      this.totalPets = 15;
       this.petRef$.subscribe(pets => {
         this.pets = pets;
       });
@@ -75,10 +73,9 @@ export class ProfilePage {
     //console.log('Begin async operation');
 
     setTimeout(() => {
-      this.totalPets = this.totalPets + 10;
-      this.petRef$ = this.firebase.getPets(this.user.uid, this.totalPets);
+      this.petRef$ = this.firebase.getPets(this.user.uid, this.pets.length + 10);
       this.petRef$.subscribe(pets => {
-        this.pets.push(...pets.slice(-10));
+        this.pets.push(...pets.slice(this.pets.length));
       });
       //console.log('Async operation has ended');
       infiniteScroll.complete();

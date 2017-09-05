@@ -23,7 +23,7 @@ export class FirebaseProvider {
     return this.db.object(`${this.profileUrl}/${uid}`).update(profile);
   }
 
-  getPets(uid, limit: number = 0) {
+  getPets(uid, limit: number = 1) {
     return this.db.list(`${this.profileUrl}/${uid}/${this.getMyPetsUrl}`, {
       query: {
         limitToFirst: limit
