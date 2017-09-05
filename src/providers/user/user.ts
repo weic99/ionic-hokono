@@ -57,6 +57,14 @@ export class UserProvider {
     }
   }
 
+  createUserWithEmailAndPassword(email, password) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
+  }
+
+  signInWithEmailAndPassword(email, password) {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  }
+
   logout() {
     this.afAuth.auth.signOut();
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,9 @@ export class SignupPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private user: UserProvider,
+    private toastCtrl: ToastController
   ) {
     this.account = {
       email: '',
@@ -23,7 +26,6 @@ export class SignupPage {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad SignupPage');
   }
 
   doLogin() {
@@ -31,7 +33,15 @@ export class SignupPage {
   }
 
   doSignUp() {
-    console.log(this.account);
-
+    this.user.createUserWithEmailAndPassword(this.account.email, this.account.password)
+      .then(() => this.user.signInWithEmailAndPassword(this.account.email, this.account.password))
+      .catch((err) => {
+        console.log('err', err);
+        this.toastCtrl.create({
+          message: err.message,
+          duration: 2000,
+          cssClass: 'toast-fail'
+        }).present();
+      });
   }
 }
