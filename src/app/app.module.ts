@@ -21,6 +21,8 @@ import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
+import { Autostart } from '@ionic-native/autostart';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -48,7 +50,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     UserProvider,
     GooglePlus,
     Facebook,
-    FirebaseProvider
+    FirebaseProvider,
+    Autostart
   ]
 })
 export class AppModule {}

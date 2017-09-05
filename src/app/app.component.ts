@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsPage } from '../pages/tabs/tabs';
+import { Autostart } from '@ionic-native/autostart';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,8 +19,10 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private loadingCtrl: LoadingController,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private autostart: Autostart
   ) {
+    this.autostart.enable();
     this.presentLoading();
 
     this.afAuth.authState.subscribe(user => {
@@ -29,14 +32,7 @@ export class MyApp {
       } else {
         this.rootPage = TabsPage
       }
-      // this.user.displayName = user.displayName;
     });
-
-    // if (platform.is('cordova')) {
-    //   this.rootPage = 'LoginPage';
-    // } else if (platform.is('mobileweb')) {
-    //   this.rootPage = TabsPage;
-    // }
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
