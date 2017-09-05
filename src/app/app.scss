@@ -48,3 +48,8 @@ page-select-modal > ion-content > div.scroll-content {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.button-inner ion-icon.adjust-top {
+  position: relative;
+  top: -1px;
+}

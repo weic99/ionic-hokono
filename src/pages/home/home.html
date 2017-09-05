@@ -19,7 +19,7 @@
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="(item.user)?.avatar">
+        <img [src]="(item.user)?.avatar || '../../assets/defaultProfilePic.png'">
       </ion-avatar>
       <h2>{{item.title}}</h2>
       <small>{{(item.user)?.username}}</small>
@@ -34,8 +34,8 @@
     <ion-row>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start (click)="doUpVote(item)">
-          <ion-icon name='thumbs-up'></ion-icon>
-          <span class="button-text">{{item.likes}}</span>
+          <ion-icon name='thumbs-up' class="adjust-top"></ion-icon>
+          <span>{{item.likes}}</span>
         </button>
       </ion-col>
       <ion-col align-self-center>

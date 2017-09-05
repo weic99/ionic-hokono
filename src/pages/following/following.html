@@ -28,14 +28,14 @@
     <ion-row>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start (click)="doUpVote(item)">
-          <ion-icon name='thumbs-up'></ion-icon>
+          <ion-icon name='thumbs-up' class="adjust-top"></ion-icon>
           {{item.likes}}
         </button>
       </ion-col>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-start (click)="goToPost(item)">
           <ion-icon name='text'></ion-icon>
-          {{item.content.length * item.likes % 2000}} Comments
+          {{item.comments}} {{item.comments === 1 ? comments : comment}}
         </button>
       </ion-col>
       <ion-col center text-center align-self-center>
