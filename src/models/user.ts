@@ -3,11 +3,13 @@ export interface User {
   password: string,
   email: string,
   displayName: string,
+  uid: string,
 
-  profile: {
-    avatar: string,
-    name: string,
-    address: string,
-    slogan: string
-  }
+  profile: any;
+  // profile: {
+  //   avatar: string,
+  //   name: string,
+  //   address: string,
+  //   blurb: string
+  // }
 }

@@ -28,6 +28,14 @@ export class ProfilePage {
     public popoverCtrl: PopoverController,
     public modalCtrl: ModalController
   ) {
+    /** hard coded profile data */
+    // this.user.profile = {
+    //   avatar: 'assets/Me.JPG',
+    //   name: 'Hack Reactor',
+    //   address: '369 Lexington Ave. 11th Fl.',
+    //   blurb: 'We Love Them Like You Do'
+    // }
+
     /** check if user is logged in */
     this.afAuth.authState.subscribe(user => {
       if (!user) {
@@ -35,15 +43,17 @@ export class ProfilePage {
         return;
       }
       this.user.displayName = user.displayName;
+      this.user.uid = user.uid;
+
+      this.firebase.getProfile(user.uid)
+        .subscribe(profile => {
+          this.user.profile = profile;
+        });
+
+
     });
 
-    /** hard coded profile data */
-    this.user.profile = {
-      avatar: 'assets/Me.JPG',
-      name: 'Hack Reactor',
-      address: '369 Lexington Ave. 11th Fl.',
-      slogan: 'We Love Them Like You Do'
-    }
+
 
     this.petRef$ = this.firebase.getPets(15);
     this.totalPets = 15;
@@ -115,6 +125,7 @@ export class ProfilePage {
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
         this.user.profile = newProfile;
+        this.firebase.updateProfile(this.user.uid, this.user.profile);
       }
     });
 

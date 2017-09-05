@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Profile - {{user.displayName}}</ion-title>
+    <ion-title>{{user.displayName}}</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="doOpenMenu($event)">
@@ -36,7 +36,7 @@
                   item-start
       >
         <img class="profile-avatar-pic"
-            [src]="user.profile.avatar"
+            [src]="(profile)?.profPic"
         />
       </ion-avatar>
 
@@ -45,13 +45,13 @@
 
     <ion-col col-8>
       <ion-row class="profile-title">
-        <h1 id="profile-name">{{user.profile.name}}</h1>
+        <h1 id="profile-name">{{(user.profile)?.displayName}}</h1>
       </ion-row>
       <ion-row class="profile-title">
-        <h1 id="profile-address">{{user.profile.address}}</h1>
+        <h1 id="profile-address">{{(user.profile)?.address}}</h1>
       </ion-row>
       <ion-row class="profile-title">
-        <h1 id="profile-slogan">{{user.profile.slogan}}</h1>
+        <h1 id="profile-slogan">{{(user.profile)?.slogan}}</h1>
       </ion-row>
       <ion-row class="profile-title">
         <button id="profile-edit"

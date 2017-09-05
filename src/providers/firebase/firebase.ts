@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 export class FirebaseProvider {
+
+  profileUrl: string = 'accounts';
 
   constructor(
     private db: AngularFireDatabase
   ) {
     // console.log('Hello FirebaseProvider Provider');
+  }
+
+  getProfile(uid): FirebaseObjectObservable<any> {
+    return this.db.object(`${this.profileUrl}/${uid}`);
+  }
+
+  updateProfile(uid, profile) {
+    return this.db.object(`${this.profileUrl}/${uid}`).set(profile);
   }
 
   getPets(limit: number = 0) {
