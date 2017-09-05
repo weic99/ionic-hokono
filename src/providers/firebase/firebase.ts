@@ -7,6 +7,7 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 export class FirebaseProvider {
 
   profileUrl: string = 'accounts';
+  getMyPetsUrl: string = 'pets';
 
   constructor(
     private db: AngularFireDatabase
@@ -19,15 +20,19 @@ export class FirebaseProvider {
   }
 
   updateProfile(uid, profile) {
-    return this.db.object(`${this.profileUrl}/${uid}`).set(profile);
+    return this.db.object(`${this.profileUrl}/${uid}`).update(profile);
   }
 
-  getPets(limit: number = 0) {
-    return this.db.list('api/pokemon', {
+  getPets(uid, limit: number = 0) {
+    return this.db.list(`${this.profileUrl}/${uid}/${this.getMyPetsUrl}`, {
       query: {
         limitToFirst: limit
       }
     });
+  }
+
+  updatePetProfile(uid, key, profile) {
+    return this.db.list(`${this.profileUrl}/${uid}/${this.getMyPetsUrl}`).update(key, profile);
   }
 
   getAllPets(limit: number = 10) {

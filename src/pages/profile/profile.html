@@ -87,7 +87,7 @@
       <ion-avatar item-start
                   class='avatar'
       >
-        <img [src]="pet.imageUrl" />
+        <img [src]="pet.filePath" />
       </ion-avatar>
 
       <button ion-button
@@ -100,7 +100,7 @@
       </button>
 
       <h1>{{pet.name}}</h1>
-      <span *ngFor="let type of pet.types"> {{type +' '}} </span>
+      <span> {{pet.description}} </span>
 
     </ion-item>
   </ion-list>

@@ -50,15 +50,12 @@ export class ProfilePage {
           this.user.profile = profile;
         });
 
-
-    });
-
-
-
-    this.petRef$ = this.firebase.getPets(15);
-    this.totalPets = 15;
-    this.petRef$.subscribe(pets => {
-      this.pets = pets;
+      /** get the user pets */
+      this.petRef$ = this.firebase.getPets(this.user.uid, 15);
+      this.totalPets = 15;
+      this.petRef$.subscribe(pets => {
+        this.pets = pets;
+      });
     });
     this.filter = '';
   }
@@ -79,7 +76,7 @@ export class ProfilePage {
 
     setTimeout(() => {
       this.totalPets = this.totalPets + 10;
-      this.petRef$ = this.firebase.getPets(this.totalPets);
+      this.petRef$ = this.firebase.getPets(this.user.uid, this.totalPets);
       this.petRef$.subscribe(pets => {
         this.pets.push(...pets.slice(-10));
       });
@@ -95,7 +92,9 @@ export class ProfilePage {
 
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
-        this.pets[pet.number - 1] = newProfile;
+        console.log('', newProfile);
+        console.log('pet', pet);
+        this.firebase.updatePetProfile(this.user.uid, pet.$key, newProfile);
       }
     });
 

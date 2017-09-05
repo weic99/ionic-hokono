@@ -24,7 +24,7 @@
 
   <div class="profile-avatar"
        text-center
-       [style.background-image]="'url(' + pet.imageUrl + ')'"
+       [style.background-image]="'url(' + pet.filePath + ')'"
   >
   </div>
 
@@ -48,14 +48,14 @@
     <ion-input type="text" value="{{pet.name}}" maxlength="16" [(ngModel)]="pet.name"></ion-input>
   </ion-item>
 
-  <!-- <ion-item>
+  <ion-item>
     <ion-label>
-      <ion-icon color="dark" name="md-home"></ion-icon>
+      <ion-icon color="dark" name="ios-create"></ion-icon>
     </ion-label>
-    <ion-input value="{{profile.address}}" [(ngModel)]="profile.address"></ion-input>
+    <ion-input value="{{pet.description}}" [(ngModel)]="pet.description"></ion-input>
   </ion-item>
 
-  <ion-item>
+  <!-- <ion-item>
     <ion-label>
       <ion-icon color="dark" name="md-quote"></ion-icon>
     </ion-label>
