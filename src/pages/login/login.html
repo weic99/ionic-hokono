@@ -51,23 +51,27 @@
   </form>
 
   <div padding>
-    <button ion-button
-            color="primary"
-            block
-            (click)="doLogin('facebook')"
+    <ion-item class="login"
+              color="none"
+              block
+              no-lines
+              (click)="doLogin('facebook')"
     >
+      <ion-icon item-start name="logo-facebook"></ion-icon>
       Sign in with Facebook
-    </button>
+    </ion-item>
   </div>
 
   <div padding>
-    <button ion-button
-            color="primary"
-            block
-            (click)="doLogin('google')"
+    <ion-item class="login"
+              color="none"
+              block
+              no-lines
+              (click)="doLogin('google')"
     >
+      <ion-icon item-start name="logo-googleplus"></ion-icon>
       Sign in with Google
-    </button>
+    </ion-item>
   </div>
 
   <div padding-horizontal> Don't have an account? </div>
