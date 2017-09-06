@@ -23,7 +23,7 @@
     </ion-segment>
   </div>
 
-  <div class="search">
+  <div class="search" [hidden]="account.accType !== 'shelter'">
     <ion-searchbar
                 debounce=500
                 placeholder="address"
@@ -52,7 +52,7 @@
       <button   ion-button
                 block
                 no-lines
-                [disabled]="!account.accType"
+                [disabled]="!account.accType || (account.accType === 'shelter' && !account.address)"
                 (click)="next()"
       >
         Next
