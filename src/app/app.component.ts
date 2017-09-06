@@ -31,9 +31,9 @@ export class MyApp {
         // console.log('Not logged in');
       } else {
         this.rootPage = TabsPage;
-        this.loader.dismiss();
       }
-    });
+      this.loader.dismiss();
+    }, () => this.loader.dismiss(), () => this.loader.dismiss());
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

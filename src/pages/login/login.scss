@@ -1,10 +1,16 @@
 page-login {
   ion-item.login {
     cursor: pointer;
-    border: 1px solid rgba(47, 44, 44, 1.00) !important;
+    color: white;
+    transition:all 0.5s ease-out;
   }
   ion-item.login:hover {
-    background-color: #777 !important;
-    color: rgba(255, 255, 255, 0.97);
+    transform:scale(1.05);
+  }
+  .facebook {
+    background-color: #3B5898;
+  }
+  .google {
+    background-color: #dd4b39;
   }
 }
