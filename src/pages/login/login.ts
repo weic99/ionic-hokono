@@ -50,6 +50,7 @@ export class LoginPage {
             cssClass: 'toast-fail'
           }).present();
         });
+
     } else if (str === 'facebook') {
       this.User.facebookSignIn()
         .then(() => this.loader.dismiss())
@@ -61,6 +62,7 @@ export class LoginPage {
             cssClass: 'toast-fail'
           }).present();
         });
+
     } else if (str === 'email') {
       this.User.signInWithEmailAndPassword(this.account.email, this.account.password)
         .then(() => this.loader.dismiss())
