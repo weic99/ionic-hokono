@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -10,10 +11,11 @@ export class CreateProfilePage {
 
   constructor(
     public navCtrl: NavController,
+    private afAuth: AngularFireAuth
   ) { }
 
-  ionViewDidLoad() {
-
+  logout() {
+    this.afAuth.auth.signOut();
   }
 
 }

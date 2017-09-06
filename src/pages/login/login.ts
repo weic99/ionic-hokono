@@ -4,7 +4,6 @@ import { LoadingController } from 'ionic-angular';
 
 import { UserProvider } from '../../providers/user/user';
 
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -23,7 +22,7 @@ export class LoginPage {
     // public appCtrl: App,
     private User: UserProvider,
     private toastCtrl: ToastController,
-    private loadingCtrl: LoadingController,
+    private loadingCtrl: LoadingController
   ) {
     this.account = {
       email: '',
@@ -65,6 +64,7 @@ export class LoginPage {
       })
       .catch((err) => {
         this.loader.dismiss();
+
         this.toastCtrl.create({
           message: err.message,
           duration: 2000,
@@ -72,42 +72,6 @@ export class LoginPage {
         }).present();
       })
 
-    // if (str === 'google') {
-    //   this.User.googleSignIn()
-    //     .then(() => this.loader.dismiss())
-    //     .catch((err) => {
-    //       console.log('err', err);
-    //       this.toastCtrl.create({
-    //         message: err.message,
-    //         duration: 2000,
-    //         cssClass: 'toast-fail'
-    //       }).present();
-    //     });
-
-    // } else if (str === 'facebook') {
-    //   this.User.facebookSignIn()
-    //     .then(() => this.loader.dismiss())
-    //     .catch((err) => {
-    //       console.log('err', err);
-    //       this.toastCtrl.create({
-    //         message: err.message,
-    //         duration: 2000,
-    //         cssClass: 'toast-fail'
-    //       }).present();
-    //     });
-
-    // } else if (str === 'email') {
-    //   this.User.signInWithEmailAndPassword(this.account.email, this.account.password)
-    //     .then(() => this.loader.dismiss())
-    //     .catch((err) => {
-    //       console.log('err', err);
-    //       this.toastCtrl.create({
-    //         message: err.message,
-    //         duration: 2000,
-    //         cssClass: 'toast-fail'
-    //       }).present();
-    //     });
-    // }
   }
 
   doSignUp() {
@@ -116,7 +80,7 @@ export class LoginPage {
 
   presentLoading() { console.log('called')
     this.loader = this.loadingCtrl.create({
-      content: "Authenticating...2",
+      content: "Logging in...",
     });
     this.loader.present();
   }

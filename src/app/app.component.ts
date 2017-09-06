@@ -6,6 +6,7 @@ import { LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Autostart } from '@ionic-native/autostart';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,8 @@ export class MyApp {
     splashScreen: SplashScreen,
     private loadingCtrl: LoadingController,
     private afAuth: AngularFireAuth,
-    private autostart: Autostart
+    private autostart: Autostart,
+    private firebase: FirebaseProvider
   ) {
     this.autostart.enable();
     this.presentLoading();
@@ -28,9 +30,19 @@ export class MyApp {
     this.afAuth.authState.subscribe(user => {
       if (!user) {
         this.rootPage = 'LoginPage';
-        // console.log('Not logged in');
       } else {
-        this.rootPage = TabsPage;
+
+        this.firebase.getProfile()
+          .subscribe(profile => {
+            if (!profile.$value) {
+              this.rootPage = 'CreateProfilePage';
+            } else {
+              this.rootPage = TabsPage;
+            }
+            console.log('profile', profile);
+          }, (err) => {
+            console.error('profile err', err);
+          });
       }
       this.loader.dismiss();
     }, () => this.loader.dismiss(), () => this.loader.dismiss());

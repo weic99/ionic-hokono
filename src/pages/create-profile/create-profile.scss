@@ -1,3 +1,10 @@
 page-create-profile {
-
+  .title.title-md{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+  }
 }
