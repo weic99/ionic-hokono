@@ -53,3 +53,23 @@ page-select-modal > ion-content > div.scroll-content {
   position: relative;
   top: -1px;
 }
+
+.navigation {
+  width: 100%;
+  position: relative;
+  top: 62vh;
+  border: 1px outset color($colors, primary) !important;
+
+  ion-item {
+    font-size: 4vh !important;
+    text-align: center !important;
+    width: 50% !important;
+    color: color($colors, primary) !important;
+  }
+
+  ion-item:hover {
+    cursor: pointer;
+    background-color: color($colors, primary);
+    color: white !important;
+  }
+}

@@ -1,0 +1,47 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Select Account Type</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding>
+    <ion-segment [(ngModel)]="account.accType"
+                  color="primary"
+    >
+      <ion-segment-button value="shelter">
+        Shelter
+      </ion-segment-button>
+      <ion-segment-button value="user">
+        User
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="navigation">
+    <ion-row>
+    <ion-item
+              block
+              no-lines
+              (click)="back()"
+    >
+      Back
+    </ion-item>
+    <ion-item
+              block
+              no-lines
+              (click)="next()"
+    >
+      Next
+    </ion-item>
+  </ion-row>
+  </div>
+
+
+
+</ion-content>

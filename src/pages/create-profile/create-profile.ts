@@ -9,6 +9,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class CreateProfilePage {
 
+  account: {
+    accType: string,
+    address: string,
+    displayName: string,
+  }
+
   constructor(
     public navCtrl: NavController,
     private afAuth: AngularFireAuth
@@ -16,6 +22,13 @@ export class CreateProfilePage {
 
   logout() {
     this.afAuth.auth.signOut();
+  }
+
+  start() {
+    this.navCtrl.push('SelectAccountTypePage', {account: this.account}, {
+      animation: 'transition',
+      duration: 300
+    });
   }
 
 }

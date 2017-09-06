@@ -39,7 +39,7 @@ export class MyApp {
             } else {
               this.rootPage = TabsPage;
             }
-            console.log('profile', profile);
+            //console.log('profile', profile);
           }, (err) => {
             console.error('profile err', err);
           });
