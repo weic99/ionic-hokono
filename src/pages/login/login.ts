@@ -35,55 +35,88 @@ export class LoginPage {
     // console.log('ionViewDidLoad LoginPage');
   }
 
-  doLogin(str?: string) {
+  doLogin(str: string) {
     //console.log(str);
     this.presentLoading();
 
-    if (str === 'google') {
-      this.User.googleSignIn()
-        .then(() => this.loader.dismiss())
-        .catch((err) => {
-          console.log('err', err);
-          this.toastCtrl.create({
-            message: err.message,
-            duration: 2000,
-            cssClass: 'toast-fail'
-          }).present();
-        });
+    let func: Function;
 
-    } else if (str === 'facebook') {
-      this.User.facebookSignIn()
-        .then(() => this.loader.dismiss())
-        .catch((err) => {
-          console.log('err', err);
-          this.toastCtrl.create({
-            message: err.message,
-            duration: 2000,
-            cssClass: 'toast-fail'
-          }).present();
-        });
-
-    } else if (str === 'email') {
-      this.User.signInWithEmailAndPassword(this.account.email, this.account.password)
-        .then(() => this.loader.dismiss())
-        .catch((err) => {
-          console.log('err', err);
-          this.toastCtrl.create({
-            message: err.message,
-            duration: 2000,
-            cssClass: 'toast-fail'
-          }).present();
-        });
+    switch(str) {
+      case 'facebook':
+        func = this.User.facebookSignIn.bind(this.User);
+        break;
+      case 'google':
+        func = this.User.googleSignIn.bind(this.User);
+      break;
+      case 'email':
+        func = this.User.signInWithEmailAndPassword.bind(this.User, this.account.email, this.account.password);
+      break;
+      default:
+        break;
     }
+
+    if (typeof func !== 'function') {
+      return;
+    }
+
+    func()
+      .then(() => {
+        this.loader.dismiss();
+      })
+      .catch((err) => {
+        this.loader.dismiss();
+        this.toastCtrl.create({
+          message: err.message,
+          duration: 2000,
+          cssClass: 'toast-fail'
+        }).present();
+      })
+
+    // if (str === 'google') {
+    //   this.User.googleSignIn()
+    //     .then(() => this.loader.dismiss())
+    //     .catch((err) => {
+    //       console.log('err', err);
+    //       this.toastCtrl.create({
+    //         message: err.message,
+    //         duration: 2000,
+    //         cssClass: 'toast-fail'
+    //       }).present();
+    //     });
+
+    // } else if (str === 'facebook') {
+    //   this.User.facebookSignIn()
+    //     .then(() => this.loader.dismiss())
+    //     .catch((err) => {
+    //       console.log('err', err);
+    //       this.toastCtrl.create({
+    //         message: err.message,
+    //         duration: 2000,
+    //         cssClass: 'toast-fail'
+    //       }).present();
+    //     });
+
+    // } else if (str === 'email') {
+    //   this.User.signInWithEmailAndPassword(this.account.email, this.account.password)
+    //     .then(() => this.loader.dismiss())
+    //     .catch((err) => {
+    //       console.log('err', err);
+    //       this.toastCtrl.create({
+    //         message: err.message,
+    //         duration: 2000,
+    //         cssClass: 'toast-fail'
+    //       }).present();
+    //     });
+    // }
   }
 
   doSignUp() {
     this.navCtrl.setRoot('SignupPage');
   }
 
-  presentLoading() {
+  presentLoading() { console.log('called')
     this.loader = this.loadingCtrl.create({
-      content: "Authenticating...",
+      content: "Authenticating...2",
     });
     this.loader.present();
   }
