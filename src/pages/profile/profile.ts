@@ -89,8 +89,6 @@ export class ProfilePage {
 
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
-        console.log('', newProfile);
-        console.log('pet', pet);
         this.firebase.updatePetProfile(pet.$key, newProfile);
       }
     });
