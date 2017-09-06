@@ -78,7 +78,7 @@ export class LoginPage {
     this.navCtrl.setRoot('SignupPage');
   }
 
-  presentLoading() { console.log('called')
+  presentLoading() {
     this.loader = this.loadingCtrl.create({
       content: "Logging in...",
     });

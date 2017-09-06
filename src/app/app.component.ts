@@ -34,9 +34,9 @@ export class MyApp {
 
         this.firebase.getProfile()
           .subscribe(profile => {
-            if (!profile.$value) {
-              this.rootPage = TabsPage;
-              //this.rootPage = 'CreateProfilePage';
+            if (!profile.acctType) {
+              //console.log('ppp', profile);
+              this.rootPage = 'CreateProfilePage';
             } else {
               this.rootPage = TabsPage;
             }

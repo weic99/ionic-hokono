@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-select-account-type',
-  templateUrl: 'select-account-type.html',
+  selector: 'page-select-username',
+  templateUrl: 'select-username.html',
 })
-export class SelectAccountTypePage {
+export class SelectUsernamePage {
 
   account: {
     accType: string,
@@ -23,10 +23,7 @@ export class SelectAccountTypePage {
   }
 
   next() {
-    this.navCtrl.push('SelectUsernamePage', {account: this.account}, {
-      animation: 'transition',
-      duration: 300
-    });
+
   }
 
   back() {

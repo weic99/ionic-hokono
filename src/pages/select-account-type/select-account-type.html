@@ -1,8 +1,8 @@
 
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Select Account Type</ion-title>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Choose Account Type</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -25,23 +25,22 @@
 
   <div class="navigation">
     <ion-row>
-    <ion-item
-              block
-              no-lines
-              (click)="back()"
-    >
-      Back
-    </ion-item>
-    <ion-item
-              block
-              no-lines
-              (click)="next()"
-    >
-      Next
-    </ion-item>
-  </ion-row>
+      <button   ion-button
+                block
+                no-lines
+                (click)="back()"
+      >
+        Back
+      </button>
+      <button   ion-button
+                block
+                no-lines
+                [disabled]="!account.accType"
+                (click)="next()"
+      >
+        Next
+      </button>
+    </ion-row>
   </div>
-
-
 
 </ion-content>
