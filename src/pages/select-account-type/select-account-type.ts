@@ -16,6 +16,10 @@ export class SelectAccountTypePage {
 
   showAutoComplete: boolean = false;
 
+  /** Google api autocomplete */
+  addresses: string[];
+  addressQuery: string; /** query for to search */
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
@@ -36,6 +40,11 @@ export class SelectAccountTypePage {
       animation: 'transition',
       duration: 300
     });
+  }
+
+  selectAddress(address: string) {
+    this.addressQuery = address;
+    this.account.address = address;
   }
 
   toggleShowAutoComplete() {

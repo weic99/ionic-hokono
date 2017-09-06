@@ -27,15 +27,15 @@
     <ion-searchbar
                 debounce=500
                 placeholder="address"
-                [(ngModel)]="account.address"
+                [(ngModel)]="addressQuery"
                 (ionFocus)="toggleShowAutoComplete()"
                 (ionBlur)="toggleShowAutoComplete()"
     >
     </ion-searchbar>
     <ion-list *ngIf="showAutoComplete">
-      <!-- <ion-item *ngFor="let breed of breeds | filterString: searchBreed" (click)="selectBreed(breed)">
-        {{breed}}
-      </ion-item> -->
+      <ion-item *ngFor="let item of addresses " (click)="selectAddress(item)">
+        {{item}}
+      </ion-item>
     </ion-list>
   </div>
 
