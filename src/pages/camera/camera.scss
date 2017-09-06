@@ -15,6 +15,13 @@ page-camera {
 
   .search {
     max-height: 100px;
+
+    .searchbar-ios {
+      border-radius: 7px;
+      min-height: 35px;
+      padding: 1px 2px;
+    }
+
     ion-list {
       position: absolute;
       overflow-y: scroll;

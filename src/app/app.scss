@@ -63,9 +63,13 @@ page-select-modal > ion-content > div.scroll-content {
   button {
     font-size: 4vh !important;
     text-align: center !important;
-    width: 50% !important;
+    width: 70%;
     color: color($colors, primary) !important;
     background-color: white !important;
+  }
+
+  button.back {
+    width: 30%;
   }
 
   button:hover {

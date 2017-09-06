@@ -19,10 +19,11 @@ export class SelectUsernamePage {
     public navParams: NavParams
   ) {
     this.account = {...this.navParams.get('account')};
-    console.log('SelectAccountTypePage', this.account);
+    //console.log('SelectAccountTypePage', this.account);
   }
 
   next() {
+    /** Create the profile with account info */
 
   }
 

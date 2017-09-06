@@ -14,12 +14,14 @@ export class SelectAccountTypePage {
     displayName: string,
   }
 
+  showAutoComplete: boolean = false;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
     this.account = {...this.navParams.get('account')};
-    console.log('SelectAccountTypePage', this.account);
+    //console.log('SelectAccountTypePage', this.account);
   }
 
   next() {
@@ -34,5 +36,11 @@ export class SelectAccountTypePage {
       animation: 'transition',
       duration: 300
     });
+  }
+
+  toggleShowAutoComplete() {
+    setTimeout(() => {
+      this.showAutoComplete = !this.showAutoComplete;
+    }, 300);
   }
 }

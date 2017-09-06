@@ -4,4 +4,32 @@ page-select-account-type {
     height: 100% !important;
     border: 1px solid color($colors, primary);
   }
+
+  .search {
+    max-height: 100px;
+
+    .searchbar-ios {
+      border-radius: 7px;
+      min-height: 35px;
+      padding: 1px 2px;
+    }
+
+    ion-list {
+      position: absolute;
+      overflow-y: scroll;
+      max-height: 300px;
+      z-index: 1000;
+      left: 25px;
+      width: calc(100% - 20px);
+      max-width: calc(100vw - 48px);
+      margin: -7px -1px 0;
+      border: 1px solid #999;
+      border-top: none;
+    }
+
+    ion-item:hover {
+      cursor: pointer;
+      background: #f1f1f1
+    }
+  }
 }

@@ -23,11 +23,28 @@
     </ion-segment>
   </div>
 
+  <div class="search">
+    <ion-searchbar
+                debounce=500
+                placeholder="address"
+                [(ngModel)]="account.address"
+                (ionFocus)="toggleShowAutoComplete()"
+                (ionBlur)="toggleShowAutoComplete()"
+    >
+    </ion-searchbar>
+    <ion-list *ngIf="showAutoComplete">
+      <!-- <ion-item *ngFor="let breed of breeds | filterString: searchBreed" (click)="selectBreed(breed)">
+        {{breed}}
+      </ion-item> -->
+    </ion-list>
+  </div>
+
   <div class="navigation">
     <ion-row>
       <button   ion-button
                 block
                 no-lines
+                class="back"
                 (click)="back()"
       >
         Back
