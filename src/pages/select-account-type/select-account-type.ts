@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+declare var google: any;
 
 @IonicPage()
 @Component({
@@ -19,10 +21,12 @@ export class SelectAccountTypePage {
   /** Google api autocomplete */
   addresses: string[];
   addressQuery: string; /** query for to search */
+  service = new google.maps.places.AutocompleteService();
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private zone: NgZone
   ) {
     this.account = {...this.navParams.get('account')};
     //console.log('SelectAccountTypePage', this.account);
@@ -51,5 +55,24 @@ export class SelectAccountTypePage {
     setTimeout(() => {
       this.showAutoComplete = !this.showAutoComplete;
     }, 300);
+  }
+
+  updateSearch() {
+    if (this.addressQuery == '') {
+      this.addresses = [];
+      return;
+    }
+    let me = this;
+    this.service.getPlacePredictions({
+      input: this.addressQuery,
+      componentRestrictions: {country: 'US'}
+    }, function (predictions, status) {
+      me.addresses = [];
+      me.zone.run(function () {
+        predictions.forEach(function (prediction) {
+          me.addresses.push(prediction.description);
+        });
+      });
+    });
   }
 }

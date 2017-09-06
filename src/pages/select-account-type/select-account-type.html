@@ -30,6 +30,7 @@
                 [(ngModel)]="addressQuery"
                 (ionFocus)="toggleShowAutoComplete()"
                 (ionBlur)="toggleShowAutoComplete()"
+                (ionInput)="updateSearch()"
     >
     </ion-searchbar>
     <ion-list *ngIf="showAutoComplete">
