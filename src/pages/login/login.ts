@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 import { UserProvider } from '../../providers/user/user';
 
@@ -14,13 +15,15 @@ export class LoginPage {
     email: string,
     password: string
   }
+  loader: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     // public appCtrl: App,
     private User: UserProvider,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController,
   ) {
     this.account = {
       email: '',
@@ -34,13 +37,11 @@ export class LoginPage {
 
   doLogin(str?: string) {
     //console.log(str);
+    this.presentLoading();
 
     if (str === 'google') {
       this.User.googleSignIn()
-        // .then((res) => {
-        //   // this.storage.set('user', JSON.stringify(res));
-        //   this.appCtrl.getRootNavs()[0].setRoot(TabsPage);
-        // })
+        .then(() => this.loader.dismiss())
         .catch((err) => {
           console.log('err', err);
           this.toastCtrl.create({
@@ -51,6 +52,7 @@ export class LoginPage {
         });
     } else if (str === 'facebook') {
       this.User.facebookSignIn()
+        .then(() => this.loader.dismiss())
         .catch((err) => {
           console.log('err', err);
           this.toastCtrl.create({
@@ -74,5 +76,12 @@ export class LoginPage {
 
   doSignUp() {
     this.navCtrl.setRoot('SignupPage');
+  }
+
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Authenticating...",
+    });
+    this.loader.present();
   }
 }

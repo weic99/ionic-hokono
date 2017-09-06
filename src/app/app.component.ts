@@ -30,7 +30,8 @@ export class MyApp {
         this.rootPage = 'LoginPage';
         // console.log('Not logged in');
       } else {
-        this.rootPage = TabsPage
+        this.rootPage = TabsPage;
+        this.loader.dismiss();
       }
     });
 
@@ -45,7 +46,6 @@ export class MyApp {
   presentLoading() {
     this.loader = this.loadingCtrl.create({
       content: "Authenticating...",
-      duration: 250
     });
     this.loader.present();
   }

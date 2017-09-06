@@ -3,7 +3,7 @@ page-login {
     cursor: pointer;
     border: 1px solid rgba(47, 44, 44, 1.00) !important;
   }
-  ion-item:hover {
+  ion-item.login:hover {
     background-color: #777 !important;
     color: rgba(255, 255, 255, 0.97);
   }
