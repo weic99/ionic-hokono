@@ -63,6 +63,7 @@ export class LoginPage {
         });
     } else if (str === 'email') {
       this.User.signInWithEmailAndPassword(this.account.email, this.account.password)
+        .then(() => this.loader.dismiss())
         .catch((err) => {
           console.log('err', err);
           this.toastCtrl.create({
