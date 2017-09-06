@@ -1,3 +1,11 @@
 page-select-username {
-
+  ion-input {
+    position: absolute;
+    top: 27vh;
+    border: 1px solid color($colors, primary);
+  }
+  input {
+    margin: 1vh 2vw !important;
+    font-size: 3vh;
+  }
 }

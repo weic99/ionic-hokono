@@ -60,7 +60,7 @@ page-select-modal > ion-content > div.scroll-content {
   top: 62vh;
   // border: 1px outset color($colors, primary) !important;
 
-  ion-item, button {
+  button {
     font-size: 4vh !important;
     text-align: center !important;
     width: 50% !important;
@@ -68,7 +68,7 @@ page-select-modal > ion-content > div.scroll-content {
     background-color: white !important;
   }
 
-  ion-item:hover, button:hover {
+  button:hover {
     cursor: pointer;
     background-color: color($colors, primary) !important;
     color: white !important;
