@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar hideBackButton="true">
-    <ion-title>Choose Username</ion-title>
+    <ion-title>Choose a Username</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,30 +11,33 @@
 <ion-content padding>
 
   <div padding>
-    <ion-input
-      type="text"
-      clearInput
-      [(ngModel)]="account.displayName"
-    >
-    </ion-input>
+    <ion-row>
+      <ion-input
+        type="text"
+        clearInput
+        [(ngModel)]="account.displayName"
+      >
+      </ion-input>
+    </ion-row>
   </div>
 
   <div class="navigation">
     <ion-row>
-      <ion-item
+      <button   ion-button
                 block
                 no-lines
                 (click)="back()"
       >
         Back
-      </ion-item>
-      <ion-item
+      </button>
+      <button   ion-button
                 block
                 no-lines
+                [disabled]="!account.displayName"
                 (click)="next()"
       >
         Next
-      </ion-item>
+      </button>
     </ion-row>
   </div>
 
