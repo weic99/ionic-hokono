@@ -61,14 +61,6 @@ export class FirebaseProvider {
       bundle[`/${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}/${key}/${this.petStarredByUrl}/${this.auth.user.uid}`] = {};
       bundle[`/${this.globalPetUrl}/${key}/${this.petStarredByUrl}/${this.auth.user.uid}`] = {};
     }
-    // return this.db.database.ref().transaction((root) => {
-    //   if (root) {
-
-    //     console.log('obj is ', root);
-    //   }
-
-    //   return root;
-    // });
 
     return this.db.database.ref().update(bundle);
   }
