@@ -9,14 +9,15 @@
 
 
 <ion-content>
+
   <ion-card *ngFor="let item of posts">
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="item.user.avatar">
+        <img [src]="(item.user)?.avatar || '../../assets/defaultProfilePic.png'">
       </ion-avatar>
-      <h2>{{item.title}}</h2>
-      <small>{{item.user.username}}</small>
+      <h2>{{item.description}}</h2>
+      <small>{{(item.user)?.displayName}}</small>
     </ion-item>
 
     <img [src]="item.image">
@@ -27,23 +28,24 @@
 
     <ion-row>
       <ion-col align-self-center>
-        <button ion-button color="primary" clear small icon-start (click)="doUpVote(item)">
-          <ion-icon name='thumbs-up' class="adjust-top"></ion-icon>
-          {{item.likes}}
+        <button ion-button color="primary" clear small icon-left (click)="doUpVote(item)">
+          <ion-icon name='ios-thumbs-up' class="adjust-top"></ion-icon>
+          <span>{{item.likes}}</span>
         </button>
       </ion-col>
       <ion-col align-self-center>
-        <button ion-button color="primary" clear small icon-start (click)="goToPost(item)">
+        <button ion-button color="primary" clear small icon-left (click)="goToPost(item)">
           <ion-icon name='text'></ion-icon>
           {{item.comments}} {{item.comments === 1 ? comments : comment}}
         </button>
       </ion-col>
       <ion-col center text-center align-self-center>
         <ion-note>
-          11h ago
+          {{item.timeStamp | timeToDate}}
         </ion-note>
       </ion-col>
     </ion-row>
 
   </ion-card>
+
 </ion-content>
