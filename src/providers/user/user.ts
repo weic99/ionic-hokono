@@ -36,9 +36,9 @@ export class UserProvider {
           console.log('err in google-plus', err);
           throw err;
         })
-    } else if (this.platform.is('mobileweb')) {
+    } // else if (this.platform.is('mobileweb')) {
       return <Promise<any>>firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    }
+    //}
   }
 
   facebookSignIn(): Promise<any> {
@@ -51,9 +51,9 @@ export class UserProvider {
           console.log('err in facebook', err);
           throw err;
         })
-    } else if (this.platform.is('mobileweb')) {
+    } // else if (this.platform.is('mobileweb')) {
       return <Promise<any>>firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
-    }
+    //}
   }
 
   createUserWithEmailAndPassword(email, password) {

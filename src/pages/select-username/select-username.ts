@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,9 @@ export class SelectUsernamePage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private firebase: FirebaseProvider,
+    public toastCtrl: ToastController
   ) {
     this.account = {...this.navParams.get('account')};
     //console.log('SelectAccountTypePage', this.account);
@@ -24,7 +27,22 @@ export class SelectUsernamePage {
 
   next() {
     /** Create the profile with account info */
-
+    this.firebase.updateProfile(this.account)
+      .then(() => {
+        this.toastCtrl.create({
+          message: 'Welcome to Hokono',
+          duration: 2000,
+          cssClass: 'toast-success',
+          position: 'top'
+        }).present();
+      })
+      .catch(() => {
+        this.toastCtrl.create({
+          message: 'Something Went Wrong',
+          duration: 2000,
+          cssClass: 'toast-fail'
+        }).present();
+      });
   }
 
   back() {

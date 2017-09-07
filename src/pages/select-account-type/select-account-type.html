@@ -25,7 +25,7 @@
 
   <div class="search" [hidden]="account.accType !== 'shelter'">
     <ion-searchbar
-                debounce=500
+                debounce=300
                 placeholder="address"
                 [(ngModel)]="addressQuery"
                 (ionFocus)="toggleShowAutoComplete()"

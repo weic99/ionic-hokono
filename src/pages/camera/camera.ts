@@ -94,14 +94,14 @@ export class CameraPage {
     this.firebase.postNewPet(this.newPet)
       .then(() => {
         this.toastCtrl.create({
-          message: `${this.newPet.name} profile submitted`,
-          duration: 20000,
+          message: `${this.newPet.name} Profile Submitted`,
+          duration: 2000,
           cssClass: 'toast-success'
         }).present();
       })
       .catch(() => {
         this.toastCtrl.create({
-          message: `Failed to submit profile`,
+          message: `Failed to Submit Profile`,
           duration: 2000,
           cssClass: 'toast-fail'
         }).present();
