@@ -54,6 +54,10 @@ export class FirebaseProvider {
     });
   }
 
+  getMyFollowingPosts() {
+
+  }
+
   togglePetFollow(key, profile, like = true) {
     let bundle = {};
 
