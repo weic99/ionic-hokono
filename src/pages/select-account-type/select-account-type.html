@@ -11,7 +11,7 @@
 <ion-content padding>
 
   <div padding>
-    <ion-segment [(ngModel)]="account.accType"
+    <ion-segment [(ngModel)]="account.acctType"
                   color="primary"
     >
       <ion-segment-button value="shelter">
@@ -23,7 +23,7 @@
     </ion-segment>
   </div>
 
-  <div class="search" [hidden]="account.accType !== 'shelter'">
+  <div class="search" [hidden]="account.acctType !== 'shelter'">
     <ion-searchbar
                 debounce=300
                 placeholder="address"
@@ -53,7 +53,7 @@
       <button   ion-button
                 block
                 no-lines
-                [disabled]="!account.accType || (account.accType === 'shelter' && !account.address)"
+                [disabled]="!account.acctType || (account.acctType === 'shelter' && !account.address)"
                 (click)="next()"
       >
         Next

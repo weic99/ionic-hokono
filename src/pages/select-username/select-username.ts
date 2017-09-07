@@ -10,7 +10,7 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 export class SelectUsernamePage {
 
   account: {
-    accType: string,
+    acctType: string,
     address: string,
     displayName: string,
   }
