@@ -40,37 +40,36 @@
       <h1>{{pet.name}}</h1>
       <span> {{pet.description}} </span>
 
-      <!-- Follow button -->
-      <div float-right>
-      <button class="toggle liked"
 
-            ion-button
-            round
-            block
-            padding-bottom
-            margin-bottom
-            (click)="toggleFollow(pet)"
-      >
-        <span class="follow">
-          {{(!!pet.followers && pet.followers[user?.uid]) ? 'Unfollow' : 'Follow' }}
-        </span>
-      </button>
+      <div item-end>
+        <!-- Follow button -->
+        <button class="toggle liked"
 
-      <!-- Like button -->
-      <button class="toggle star"
-              [ngClass]="{'liked' : (!!pet.starredBy && pet.starredBy[user?.uid]) }"
               ion-button
               round
-              icon-only
               block
-              padding-top
-              margin-top
               padding-bottom
               margin-bottom
-              (click)="toggleLike(pet)"
-      >
-        <ion-icon name="ios-star"></ion-icon>
-      </button>
+              (click)="toggleFollow(pet)"
+        >
+          <span class="follow">
+            {{(!!pet.followers && pet.followers[user?.uid]) ? 'Unfollow' : 'Follow' }}
+          </span>
+        </button>
+
+        <!-- Like button -->
+        <button class="toggle star"
+                [ngClass]="{'liked' : (!!pet.starredBy && pet.starredBy[user?.uid]) }"
+                ion-button
+                round
+                icon-only
+                block
+                padding-top
+                margin-top
+                (click)="toggleLike(pet)"
+        >
+          <ion-icon name="ios-star"></ion-icon>
+        </button>
       </div>
 
     </ion-item>
