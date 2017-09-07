@@ -47,7 +47,7 @@
         <h1 id="profile-name">{{(user.profile)?.displayName}}</h1>
       </ion-row>
       <ion-row class="profile-title">
-        <h1 id="profile-address">{{(user.profile)?.address}}</h1>
+        <h1 id="profile-address">{{(user.profile)?.address.slice(0 , user.profile.address.lastIndexOf(','))}}</h1>
       </ion-row>
       <ion-row class="profile-title">
         <h1 id="profile-slogan">{{(user.profile)?.slogan}}</h1>
