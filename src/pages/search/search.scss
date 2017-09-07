@@ -5,4 +5,18 @@ page-search {
     width: auto;
     max-width: 75px;
   }
+
+  .like {
+    background-color: transparent !important;
+    color: color($colors, primary);
+    opacity: 0.5;
+
+    ion-icon {
+      padding: 2px 5px 3px !important;
+    }
+  }
+
+  .liked {
+    opacity: 1;
+  }
 }

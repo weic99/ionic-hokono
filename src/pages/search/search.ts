@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -14,11 +15,13 @@ export class SearchPage {
   pets: any[] = []; /** pets to display */
   petRef$: FirebaseListObservable<any[]>; /** pet observable */
   totalPets: number;
+  user: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private firebase: FirebaseProvider
+    private firebase: FirebaseProvider,
+    public User: UserProvider
   ) {
     this.petRef$ = this.firebase.getAllPets(10);
     this.petRef$.subscribe(pets => {
@@ -26,6 +29,7 @@ export class SearchPage {
       this.totalPets = this.pets.length;
     });
     this.query = '';
+    this.user = User.user;
   }
 
   ionViewDidLoad() {
@@ -48,4 +52,13 @@ export class SearchPage {
 
   }
 
+  toggleLike(pet) {
+    pet['starredBy'] = (pet['starredBy'] || {});
+    pet['starredBy'][this.user.uid] = {
+      createdAt: Date.now(),
+      displayName: this.user.displayName
+    }
+
+    this.firebase.updatePetProfile(pet.$key, pet);
+  }
 }
