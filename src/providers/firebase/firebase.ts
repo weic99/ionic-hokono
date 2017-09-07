@@ -9,6 +9,10 @@ export class FirebaseProvider {
 
   profileUrl: string = 'accounts';
   getMyPetsUrl: string = 'pets';
+  myStarsUrl: string = 'myStars';
+  petStarredByUrl: string = 'starredBy';
+  globalPetUrl: string = 'pets';
+  globalPostsUrl: string ='posts';
 
   constructor(
     private db: AngularFireDatabase,
@@ -30,7 +34,7 @@ export class FirebaseProvider {
   }
 
   getAllPets(limit: number = 10) {
-    return this.db.list('pets', {
+    return this.db.list(this.globalPetUrl, {
       query: {
         limitToFirst: limit
       }
@@ -38,16 +42,40 @@ export class FirebaseProvider {
   }
 
   getAllPosts(limit: number = 10) {
-    return this.db.list('posts', {
+    return this.db.list(this.globalPostsUrl, {
       query: {
         limitToFirst: limit
       }
     });
   }
 
+  togglePetLike(key, profile, like = true) {
+    let bundle = {};
+
+    if (like) {
+      bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.myStarsUrl}/${key}`] = { name: profile.name };
+      bundle[`/${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}/${key}/${this.petStarredByUrl}/${this.auth.user.uid}`] = { displayName: this.auth.user.displayName, createdAt: Date.now() };
+      bundle[`/${this.globalPetUrl}/${key}/${this.petStarredByUrl}/${this.auth.user.uid}`] = { displayName: this.auth.user.displayName, createdAt: Date.now() };
+    } else {
+      bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.myStarsUrl}/${key}`] = {};
+      bundle[`/${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}/${key}/${this.petStarredByUrl}/${this.auth.user.uid}`] = {};
+      bundle[`/${this.globalPetUrl}/${key}/${this.petStarredByUrl}/${this.auth.user.uid}`] = {};
+    }
+    // return this.db.database.ref().transaction((root) => {
+    //   if (root) {
+
+    //     console.log('obj is ', root);
+    //   }
+
+    //   return root;
+    // });
+
+    return this.db.database.ref().update(bundle);
+  }
+
   updatePetProfile(key, profile) {
-    this.db.list('pets').update(key, profile);
-    return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).update(key, profile);
+    this.db.list(this.globalPetUrl).update(key, profile);
+    return this.db.list(`${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}`).update(key, profile);
   }
 
   updateProfile(profile) {
@@ -55,7 +83,7 @@ export class FirebaseProvider {
   }
 
   postNewPet(newPet) {
-    this.db.list('pets').push(newPet);
+    this.db.list(this.globalPetUrl).push(newPet);
     return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).push(newPet);
   }
 }
