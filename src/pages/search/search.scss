@@ -6,21 +6,28 @@ page-search {
     max-width: 75px;
   }
 
-  .like {
+  .toggle {
     background-color: transparent !important;
     color: color($colors, primary);
     opacity: 0.5;
+    width: 70px;
 
     ion-icon {
-      padding: 2px 5px 3px !important;
+      padding: 1px 5px 3px !important;
     }
 
     .follow {
       padding-top: 18px;
+      font-size: 14px;
     }
   }
 
   .liked {
     opacity: 1;
+  }
+
+  .star {
+    width: 35px;
+    margin-left: 35px;
   }
 }

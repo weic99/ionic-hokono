@@ -65,6 +65,6 @@ export class SearchPage {
   }
 
   toggleFollow(pet) {
-
+    this.firebase.togglePetFollow(pet.$key, pet, !(pet['followers'] && pet['followers'][this.user.uid]));
   }
 }

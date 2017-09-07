@@ -9,8 +9,13 @@ export class FirebaseProvider {
 
   profileUrl: string = 'accounts';
   getMyPetsUrl: string = 'pets';
+
   myStarsUrl: string = 'myStars';
+  myFollowingUrl: string = 'following';
+
   petStarredByUrl: string = 'starredBy';
+  petFollowersUrl:string = 'followers';
+
   globalPetUrl: string = 'pets';
   globalPostsUrl: string ='posts';
 
@@ -47,6 +52,22 @@ export class FirebaseProvider {
         limitToFirst: limit
       }
     });
+  }
+
+  togglePetFollow(key, profile, like = true) {
+    let bundle = {};
+
+    if (like) {
+      bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.myFollowingUrl}/${key}`] = { name: profile.name };
+      bundle[`/${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}/${key}/${this.petFollowersUrl}/${this.auth.user.uid}`] = { displayName: this.auth.user.displayName };
+      bundle[`/${this.globalPetUrl}/${key}/${this.petFollowersUrl}/${this.auth.user.uid}`] = { displayName: this.auth.user.displayName };
+    } else {
+      bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.myFollowingUrl}/${key}`] = {};
+      bundle[`/${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}/${key}/${this.petFollowersUrl}/${this.auth.user.uid}`] = {};
+      bundle[`/${this.globalPetUrl}/${key}/${this.petFollowersUrl}/${this.auth.user.uid}`] = {};
+    }
+
+    return this.db.database.ref().update(bundle);
   }
 
   togglePetLike(key, profile, like = true) {

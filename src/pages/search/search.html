@@ -42,7 +42,7 @@
 
       <!-- Follow button -->
       <div float-right>
-      <button class="like liked"
+      <button class="toggle liked"
 
             ion-button
             round
@@ -52,12 +52,12 @@
             (click)="toggleFollow(pet)"
       >
         <span class="follow">
-          {{(!!pet.followers && pet.followers[user?.uid]) ? 'Unfollowed' : 'Follow' }}
+          {{(!!pet.followers && pet.followers[user?.uid]) ? 'Unfollow' : 'Follow' }}
         </span>
       </button>
 
       <!-- Like button -->
-      <button class="like"
+      <button class="toggle star"
               [ngClass]="{'liked' : (!!pet.starredBy && pet.starredBy[user?.uid]) }"
               ion-button
               round
