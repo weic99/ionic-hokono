@@ -34,7 +34,7 @@ export class MyApp {
 
         this.firebase.getProfile()
           .subscribe(profile => {
-            if (!profile.acctType) {
+            if (!profile.accType) {
               //console.log('ppp', profile);
               this.rootPage = 'CreateProfilePage';
             } else {
