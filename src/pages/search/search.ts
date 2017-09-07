@@ -54,10 +54,12 @@ export class SearchPage {
 
   toggleLike(pet) {
     pet['starredBy'] = (pet['starredBy'] || {});
-    pet['starredBy'][this.user.uid] = {
-      createdAt: Date.now(),
-      displayName: this.user.displayName
-    }
+    pet['starredBy'][this.user.uid] = pet['starredBy'][this.user.uid]
+      ? {}
+      : {
+        createdAt: Date.now(),
+        displayName: this.user.displayName
+      };
 
     this.firebase.updatePetProfile(pet.$key, pet);
   }

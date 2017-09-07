@@ -46,6 +46,7 @@ export class FirebaseProvider {
   }
 
   updatePetProfile(key, profile) {
+    this.db.list('pets').update(key, profile);
     return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).update(key, profile);
   }
 
