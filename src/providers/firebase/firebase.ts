@@ -55,33 +55,31 @@ export class FirebaseProvider {
     });
   }
 
-  getMyFollowingPosts() {
+  getMyFollowingPosts(allPosts) {
+    return new Promise((resolve, reject) => {
     this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.myFollowingUrl}`)
       .subscribe(subs => {
-
-        let allPosts = [];
-
+        let newList = [];
         subs.forEach((pet, i) => {
-          console.log('subs', pet, i);
           this.db.list(this.globalPostsUrl, {
-            query: {
-              orderByChild: 'petId',
-              equalTo: pet.$key,
-              limitToLast: 10
-            }
-          }).subscribe(posts => {
-            console.log('posts ', posts);
-            allPosts.push(...posts);
-
-            if(i === subs.length - 1) {
-              console.log('allposts', allPosts);
-              return allPosts;
-            }
-
-          });
+              query: {
+                orderByChild: 'petId',
+                equalTo: pet.$key,
+                limitToLast: 10
+              }
+            })
+            .subscribe(posts => {
+              newList.push(...posts);
+              // allPosts.push(...posts);
+              // allPosts.sort((a, b) => b.timeStamp - a.timeStamp);
+              if (i === subs.length - 1) resolve(allPosts);
+            });
         });
       });
+    });
   }
+
+
 
   togglePetFollow(key, profile, like = true) {
     let bundle = {};

@@ -8,4 +8,5 @@ export interface Post {
   image: string,
   content: string,
   likes: number
+  timeStamp: number;
 }

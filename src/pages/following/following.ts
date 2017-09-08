@@ -30,22 +30,24 @@ export class FollowingPage {
       }
       this.user.displayName = user.displayName;
 
-      let a = this.firebase.getAllPosts().subscribe(posts => {
-        this.posts = posts.reverse();
-        a.unsubscribe();
-      });
-      let gg = this.firebase.getMyFollowingPosts();
-
+      // let a = this.firebase.getAllPosts().subscribe(posts => {
+      //   this.posts = posts.reverse();
+      //   a.unsubscribe();
+      // });
+      this.firebase.getMyFollowingPosts(this.posts)
+        .then(a => console.log('a', a));
     });
 
   }
 
   doRefresh(refresher) {
-    let a = this.firebase.getAllPosts().subscribe(posts => {
-      this.posts = posts.reverse();
-      a.unsubscribe();
-      refresher.complete();
-    });
+    this.firebase.getMyFollowingPosts(this.posts);
+    refresher.complete();
+    // let a = this.firebase.getAllPosts().subscribe(posts => {
+    //   this.posts = posts.reverse();
+    //   a.unsubscribe();
+    //   refresher.complete();
+    // });
   }
 
   goToPost(post) {
