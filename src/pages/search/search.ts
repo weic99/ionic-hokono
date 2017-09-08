@@ -25,7 +25,7 @@ export class SearchPage {
   ) {
     this.petRef$ = this.firebase.getAllPets(10);
     this.petRef$.subscribe(pets => {
-      this.pets = pets;
+      this.pets = pets.reverse();
       this.totalPets = this.pets.length;
     });
     this.query = '';
@@ -43,7 +43,7 @@ export class SearchPage {
       this.totalPets = 200;
       this.petRef$ = this.firebase.getAllPets(this.totalPets);
       this.petRef$.subscribe(pets => {
-        this.pets.push(...pets.slice(this.pets.length));
+        this.pets.push(...pets.slice(this.pets.length).reverse());
       });
     }, 0);
   }
