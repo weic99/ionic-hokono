@@ -30,7 +30,7 @@ export class HomePage {
         return;
       }
       this.user = user;
-      console.log('user', this.user, this.user.uid);
+
       let a = this.firebase.getAllPosts().subscribe(posts => {
         this.posts = posts.reverse();
         a.unsubscribe();
