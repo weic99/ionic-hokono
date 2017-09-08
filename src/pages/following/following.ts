@@ -31,7 +31,7 @@ export class FollowingPage {
       this.user.displayName = user.displayName;
 
       this.firebase.getAllPosts().subscribe(posts => {
-        this.posts = posts;
+        this.posts = posts
       });
 
     });

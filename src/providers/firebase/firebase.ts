@@ -41,7 +41,7 @@ export class FirebaseProvider {
   getAllPets(limit: number = 10) {
     return this.db.list(this.globalPetUrl, {
       query: {
-        limitToFirst: limit
+        limitToLast: limit,
       }
     });
   }
@@ -49,7 +49,8 @@ export class FirebaseProvider {
   getAllPosts(limit: number = 10) {
     return this.db.list(this.globalPostsUrl, {
       query: {
-        limitToFirst: limit
+        limitToLast: limit,
+        orderByChild: 'likes'
       }
     });
   }
