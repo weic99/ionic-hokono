@@ -30,13 +30,15 @@ export class FollowingPage {
         return;
       }
       this.user.displayName = user.displayName;
-
-      this.firebase.getMyFollowingPosts()
-        .then(newPosts => {
-          this.posts = Object.values(newPosts).sort((a, b) => b.timeStamp - a.timeStamp);
-        });
     });
 
+  }
+
+  ionViewDidEnter() {
+    this.firebase.getMyFollowingPosts()
+      .then(newPosts => {
+        this.posts = Object.values(newPosts).sort((a, b) => b.timeStamp - a.timeStamp);
+      });
   }
 
   doRefresh(refresher) {
