@@ -5,7 +5,11 @@
     <ion-title>Create a Pet Profile</ion-title>
 
     <ion-buttons right>
-      <button ion-button icon-only (click)="doSubmit()">
+      <button ion-button
+              icon-only
+              (click)="doSubmit()"
+              [disabled]="!newPet.name"
+      >
         <ion-icon name="md-send" color="primary"></ion-icon>
       </button>
     </ion-buttons>
