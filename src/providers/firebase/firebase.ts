@@ -56,7 +56,31 @@ export class FirebaseProvider {
   }
 
   getMyFollowingPosts() {
+    this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.myFollowingUrl}`)
+      .subscribe(subs => {
 
+        let allPosts = [];
+
+        subs.forEach((pet, i) => {
+          console.log('subs', pet, i);
+          this.db.list(this.globalPostsUrl, {
+            query: {
+              orderByChild: 'petId',
+              equalTo: pet.$key,
+              limitToLast: 10
+            }
+          }).subscribe(posts => {
+            console.log('posts ', posts);
+            allPosts.push(...posts);
+
+            if(i === subs.length - 1) {
+              console.log('allposts', allPosts);
+              return allPosts;
+            }
+
+          });
+        });
+      });
   }
 
   togglePetFollow(key, profile, like = true) {

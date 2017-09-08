@@ -9,6 +9,9 @@
 
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="80">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-card *ngFor="let item of posts">
 

@@ -30,12 +30,22 @@ export class FollowingPage {
       }
       this.user.displayName = user.displayName;
 
-      this.firebase.getAllPosts().subscribe(posts => {
-        this.posts = posts
+      let a = this.firebase.getAllPosts().subscribe(posts => {
+        this.posts = posts.reverse();
+        a.unsubscribe();
       });
+      let gg = this.firebase.getMyFollowingPosts();
 
     });
 
+  }
+
+  doRefresh(refresher) {
+    let a = this.firebase.getAllPosts().subscribe(posts => {
+      this.posts = posts.reverse();
+      a.unsubscribe();
+      refresher.complete();
+    });
   }
 
   goToPost(post) {
