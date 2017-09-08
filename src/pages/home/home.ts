@@ -14,7 +14,7 @@ import { Post } from '../../models/post';
 })
 export class HomePage {
 
-  user = {} as User;
+  user: any
   posts = [] as Post[];
 
   constructor(
@@ -29,8 +29,8 @@ export class HomePage {
         this.user.displayName = 'Guest';
         return;
       }
-      this.user.displayName = user.displayName;
-
+      this.user = user;
+      console.log('user', this.user, this.user.uid);
       let a = this.firebase.getAllPosts().subscribe(posts => {
         this.posts = posts.reverse();
         a.unsubscribe();
@@ -52,15 +52,22 @@ export class HomePage {
     this.navCtrl.push('PostPage', { post });
   }
 
-  toggleLike(post) {console.log('post is', post);
+  toggleLike(post) {
     this.firebase.togglePostLike(
       post.$key,
       post.petId,
-      null,
-      !(post['likeBy'] && post['likeBy'][this.user.uid])
+      post.ownerUid,
+      !(post['likedBy'] && post['likedBy'][this.user.uid])
     );
 
-    post.likes++;
+    if (post['likedBy'] && post['likedBy'][this.user.uid]) {
+      delete post['likedBy'][this.user.uid];
+      post.likes--;
+    } else {
+      post['likedBy'] = post['likedBy'] || {};
+      post['likedBy'][this.user.uid] = { timeStamp : Date.now() };
+      post.likes++;
+    }
   }
 
   createPost() {

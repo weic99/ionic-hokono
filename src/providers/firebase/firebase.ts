@@ -123,6 +123,7 @@ export class FirebaseProvider {
         }
         if (post.likedBy) {
           like ? post.likedBy[this.auth.user.uid] = { timeStamp: Date.now() }
+               : post.likedBy[this.auth.user.uid] = {};
         }
       }
       return post;
@@ -134,6 +135,10 @@ export class FirebaseProvider {
         if (post.likes) {
           like ? post.likes++ : post.likes--;
         }
+        if (post.likedBy) {
+          like ? post.likedBy[this.auth.user.uid] = { timeStamp: Date.now() }
+               : post.likedBy[this.auth.user.uid] = {};
+        }
       }
       return post;
     });
@@ -143,6 +148,10 @@ export class FirebaseProvider {
       if (post) {
         if (post.likes) {
           like ? post.likes++ : post.likes--;
+        }
+        if (post.likedBy) {
+          like ? post.likedBy[this.auth.user.uid] = { timeStamp: Date.now() }
+               : post.likedBy[this.auth.user.uid] = {};
         }
       }
       return post;
