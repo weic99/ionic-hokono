@@ -88,7 +88,7 @@
       <ion-avatar item-start
                   class='avatar'
       >
-        <img [src]="pet.filePath" />
+        <img [src]="pet.filePath || '../../assets/defaultPetPic.jpg'" />
       </ion-avatar>
 
       <button ion-button
