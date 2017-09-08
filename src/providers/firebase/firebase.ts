@@ -113,6 +113,49 @@ export class FirebaseProvider {
     return this.db.database.ref().update(bundle);
   }
 
+  togglePostLike(postId, petId, ownerId, like = true) {
+
+    this.db.database.ref(`${this.globalPostsUrl}/${postId}`)
+    .transaction((post) => {
+      if (post) {
+        if (post.likes) {
+          like ? post.likes++ : post.likes--;
+        }
+        if (post.likedBy) {
+          like ? post.likedBy[this.auth.user.uid] = { timeStamp: Date.now() }
+        }
+      }
+      return post;
+    });
+
+    this.db.database.ref(`${this.globalPetUrl}/${petId}/posts/${postId}`)
+    .transaction((post) => {
+      if (post) {
+        if (post.likes) {
+          like ? post.likes++ : post.likes--;
+        }
+      }
+      return post;
+    });
+
+    this.db.database.ref(`${this.profileUrl}/${ownerId}/${this.getMyPetsUrl}/${petId}/posts/${postId}`)
+    .transaction((post) => {
+      if (post) {
+        if (post.likes) {
+          like ? post.likes++ : post.likes--;
+        }
+      }
+      return post;
+    });
+
+
+
+
+
+  }
+
+
+
   updatePetProfile(key, profile) {
     this.db.list(this.globalPetUrl).update(key, profile);
     return this.db.list(`${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}`).update(key, profile);

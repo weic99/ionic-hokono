@@ -31,15 +31,13 @@
       <!-- <small>{{(item.user)?.displayName}}</small> -->
     </ion-item>
 
-
-
     <ion-card-content>
       <p>{{item.description}}</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col align-self-center>
-        <button ion-button color="primary" clear small icon-left (click)="doUpVote(item)">
+        <button ion-button color="primary" clear small icon-left (click)="toggleLike(item)">
           <ion-icon name='ios-heart'></ion-icon>
           <span>{{item.likes}}</span>
         </button>

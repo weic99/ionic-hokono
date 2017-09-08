@@ -52,8 +52,15 @@ export class HomePage {
     this.navCtrl.push('PostPage', { post });
   }
 
-  doUpVote(comment) {
-    comment.likes++;
+  toggleLike(post) {console.log('post is', post);
+    this.firebase.togglePostLike(
+      post.$key,
+      post.petId,
+      null,
+      !(post['likeBy'] && post['likeBy'][this.user.uid])
+    );
+
+    post.likes++;
   }
 
   createPost() {
