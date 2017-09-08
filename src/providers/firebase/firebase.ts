@@ -55,27 +55,27 @@ export class FirebaseProvider {
     });
   }
 
-  getMyFollowingPosts(allPosts) {
+  getMyFollowingPosts() {
     return new Promise((resolve, reject) => {
-    this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.myFollowingUrl}`)
-      .subscribe(subs => {
-        let newList = [];
-        subs.forEach((pet, i) => {
-          this.db.list(this.globalPostsUrl, {
-              query: {
-                orderByChild: 'petId',
-                equalTo: pet.$key,
-                limitToLast: 10
-              }
-            })
-            .subscribe(posts => {
-              newList.push(...posts);
-              // allPosts.push(...posts);
-              // allPosts.sort((a, b) => b.timeStamp - a.timeStamp);
-              if (i === subs.length - 1) resolve(allPosts);
-            });
+      this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.myFollowingUrl}`)
+        .subscribe(subs => {
+          let newList = [];
+          subs.forEach((pet, i) => {
+            this.db.list(this.globalPostsUrl, {
+                query: {
+                  orderByChild: 'petId',
+                  equalTo: pet.$key,
+                  limitToLast: 10
+                }
+              })
+              .subscribe(posts => {
+                newList.push(...posts);
+                if (i === subs.length - 1) {
+                  resolve(newList);
+                };
+              });
+          });
         });
-      });
     });
   }
 

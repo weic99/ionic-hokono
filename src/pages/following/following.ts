@@ -14,7 +14,8 @@ import { Post } from '../../models/post';
 export class FollowingPage {
 
   user = {} as User;
-  posts = [] as Post[];
+  // posts
+  posts: any;
 
   constructor(
     public navCtrl: NavController,
@@ -30,24 +31,20 @@ export class FollowingPage {
       }
       this.user.displayName = user.displayName;
 
-      // let a = this.firebase.getAllPosts().subscribe(posts => {
-      //   this.posts = posts.reverse();
-      //   a.unsubscribe();
-      // });
-      this.firebase.getMyFollowingPosts(this.posts)
-        .then(a => console.log('a', a));
+      this.firebase.getMyFollowingPosts()
+        .then(newPosts => {
+          this.posts = Object.values(newPosts).sort((a, b) => b.timeStamp - a.timeStamp);
+        });
     });
 
   }
 
   doRefresh(refresher) {
-    this.firebase.getMyFollowingPosts(this.posts);
-    refresher.complete();
-    // let a = this.firebase.getAllPosts().subscribe(posts => {
-    //   this.posts = posts.reverse();
-    //   a.unsubscribe();
-    //   refresher.complete();
-    // });
+    this.firebase.getMyFollowingPosts()
+      .then(newPosts => {
+        this.posts = Object.values(newPosts).sort((a, b) => b.timeStamp - a.timeStamp);
+        refresher.complete();
+      });
   }
 
   goToPost(post) {
