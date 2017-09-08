@@ -12,6 +12,7 @@ export class FirebaseProvider {
 
   myStarsUrl: string = 'myStars';
   myFollowingUrl: string = 'following';
+  myPostLikes:string = 'myPostLikes';
 
   petStarredByUrl: string = 'starredBy';
   petFollowersUrl:string = 'followers';
@@ -157,13 +158,19 @@ export class FirebaseProvider {
       return post;
     });
 
-
-
-
-
+    this.db.database.ref(`${this.profileUrl}/${this.auth.user.uid}`)
+    .transaction((post) => {
+      if (post) {
+        if (post.myPostLikes) {
+          like ? post.myPostLikes[postId] = { petId: petId }
+               : post.myPostLikes[postId] = {};
+        } else if (like) {
+          post.myPostLikes = { [postId]: { petId: petId } }
+        }
+      }
+      return post;
+    });
   }
-
-
 
   updatePetProfile(key, profile) {
     this.db.list(this.globalPetUrl).update(key, profile);
