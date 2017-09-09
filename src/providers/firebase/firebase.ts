@@ -76,6 +76,7 @@ export class FirebaseProvider {
                 };
               });
           });
+          !subs.length && resolve(newList);
         });
     });
   }

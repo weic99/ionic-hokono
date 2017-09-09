@@ -46,7 +46,8 @@ export class FollowingPage {
       .then(newPosts => {
         this.posts = Object.values(newPosts).sort((a, b) => b.timeStamp - a.timeStamp);
         refresher.complete();
-      });
+      })
+      .catch(() => refresher.complete());
   }
 
   goToPost(post) {

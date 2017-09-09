@@ -24,9 +24,10 @@ export class SearchPage {
     public User: UserProvider
   ) {
     this.petRef$ = this.firebase.getAllPets(10);
-    this.petRef$.subscribe(pets => {
+    let a = this.petRef$.subscribe(pets => {
       this.pets = pets.reverse();
       this.totalPets = this.pets.length;
+      a.unsubscribe();
     });
     this.query = '';
     this.user = User.user;
@@ -42,17 +43,32 @@ export class SearchPage {
     setTimeout(() => {
       this.totalPets = 200;
       this.petRef$ = this.firebase.getAllPets(this.totalPets);
-      this.petRef$.subscribe(pets => {
+      let a = this.petRef$.subscribe(pets => {
         this.pets.push(...pets.slice(this.pets.length).reverse());
+        a.unsubscribe();
       });
     }, 0);
   }
 
   toggleLike(pet) {
     this.firebase.togglePetLike(pet.$key, pet, !(pet['starredBy'] && pet['starredBy'][this.user.uid]));
+
+    if (pet['starredBy'] && pet['starredBy'][this.user.uid]) {
+      delete pet['starredBy'][this.user.uid];
+    } else {
+      pet['starredBy'] = pet['starredBy'] || {};
+      pet['starredBy'][this.user.uid] = { displayName: this.user.displayName, createdAt: Date.now() };
+    }
   }
 
   toggleFollow(pet) {
     this.firebase.togglePetFollow(pet.$key, pet, !(pet['followers'] && pet['followers'][this.user.uid]));
+
+    if (pet['followers'] && pet['followers'][this.user.uid]) {
+      delete pet['followers'][this.user.uid];
+    } else {
+      pet['followers'] = pet['followers'] || {};
+      pet['followers'][this.user.uid] = { displayName: this.user.displayName };
+    }
   }
 }
