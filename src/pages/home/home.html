@@ -21,11 +21,11 @@
 
   <ion-card *ngFor="let item of posts">
 
-    <img [src]="item.image || '../../assets/defaultPetPic.jpg'">
+    <img [src]="item.image || 'assets/defaultPetPic.jpg'">
 
     <ion-item>
       <!-- <ion-avatar item-start>
-        <img [src]="(item.user)?.avatar || '../../assets/defaultProfilePic.png'">
+        <img [src]="(item.user)?.avatar || 'assets/defaultProfilePic.png'">
       </ion-avatar> -->
       <h2>{{item.name}}:</h2>
       <!-- <small>{{(item.user)?.displayName}}</small> -->
