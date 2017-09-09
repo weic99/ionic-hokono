@@ -22,7 +22,7 @@ export class CameraPage {
     quality: 100,
     targetWidth: 500,
     targetHeight: 500,
-    destinationType: this.camera.DestinationType.DATA_URL, // use file_uri in prod
+    destinationType: this.camera.DestinationType.FILE_URI, // use file_uri in prod
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation: true,
@@ -51,7 +51,7 @@ export class CameraPage {
       years: null,
       months: null
     };
-    this.newPet.image = '';
+    this.newPet.filePath = '';
     this.newPet.description = '';
     this.newPet.species = {
       breed: ''
@@ -60,17 +60,27 @@ export class CameraPage {
     this.breeds = DOG_BREEDS.breeds;
   }
 
-  async doTakePicture() {
-    try {
-      this.newPet.image = 'data:image/jpeg;base64,' + await this.camera.getPicture(this.options);
-    } catch (e) {
-      console.log('doTakePicture()', e);
-    }
+ doTakePicture() {
+    this.camera.getPicture(this.options)
+      .then(imageURI => {
+        console.log('imageuri', imageURI);
+        this.newPet.filePath = imageURI;
+      })
+      .catch(err => {
+        console.error('doTakePicture()', err);
+      });
+
+
+    // try {
+    //   this.newPet.image = 'data:image/jpeg;base64,' + await this.camera.getPicture(this.options);
+    // } catch (e) {
+    //   console.log('doTakePicture()', e);
+    // }
   }
 
   doGetPictures() {
     var picOptions = {
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       quality: 100,
       targetWidth: 500,
       targetHeight: 500,
@@ -82,7 +92,7 @@ export class CameraPage {
     this.camera.getPicture(picOptions)
       .then((url) => {
         //console.log(url);
-        this.newPet.image = 'data:image/jpeg;base64,' + url;
+        this.newPet.filePath = url;
       })
       .catch((err) => {
         console.log('Failed to get picture');

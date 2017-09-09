@@ -11,4 +11,5 @@ export interface Pet {
     breed: string;
   },
   ownerUid: string;
+  filePath: string;
 }

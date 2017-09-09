@@ -13,6 +13,8 @@
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="file://*/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -101,6 +103,7 @@
         <variable name="APP_ID" value="127121794596439" />
         <variable name="APP_NAME" value="hokono" />
     </plugin>
+    <plugin name="cordova-plugin-file" spec="^4.3.3" />
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="340279576545-avnl68776h3fqu7s2ma90f9ugf1in9p1.apps.googleusercontent.com" />
     </plugin>

@@ -54,7 +54,21 @@ export class FollowingPage {
     this.navCtrl.push('PostPage', { post });
   }
 
-  doUpVote(comment) {
-    comment.likes++;
+  toggleLike(post) {
+    this.firebase.togglePostLike(
+      post.$key,
+      post.petId,
+      post.ownerUid,
+      !(post['likedBy'] && post['likedBy'][this.user.uid])
+    );
+
+    if (post['likedBy'] && post['likedBy'][this.user.uid]) {
+      delete post['likedBy'][this.user.uid];
+      post.likes--;
+    } else {
+      post['likedBy'] = post['likedBy'] || {};
+      post['likedBy'][this.user.uid] = { timeStamp : Date.now() };
+      post.likes++;
+    }
   }
 }

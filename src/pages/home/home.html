@@ -40,7 +40,6 @@
         <button ion-button color="primary" clear small icon-left (click)="toggleLike(item)">
           <ion-icon name='ios-heart'
                     [color]="(item['likedBy'] && item['likedBy'][this.user.uid]) ? 'danger' : 'greyscale'"
-                    class="adjust-top"
           >
           </ion-icon>
           <span>{{item.likes}}</span>

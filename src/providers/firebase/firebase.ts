@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import * as firebase from 'firebase';
 import { UserProvider } from '../user/user';
+
+declare var window: any;
 
 @Injectable()
 export class FirebaseProvider {
@@ -22,7 +25,7 @@ export class FirebaseProvider {
 
   constructor(
     private db: AngularFireDatabase,
-    private auth: UserProvider
+    private auth: UserProvider,
   ) {
     // console.log('Hello FirebaseProvider Provider');
   }
@@ -183,7 +186,59 @@ export class FirebaseProvider {
   }
 
   postNewPet(newPet) {
-    this.db.list(this.globalPetUrl).push(newPet);
-    return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).push(newPet);
+    newPet = {
+      ...newPet,
+      id: this.db.database.ref(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).push().key,
+      timeStamp: Date.now(),
+      stars: 0,
+      ownerUid: this.auth.user.uid
+    };
+
+    // let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}.jpg`)
+    // this.makeFileIntoBlob(newPet.filePath).then((blob) => {
+
+    //   imageRef.put(blob).then((ss) => console.log('ss', ss));
+    // });
+
+    return new Promise((resolve, reject) => {
+      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}.jpg`);
+      /** put image in firebase storage */
+      this.makeFileIntoBlob(newPet.filePath).then((blob) => {
+        imageRef.put(blob).then((ss) => {
+          newPet.filePath = ss.downloadURL;
+
+          let bundle =  {};
+          bundle[`/${this.globalPetUrl}/${newPet.id}`] = newPet;
+          bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}/${newPet.id}`] = newPet;
+
+          this.db.database.ref().update(bundle)
+          .then(resolve);
+        });
+      });
+    });
+  }
+
+  makeFileIntoBlob(path) {
+    return new Promise((resolve, reject) => {
+      window.resolveLocalFileSystemURL(path, (fileEntry) => {
+
+        fileEntry.file((resFile) => {
+
+          var reader = new FileReader();
+          reader.onloadend = (evt: any) => {
+            var imgBlob: any = new Blob([evt.target.result], { type: 'image/jpeg' });
+            imgBlob.name = 'sample.jpg';
+            resolve(imgBlob);
+          };
+
+          reader.onerror = (e) => {
+            console.log('Failed file read: ' + e.toString());
+            reject(e);
+          };
+
+          reader.readAsArrayBuffer(resFile);
+        });
+      });
+    });
   }
 }
