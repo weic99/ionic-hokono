@@ -13,6 +13,8 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <h1 *ngIf="!posts" padding margin>Follow some pets to get start</h1>
+
   <ion-card *ngFor="let item of posts">
 
     <img [src]="item.image || '../../assets/defaultPetPic.jpg'">

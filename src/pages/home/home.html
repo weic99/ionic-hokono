@@ -38,13 +38,17 @@
     <ion-row>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-left (click)="toggleLike(item)">
-          <ion-icon name='ios-heart'></ion-icon>
+          <ion-icon name='ios-heart'
+                    [color]="(item['likedBy'] && item['likedBy'][this.user.uid]) ? 'danger' : 'greyscale'"
+                    class="adjust-top"
+          >
+          </ion-icon>
           <span>{{item.likes}}</span>
         </button>
       </ion-col>
       <ion-col align-self-center>
         <button ion-button color="primary" clear small icon-left (click)="goToPost(item)">
-          <ion-icon name='text'></ion-icon>
+          <ion-icon name='md-text'></ion-icon>
           {{item.comments}} {{item.comments === 1 ? comments : comment}}
         </button>
       </ion-col>
