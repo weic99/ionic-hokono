@@ -208,9 +208,9 @@ export class FirebaseProvider {
     return new Promise((resolve, reject) => {
       let imageRef = firebase.storage().ref(`${this.auth.user.uid}/profile`);
       /** put image in firebase storage */
-      this.makeFileIntoBlob(profile.filePath).then((blob) => {
+      this.makeFileIntoBlob(profile.profPic).then((blob) => {
         imageRef.put(blob).then((ss) => {
-          profile.filePath = ss.downloadURL;
+          profile.profPic = ss.downloadURL;
 
           let bundle =  {};
           bundle[`/${this.profileUrl}/${this.auth.user.uid}`] = profile;
@@ -257,7 +257,7 @@ export class FirebaseProvider {
 
           var reader = new FileReader();
           reader.onloadend = (evt: any) => {
-            var imgBlob: any = new Blob([evt.target.result], { type: 'image/jpg' });
+            var imgBlob: any = new Blob([evt.target.result], { type: 'image/jpeg' });
             imgBlob.name = 'sample.jpg';
             resolve(imgBlob);
           };

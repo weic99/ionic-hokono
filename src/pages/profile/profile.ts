@@ -118,8 +118,8 @@ export class ProfilePage {
 
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
-        this.user.profile = newProfile;
         this.firebase.updateProfile(newProfile, newProfile.profPic !== this.user.profile.profPic);
+        this.user.profile = newProfile;
       }
     });
 
