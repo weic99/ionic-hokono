@@ -176,11 +176,14 @@ export class FirebaseProvider {
     });
   }
 
-  updatePetProfile(key, profile) {
-    // this.db.list(this.globalPetUrl).update(key, profile);
-    // return this.db.list(`${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}`).update(key, profile);
+  updatePetProfile(key, profile, picChanged = false): Promise<any> {
+    if (!picChanged) {
+      this.db.list(this.globalPetUrl).update(key, profile);
+      return <Promise<any>>this.db.list(`${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}`).update(key, profile);
+    }
+
     return new Promise((resolve, reject) => {
-      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${profile.id}/${profile.name}.jpg`);
+      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${profile.id}/${profile.name}`);
       /** put image in firebase storage */
       this.makeFileIntoBlob(profile.filePath).then((blob) => {
         imageRef.put(blob).then((ss) => {
@@ -197,8 +200,26 @@ export class FirebaseProvider {
     });
   }
 
-  updateProfile(profile) {
-    return this.db.object(`${this.profileUrl}/${this.auth.user.uid}`).update(profile);
+  updateProfile(profile, picChanged = false): Promise<any> {
+    if (!picChanged) {
+      return <Promise<any>>this.db.object(`${this.profileUrl}/${this.auth.user.uid}`).update(profile);
+    }
+
+    return new Promise((resolve, reject) => {
+      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/profile`);
+      /** put image in firebase storage */
+      this.makeFileIntoBlob(profile.filePath).then((blob) => {
+        imageRef.put(blob).then((ss) => {
+          profile.filePath = ss.downloadURL;
+
+          let bundle =  {};
+          bundle[`/${this.profileUrl}/${this.auth.user.uid}`] = profile;
+
+          this.db.database.ref().update(bundle)
+          .then(resolve);
+        });
+      });
+    });
   }
 
   postNewPet(newPet) {
@@ -211,7 +232,7 @@ export class FirebaseProvider {
     };
 
     return new Promise((resolve, reject) => {
-      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}.jpg`);
+      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}`);
       /** put image in firebase storage */
       this.makeFileIntoBlob(newPet.filePath).then((blob) => {
         imageRef.put(blob).then((ss) => {
@@ -236,7 +257,7 @@ export class FirebaseProvider {
 
           var reader = new FileReader();
           reader.onloadend = (evt: any) => {
-            var imgBlob: any = new Blob([evt.target.result], { type: 'image/jpeg' });
+            var imgBlob: any = new Blob([evt.target.result], { type: 'image/jpg' });
             imgBlob.name = 'sample.jpg';
             resolve(imgBlob);
           };

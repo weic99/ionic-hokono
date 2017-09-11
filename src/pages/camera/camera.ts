@@ -71,7 +71,7 @@ export class CameraPage {
  doTakePicture() {
     this.camera.getPicture(this.options)
       .then(imageURI => {
-        console.log('imageuri', imageURI);
+        //console.log('imageuri', imageURI);
         this.newPet.filePath = imageURI;
       })
       .catch(err => {

@@ -36,20 +36,45 @@ export class PetProfileEditPage {
     let photoSelection = this.modalCtrl.create('SelectModalPage', {
       title: 'Set Profile Photo',
       selections: [
-        'New Profile Photo',
+        'Camera',
+        'Album',
         'Import from Facebook',
         'Import from Google+'
       ]
     }, {cssClass: 'selections', showBackdrop: true, enableBackdropDismiss: true});
 
     photoSelection.onDidDismiss(choice => {
-      console.log('choice', choice);
-      if (choice === 'New Profile Photo') {
+      //console.log('choice', choice);
+      if (choice === 'Album') {
         this.doGetPictures();
+      } else if (choice === 'Camera') {
+        this.doTakePicture();
       }
     });
 
     photoSelection.present();
+  }
+
+  doTakePicture() {
+    let options: CameraOptions = {
+      quality: 100,
+      targetWidth: 500,
+      targetHeight: 500,
+      destinationType: this.camera.DestinationType.FILE_URI, // use file_uri in prod
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      allowEdit: true,
+      // saveToPhotoAlbum: true,
+    };
+    this.camera.getPicture(options)
+      .then(imageURI => {
+        //console.log('imageuri', imageURI);
+        this.pet.filePath = imageURI;
+      })
+      .catch(err => {
+        console.error('doTakePicture()', err);
+      });
   }
 
   doGetPictures() {

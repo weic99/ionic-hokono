@@ -89,7 +89,7 @@ export class ProfilePage {
 
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
-        this.firebase.updatePetProfile(pet.$key, newProfile);
+        this.firebase.updatePetProfile(pet.$key, newProfile, newProfile.filePath !== pet.filePath);
       }
     });
 
@@ -119,7 +119,7 @@ export class ProfilePage {
     edit.onDidDismiss(newProfile => {
       if (newProfile) {
         this.user.profile = newProfile;
-        this.firebase.updateProfile(this.user.profile);
+        this.firebase.updateProfile(newProfile, newProfile.profPic !== this.user.profile.profPic);
       }
     });
 
