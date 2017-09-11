@@ -191,7 +191,7 @@ export class FirebaseProvider {
 
           let bundle =  {};
           bundle[`/${this.globalPetUrl}/${profile.id}`] = profile;
-          bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}/${profile.id}`] = profile;
+          bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}/${key}`] = profile;
 
           this.db.database.ref().update(bundle)
           .then(resolve);
