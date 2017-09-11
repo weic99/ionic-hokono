@@ -10,7 +10,7 @@
         "lint": "ionic-app-scripts lint",
         "ionic:build": "ionic-app-scripts build",
         "ionic:serve": "ionic-app-scripts serve",
-        "start": "ionic cordova run android --prod --minifycss --minifyjs --optimizejs "
+        "start": "ionic cordova run android --prod --minifycss --minifyjs --optimizejs"
     },
     "dependencies": {
         "@angular/common": "4.1.3",

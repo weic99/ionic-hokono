@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { Pet } from '../../models/pet';
 
@@ -15,6 +16,7 @@ export class PetProfileEditPage {
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
+    private camera: Camera,
     public modalCtrl: ModalController
   ) { }
 
@@ -42,9 +44,33 @@ export class PetProfileEditPage {
 
     photoSelection.onDidDismiss(choice => {
       console.log('choice', choice);
+      if (choice === 'New Profile Photo') {
+        this.doGetPictures();
+      }
     });
 
     photoSelection.present();
+  }
+
+  doGetPictures() {
+    var picOptions = {
+      destinationType: this.camera.DestinationType.FILE_URI,
+      quality: 100,
+      targetWidth: 500,
+      targetHeight: 500,
+      allowEdit: true,
+      correctOrientation: true,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    };
+
+    this.camera.getPicture(picOptions)
+      .then((url) => {
+        //console.log(url);
+        this.pet.filePath = url;
+      })
+      .catch((err) => {
+        console.log('Failed to get picture');
+      });
   }
 
   cancel() {

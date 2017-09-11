@@ -177,8 +177,24 @@ export class FirebaseProvider {
   }
 
   updatePetProfile(key, profile) {
-    this.db.list(this.globalPetUrl).update(key, profile);
-    return this.db.list(`${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}`).update(key, profile);
+    // this.db.list(this.globalPetUrl).update(key, profile);
+    // return this.db.list(`${this.profileUrl}/${profile.ownerUid}/${this.getMyPetsUrl}`).update(key, profile);
+    return new Promise((resolve, reject) => {
+      let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${profile.id}/${profile.name}.jpg`);
+      /** put image in firebase storage */
+      this.makeFileIntoBlob(profile.filePath).then((blob) => {
+        imageRef.put(blob).then((ss) => {
+          profile.filePath = ss.downloadURL;
+
+          let bundle =  {};
+          bundle[`/${this.globalPetUrl}/${profile.id}`] = profile;
+          bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}/${profile.id}`] = profile;
+
+          this.db.database.ref().update(bundle)
+          .then(resolve);
+        });
+      });
+    });
   }
 
   updateProfile(profile) {
@@ -191,14 +207,8 @@ export class FirebaseProvider {
       id: this.db.database.ref(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}`).push().key,
       timeStamp: Date.now(),
       stars: 0,
-      ownerUid: this.auth.user.uid
+      ownerUid: this.auth.user.uid,
     };
-
-    // let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}.jpg`)
-    // this.makeFileIntoBlob(newPet.filePath).then((blob) => {
-
-    //   imageRef.put(blob).then((ss) => console.log('ss', ss));
-    // });
 
     return new Promise((resolve, reject) => {
       let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}.jpg`);

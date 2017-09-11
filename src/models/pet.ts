@@ -12,4 +12,5 @@ export interface Pet {
   },
   ownerUid: string;
   filePath: string;
+  adopt: boolean;
 }

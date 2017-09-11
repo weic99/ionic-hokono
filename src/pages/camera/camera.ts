@@ -26,6 +26,7 @@ export class CameraPage {
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation: true,
+    allowEdit: true,
     // saveToPhotoAlbum: true,
   };
 
@@ -43,6 +44,13 @@ export class CameraPage {
         console.log('Not logged in');
       }
       this.newPet.ownerUid = user.uid;
+
+      let a = this.firebase.getProfile()
+        .subscribe(profile => {
+          this.newPet.adopt = profile.acctType === 'shelter';
+          a.unsubscribe();
+        });
+
     });
 
 

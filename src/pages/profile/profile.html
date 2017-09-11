@@ -85,11 +85,11 @@
 
   <ion-list>
     <ion-item *ngFor="let pet of pets | filterPetsBySpecies: filter">
-      <ion-avatar item-start
+      <div item-start
                   class='avatar'
       >
         <img [src]="pet.filePath || 'assets/defaultPetPic.jpg'" />
-      </ion-avatar>
+      </div>
 
       <button ion-button
               small
