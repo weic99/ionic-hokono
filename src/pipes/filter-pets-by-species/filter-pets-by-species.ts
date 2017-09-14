@@ -5,11 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPetsBySpeciesPipe implements PipeTransform {
 
-  transform(pets: any, species: string): any {
-    if (!species) return pets;
-    species = species.toLowerCase();
-    return pets.filter( (pet) => {
-      return pet.types && pet.types.some( (t) => t.toLowerCase().includes(species));
+  transform(pets: any, query: string): any {
+    if (!query) return pets;
+    query = query.toLowerCase();
+    // return pets.filter( (pet) => {
+    //   return pet.types && pet.types.some( (t) => t.toLowerCase().includes(species));
+    // });
+
+    /** now filters by name and/or species/breed */
+    return pets.filter(pet => {
+      return JSON.stringify(pet).toLowerCase().match(query.toLowerCase());
     });
   }
 }
