@@ -229,14 +229,15 @@ export class FirebaseProvider {
       timeStamp: Date.now(),
       stars: 0,
       ownerUid: this.auth.user.uid,
+      species: 'dog'
     };
 
     return new Promise((resolve, reject) => {
       let imageRef = firebase.storage().ref(`${this.auth.user.uid}/${newPet.id}/${newPet.name}`);
       /** put image in firebase storage */
       this.makeFileIntoBlob(newPet.filePath).then((blob) => {
-        imageRef.put(blob).then((ss) => {
-          newPet.filePath = ss.downloadURL;
+        if (blob === null) {
+          newPet.filePath = '';
 
           let bundle =  {};
           bundle[`/${this.globalPetUrl}/${newPet.id}`] = newPet;
@@ -244,13 +245,26 @@ export class FirebaseProvider {
 
           this.db.database.ref().update(bundle)
           .then(resolve);
-        });
+        } else {
+          imageRef.put(blob).then((ss) => {
+            newPet.filePath = ss.downloadURL;
+
+            let bundle =  {};
+            bundle[`/${this.globalPetUrl}/${newPet.id}`] = newPet;
+            bundle[`/${this.profileUrl}/${this.auth.user.uid}/${this.getMyPetsUrl}/${newPet.id}`] = newPet;
+
+            this.db.database.ref().update(bundle)
+            .then(resolve);
+          });
+        }
       });
     });
   }
 
   makeFileIntoBlob(path) {
     return new Promise((resolve, reject) => {
+      if (typeof window.resolveLocalFileSystemURL !== 'function') resolve(null);
+
       window.resolveLocalFileSystemURL(path, (fileEntry) => {
 
         fileEntry.file((resFile) => {
