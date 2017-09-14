@@ -19,6 +19,11 @@
   text-align: center;
 }
 
+.welcome-toast {
+  background-color: white;
+  color: color($colors, primary);
+}
+
 .toolbar-badge {
   background-color: color($colors, danger);
   color: color($colors, whiter);

@@ -75,7 +75,9 @@ export class ProfilePage {
     setTimeout(() => {
       this.petRef$ = this.firebase.getPets(this.pets.length + 10);
       this.petRef$.subscribe(pets => {
-        this.pets.push(...pets.slice(this.pets.length));
+        if (pets) {
+          this.pets.push(...pets.slice(this.pets.length));
+        }
       });
       //console.log('Async operation has ended');
       infiniteScroll.complete();

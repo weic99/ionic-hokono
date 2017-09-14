@@ -32,8 +32,8 @@ export class SelectUsernamePage {
         this.toastCtrl.create({
           message: 'Welcome to Hokono',
           duration: 2000,
-          cssClass: 'toast-success',
-          position: 'top'
+          cssClass: 'welcome-toast',
+          position: 'middle'
         }).present();
       })
       .catch(() => {
