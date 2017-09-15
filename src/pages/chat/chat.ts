@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 import { User } from '../../models/user';
 import { Message } from '../../models/message'
@@ -17,12 +18,14 @@ export class ChatPage {
   friend = {} as User;
   user: any;
   newMessage = {} as Message;
-  messages = [] as Message[];
+  messages: any[] = [];
+  readMessages: number = 0;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private firebase: FirebaseProvider
   ) {
 
     this.afAuth.authState.subscribe(user => {
@@ -35,81 +38,96 @@ export class ChatPage {
 
     this.user = this.navParams.get('user');
 
-    this.friend.displayName = 'Mario';
-    this.newMessage.sender = this.user.displayName //set to displayName;
-    this.newMessage.receiver = this.friend.displayName
+    this.firebase.getMyChats()
+      .subscribe(chatsBoxes => {
+        if (chatsBoxes.length) {
+          chatsBoxes.forEach(box => {
+            let messageBox = (Object.values(Object.values(box)[0]));
 
-    this.messages = [
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'Hi',
-        date: Date.now() - 6000000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'Hi',
-        date: Date.now() - 500000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'heyyyyyyyyyyyyyyyyy',
-        date: Date.now() - 400000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'heyyyyyyyyyyyyyyyyy',
-        date: Date.now() - 300000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo',
-        date: Date.now() - 200000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-        date: Date.now() - 100000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-        date: Date.now() - 90000
-      },
-      {
-        sender: 'Mario',
-        receiver: '',
-        body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-        date: Date.now() - 60000
-      },
-      {
-        sender: 'Me',
-        receiver: 'Mario',
-        body: 'k',
-        date: Date.now()
-      },
-    ];
+            let newMessages = messageBox.map( msg => {
+              if (msg.read !== true) {
+                return msg;
+              }
+            });
+            this.messages.push(...newMessages.slice(this.readMessages));
+            this.readMessages = newMessages.length;
+          });
+        }
+      });
+
+    this.friend.displayName = 'Michaels FaceBook';
+    this.newMessage.author = 'me' //set to displayName;
+    this.newMessage.data = { text: '' };
+
+    // this.messages = [
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'Hi',
+    //     date: Date.now() - 6000000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'Hi',
+    //     date: Date.now() - 500000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'heyyyyyyyyyyyyyyyyy',
+    //     date: Date.now() - 400000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'heyyyyyyyyyyyyyyyyy',
+    //     date: Date.now() - 300000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo',
+    //     date: Date.now() - 200000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'yooooooooooooooooooooooooooooooooooooooooooo',
+    //     date: Date.now() - 100000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'yooooooooooooooooooooooooooooooooooooooooooo',
+    //     date: Date.now() - 90000
+    //   },
+    //   {
+    //     sender: 'Mario',
+    //     receiver: '',
+    //     body: 'yooooooooooooooooooooooooooooooooooooooooooo',
+    //     date: Date.now() - 60000
+    //   },
+    //   {
+    //     sender: 'Me',
+    //     receiver: 'Mario',
+    //     body: 'k',
+    //     date: Date.now()
+    //   },
+    // ];
   }
 
   sendMessage(e) {
-    if(!this.newMessage.body) {
+    if(!this.newMessage.data.text) {
       return;
     }
 
     this.messages.push({
       ...this.newMessage,
-      sender: 'You',
-      receiver: 'Mario',
-      date: Date.now()
+      timeStamp: Date.now()
     })
 
-    this.newMessage.body = undefined;
+    this.newMessage.data = { text: undefined };
     e.target.reset();
 
     /** Make sure the newMessage is rendered */

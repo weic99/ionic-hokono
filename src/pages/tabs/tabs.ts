@@ -26,13 +26,13 @@ export class TabsPage {
 
             let newMessages = messageBox.map( msg => {
               if (msg.read !== true) {
-                this.profilePageBadges++;
+                //this.profilePageBadges++; /** needs fixes */
                 return msg;
               }
             });
             this.newMessages = newMessages;
           });
         }
-      })
+      });
   }
 }

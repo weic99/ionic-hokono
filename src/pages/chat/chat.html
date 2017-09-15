@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Chat with <span class="friend-name">{{friend.displayName}}</span></ion-title>
+    <ion-title><span class="friend-name">{{friend.displayName}}</span></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,7 +12,7 @@
 
   <div class="chat" *ngFor="let message of messages">
 
-    <div *ngIf="message.sender === friend.displayName" >
+    <div *ngIf="message.author === 'them'" >
       <ion-chip color="whiter">
         <ion-avatar>
           <img src="assets/Mario_icon_bubble.png">
@@ -22,12 +22,12 @@
 
       <div class="chat-block">
         <div class="chat-text">
-          {{message.body}}
+          {{(message.data)?.text}}
         </div>
       </div>
     </div>
 
-    <div *ngIf="message.sender !== friend.displayName" class="me">
+    <div *ngIf="message.author !== 'them'" class="me">
       <ion-chip color="whiter">
         <ion-label color="dark">{{message.date | timeToDate}}</ion-label>
         <ion-avatar>
@@ -37,7 +37,7 @@
 
       <div class="chat-block">
         <div class="chat-text">
-          {{message.body}}
+          {{(message.data)?.text}}
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
         clearInput
         placeholder="..."
         name="message"
-        [(ngModel)]="newMessage.body"
+        [(ngModel)]="newMessage.data.text"
         (ionFocus)="scrollToBottom()"
       >
       </ion-input>
@@ -66,7 +66,7 @@
           item-end
           center
           type="submit"
-          [disabled]="!newMessage.body"
+          [disabled]="!newMessage.data.text"
         >
           Send
         </button>
