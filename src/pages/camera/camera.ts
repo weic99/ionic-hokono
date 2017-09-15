@@ -116,6 +116,16 @@ export class CameraPage {
           duration: 2000,
           cssClass: 'toast-success'
         }).present();
+        this.newPet.name = '';
+        this.newPet.age = {
+          years: null,
+          months: null
+        };
+        this.newPet.filePath = '';
+        this.newPet.description = '';
+        this.newPet.species = {
+          breed: ''
+        };
       })
       .catch(() => {
         this.toastCtrl.create({
