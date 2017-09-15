@@ -12,11 +12,14 @@ export class TabsPage {
   tab4Root = 'FollowingPage';
   tab5Root = 'ProfilePage';
 
-  profilePageBadges: number;
+  profilePageBadges: number = 0;
 
   constructor(
     private firebase: FirebaseProvider
   ) {
-    this.profilePageBadges = 0;
+    this.firebase.getMyChats()
+      .subscribe(chats => {
+        console.log('chats', chats);
+      })
   }
 }

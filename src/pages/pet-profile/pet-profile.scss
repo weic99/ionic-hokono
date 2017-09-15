@@ -1,7 +1,9 @@
 page-pet-profile {
   .profile-avatar {
     width: auto;
-    height: 250px;
+    min-height: 200px;
+    height: auto;
+    margin-bottom: 0 !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;

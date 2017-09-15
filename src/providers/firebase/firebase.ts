@@ -12,6 +12,7 @@ export class FirebaseProvider {
 
   profileUrl: string = 'accounts';
   getMyPetsUrl: string = 'pets';
+  getMyChatsUrl: string = 'chats';
 
   myStarsUrl: string = 'myStars';
   myFollowingUrl: string = 'following';
@@ -40,6 +41,11 @@ export class FirebaseProvider {
         limitToFirst: limit
       }
     });
+  }
+
+  /** TODO: needs optimization */
+  getMyChats() {
+    return this.db.list(`${this.profileUrl}/${this.auth.user.uid}/${this.getMyChatsUrl}`);
   }
 
   getAllPets(limit: number = 10) {
