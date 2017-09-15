@@ -31,7 +31,7 @@
       <ion-chip color="whiter">
         <ion-label color="dark">{{message.date | timeToDate}}</ion-label>
         <ion-avatar>
-          <img src="assets/Me.JPG">
+          <img [src]="(user.profile)?.profPic || 'assets/defaultProfilePic.png'">
         </ion-avatar>
       </ion-chip>
 

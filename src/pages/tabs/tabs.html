@@ -6,6 +6,7 @@
 
   <ion-tab [root]="tab5Root" tabTitle="Profile" tabIcon="md-person"
     [tabBadge] = "profilePageBadges > 0 ? profilePageBadges : null"
+    [rootParams] = "{'profilePageBadges': profilePageBadges, newMessages: newMessages }"
   >
   </ion-tab>
 </ion-tabs>

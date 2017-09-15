@@ -17,6 +17,9 @@ export class ProfilePage {
   pets: any;
   filter: string;
 
+  profilePageBadges: number = 0;
+  newMessages: any;
+
   user = {} as User;
 
   constructor(
@@ -55,6 +58,9 @@ export class ProfilePage {
       });
     });
     this.filter = '';
+
+    this.profilePageBadges = this.navParams.get('profilePageBadges');
+    this.newMessages = this.navParams.get('newMessages'); console.log('newMessages', this.newMessages);
   }
 
   ionViewDidEnter() { }
@@ -128,6 +134,6 @@ export class ProfilePage {
   }
 
   doOpenChat() {
-    this.navCtrl.push('ChatPage');
+    this.navCtrl.push('ChatPage', { newMessages: this.newMessages, user: this.user });
   }
 }

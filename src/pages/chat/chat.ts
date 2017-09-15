@@ -15,7 +15,7 @@ export class ChatPage {
   @ViewChild(Content) content: Content;
 
   friend = {} as User;
-  user = {} as User;
+  user: any;
   newMessage = {} as Message;
   messages = [] as Message[];
 
@@ -32,6 +32,8 @@ export class ChatPage {
       }
       this.user.displayName = user.displayName;
     });
+
+    this.user = this.navParams.get('user');
 
     this.friend.displayName = 'Mario';
     this.newMessage.sender = this.user.displayName //set to displayName;

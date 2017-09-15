@@ -13,14 +13,25 @@ export class TabsPage {
   tab5Root = 'ProfilePage';
 
   profilePageBadges: number = 0;
+  newMessages: any[];
 
   constructor(
     private firebase: FirebaseProvider
   ) {
     this.firebase.getMyChats()
-      .subscribe(chats => {
-        if (chats.length) {
-          console.log('chats', Object.entries(Object.entries(chats[0])));
+      .subscribe(chatsBoxes => {
+        if (chatsBoxes.length) {
+          chatsBoxes.forEach(box => {
+            let messageBox = (Object.values(Object.values(box)[0]));
+
+            let newMessages = messageBox.map( msg => {
+              if (msg.read !== true) {
+                this.profilePageBadges++;
+                return msg;
+              }
+            });
+            this.newMessages = newMessages;
+          });
         }
       })
   }
