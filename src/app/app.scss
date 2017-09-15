@@ -83,3 +83,19 @@ page-select-modal > ion-content > div.scroll-content {
     color: white !important;
   }
 }
+
+ion-segment {
+  justify-content: space-between;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  ion-segment-button.segment-button {
+    display: inline-block !important;
+    min-width: fit-content !important;
+  }
+}
