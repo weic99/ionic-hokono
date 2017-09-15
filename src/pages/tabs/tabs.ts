@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -11,7 +12,11 @@ export class TabsPage {
   tab4Root = 'FollowingPage';
   tab5Root = 'ProfilePage';
 
-  constructor() {
+  profilePageBadges: number;
 
+  constructor(
+    private firebase: FirebaseProvider
+  ) {
+    this.profilePageBadges = 0;
   }
 }
