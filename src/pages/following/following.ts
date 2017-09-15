@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { UserProvider } from '../../providers/user/user';
 
 import { User } from '../../models/user';
 import { Post } from '../../models/post';
@@ -13,7 +14,7 @@ import { Post } from '../../models/post';
 })
 export class FollowingPage {
 
-  user = {} as User;
+  user: any;
   // posts
   posts: any;
 
@@ -21,17 +22,10 @@ export class FollowingPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private afAuth: AngularFireAuth,
-    private firebase: FirebaseProvider
+    private firebase: FirebaseProvider,
+    public User: UserProvider,
   ) {
-
-    this.afAuth.authState.subscribe(user => {
-      if (!user) {
-        this.user.displayName = 'Guest';
-        return;
-      }
-      this.user.displayName = user.displayName;
-    });
-
+    this.user = User.user;
   }
 
   ionViewDidEnter() {

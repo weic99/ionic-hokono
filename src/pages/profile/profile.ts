@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -24,7 +24,6 @@ export class ProfilePage {
     public navParams: NavParams,
     private firebase: FirebaseProvider,
     private afAuth: AngularFireAuth,
-    public popoverCtrl: PopoverController,
     public modalCtrl: ModalController
   ) {
     /** hard coded profile data */

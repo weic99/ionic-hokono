@@ -1,0 +1,23 @@
+page-pet-profile {
+  .profile-avatar {
+    width: auto;
+    height: 250px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    justify-content: center;
+  }
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+  #profile-edit-pic {
+    height: 22px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pet-name {
+    color: color($colors, primary);
+  }
+}

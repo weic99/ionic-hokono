@@ -21,7 +21,7 @@ export class SearchPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private firebase: FirebaseProvider,
-    public User: UserProvider
+    public User: UserProvider,
   ) {
     this.petRef$ = this.firebase.getAllPets(10);
     let a = this.petRef$.subscribe(pets => {
@@ -73,6 +73,6 @@ export class SearchPage {
   }
 
   petSelected(pet) {
-    console.log('petSelected', pet);
+    this.navCtrl.push('PetProfilePage', {pet: pet});
   }
 }
