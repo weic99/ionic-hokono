@@ -71,4 +71,8 @@ export class SearchPage {
       pet['followers'][this.user.uid] = { displayName: this.user.displayName };
     }
   }
+
+  petSelected(pet) {
+    console.log('petSelected', pet);
+  }
 }

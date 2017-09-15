@@ -31,8 +31,8 @@
   <ion-list>
     <ion-item *ngFor="let pet of pets | filterPetsBySpecies: query">
 
-      <div item-start
-                  class='avatar'
+      <div item-start (click)="petSelected(pet)"
+           class='avatar'
       >
         <img [src]="pet.filePath || 'assets/defaultPetPic.jpg'" />
       </div>
@@ -40,8 +40,8 @@
       <h1>{{pet.name}}</h1>
       <span> {{pet.description}} </span>
 
-
       <div item-end>
+
         <!-- Follow button -->
         <button class="toggle liked"
 
