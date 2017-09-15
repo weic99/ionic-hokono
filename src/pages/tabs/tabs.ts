@@ -19,7 +19,7 @@ export class TabsPage {
   ) {
     this.firebase.getMyChats()
       .subscribe(chats => {
-        console.log('chats', chats);
+        console.log('chats', Object.entries(Object.entries(chats)[0]));
       })
   }
 }

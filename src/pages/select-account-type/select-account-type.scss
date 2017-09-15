@@ -25,6 +25,11 @@ page-select-account-type {
       margin: -7px -1px 0;
       border: 1px solid #999;
       border-top: none;
+
+      ion-item {
+        padding: 5px;
+        font-size: 12px;
+      }
     }
 
     ion-item:hover {
