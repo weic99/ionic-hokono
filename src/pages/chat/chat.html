@@ -15,7 +15,7 @@
     <div *ngIf="message.author === 'them'" >
       <ion-chip color="whiter">
         <ion-avatar>
-          <img src="assets/Mario_icon_bubble.png">
+          <img [src]="(user.profile)?.profPic || 'assets/defaultProfilePic.png'">
         </ion-avatar>
         <ion-label color="dark">{{message.date | timeToDate}}</ion-label>
       </ion-chip>
