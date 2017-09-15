@@ -89,8 +89,22 @@ export class FirebaseProvider {
         });
     });
   }
+  /** TODO: this needs fixes */
+  postNewChat(newMesssage, dn) {
+    const uid = this.auth.user.uid;
+    //const dn = this.auth.user.displayName;
+    const receiveruid = '12DvdNP7KsXyceuS8AVXEm4rgQA3';
+    const receiverdName = 'Michaels Facebook';
 
+    const key = this.db.database.ref(`${this.profileUrl}/${uid}/chats/${receiveruid}/${receiverdName}`).push().key;
+    const key2 = this.db.database.ref(`${this.profileUrl}/${receiveruid}/chats/${uid}/${dn}`).push().key
+    let bundle = {};
 
+    bundle[`/${this.profileUrl}/${uid}/chats/${receiveruid}/${receiverdName}/${key}`] = {...newMesssage, author: 'me'};
+    bundle[`/${this.profileUrl}/${receiveruid}/chats/${uid}/${dn}/${key2}`] = {...newMesssage, author: 'them'};
+
+    return this.db.database.ref().update(bundle);
+  }
 
   togglePetFollow(key, profile, like = true) {
     let bundle = {};

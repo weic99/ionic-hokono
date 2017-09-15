@@ -28,13 +28,13 @@ export class ChatPage {
     private firebase: FirebaseProvider
   ) {
 
-    this.afAuth.authState.subscribe(user => {
-      if (!user) {
-        this.user.displayName = null;
-        return;
-      }
-      this.user.displayName = user.displayName;
-    });
+    // this.afAuth.authState.subscribe(user => {
+    //   if (!user) {
+    //     this.user.displayName = null;
+    //     return;
+    //   }
+    //   this.user.displayName = user.displayName;
+    // });
 
     this.user = this.navParams.get('user');
 
@@ -58,63 +58,6 @@ export class ChatPage {
     this.friend.displayName = 'Michaels FaceBook';
     this.newMessage.author = 'me' //set to displayName;
     this.newMessage.data = { text: '' };
-
-    // this.messages = [
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'Hi',
-    //     date: Date.now() - 6000000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'Hi',
-    //     date: Date.now() - 500000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'heyyyyyyyyyyyyyyyyy',
-    //     date: Date.now() - 400000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'heyyyyyyyyyyyyyyyyy',
-    //     date: Date.now() - 300000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'heeeeeeelllllloooooooooooooooooooooooooooooooooo',
-    //     date: Date.now() - 200000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-    //     date: Date.now() - 100000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-    //     date: Date.now() - 90000
-    //   },
-    //   {
-    //     sender: 'Mario',
-    //     receiver: '',
-    //     body: 'yooooooooooooooooooooooooooooooooooooooooooo',
-    //     date: Date.now() - 60000
-    //   },
-    //   {
-    //     sender: 'Me',
-    //     receiver: 'Mario',
-    //     body: 'k',
-    //     date: Date.now()
-    //   },
-    // ];
   }
 
   sendMessage(e) {
@@ -122,10 +65,13 @@ export class ChatPage {
       return;
     }
 
-    this.messages.push({
-      ...this.newMessage,
-      timeStamp: Date.now()
-    })
+    // this.messages.push({
+    //   ...this.newMessage,
+    //   timeStamp: Date.now()
+    // })
+
+    this.firebase.postNewChat({...this.newMessage, timeStamp: Date.now(), type: 'text'}, this.user.profile.displayName)
+      .then(() => this.content.scrollToBottom());
 
     this.newMessage.data = { text: undefined };
     e.target.reset();
