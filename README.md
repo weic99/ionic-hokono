@@ -1,3 +1,3 @@
 Hokono
 
-![Home view](https://github.com/weic99/ionic-hokono/blob/master/README_pics/home-view.png)
+![Home view](https://github.com/weic99/ionic-hokono/blob/master/README_pics/home-view.png=250x)
