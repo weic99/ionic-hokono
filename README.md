@@ -1,4 +1,4 @@
-# Hokono - a place for pets
+# Hokono: A place for pets
 
 ### Home page: Top liked posts are at top
 
