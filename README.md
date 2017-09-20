@@ -19,3 +19,7 @@
 ### Edit profile of yourself and pets here.
 
 <img src="README_pics/profile-view.png" width="100%">
+
+### Login or signup with Email/Password, Facebook, or Google
+
+<img src="README_pics/login-view.png" width="100%">
