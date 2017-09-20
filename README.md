@@ -22,4 +22,4 @@
 
 ### Login or signup with Email/Password, Facebook, or Google
 
-<img src="README_pics/login-view.png" width="100%">
+<img src="README_PICS/login-view.png" width="100%">
